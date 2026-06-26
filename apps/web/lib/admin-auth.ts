@@ -1,56 +1,60 @@
 import "server-only";
 import { cookies } from "next/headers";
-import { createHmac, timingSafeEqual } from "crypto";
-import { ADMIN_COOKIE } from "./admin-cookie";
+import { createServerClient, type CookieOptions } from "@supabase/ssr";
+import type { SupabaseClient } from "@supabase/supabase-js";
 
-export { ADMIN_COOKIE };
+type CookieZaPostavljanje = { name: string; value: string; options?: CookieOptions };
 
-function secret(): string {
-  return (
-    process.env.ADMIN_SECRET ||
-    process.env.SUPABASE_SERVICE_ROLE_KEY ||
-    "rakija-dev-secret"
-  );
+const URL = process.env.NEXT_PUBLIC_SUPABASE_URL;
+const ANON = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+export function authConfigured(): boolean {
+  return Boolean(URL && ANON);
 }
 
-export function adminLozinkaPodesena(): boolean {
-  return Boolean(process.env.ADMIN_LOZINKA);
+/** SSR Supabase klijent vezan za kolačiće (za server akcije i komponente). */
+export async function createSsrClient(): Promise<SupabaseClient> {
+  const cookieStore = await cookies();
+  return createServerClient(URL!, ANON!, {
+    cookies: {
+      getAll: () => cookieStore.getAll(),
+      setAll: (toSet: CookieZaPostavljanje[]) => {
+        try {
+          toSet.forEach(({ name, value, options }) =>
+            cookieStore.set(name, value, options),
+          );
+        } catch {
+          // U Server Component-ima set nije dozvoljen — sesiju osvežava middleware.
+        }
+      },
+    },
+  });
 }
 
-function potpis(payload: string): string {
-  return createHmac("sha256", secret()).update(payload).digest("hex");
+export async function getKorisnik() {
+  if (!authConfigured()) return null;
+  const sb = await createSsrClient();
+  const { data } = await sb.auth.getUser();
+  return data.user ?? null;
 }
 
-/** Token oblika "ok.<hmac>" */
-export function napraviToken(): string {
-  const payload = "ok";
-  return `${payload}.${potpis(payload)}`;
+/** Lista dozvoljenih admin emailova (prazno = svaki autentikovan korisnik). */
+function adminEmails(): string[] {
+  return (process.env.ADMIN_EMAILS || "")
+    .split(",")
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean);
 }
 
-export function tokenValjan(token: string | undefined): boolean {
-  if (!token) return false;
-  const [payload, sig] = token.split(".");
-  if (payload !== "ok" || !sig) return false;
-  const ocekivano = potpis(payload);
-  try {
-    const a = Buffer.from(sig, "hex");
-    const b = Buffer.from(ocekivano, "hex");
-    return a.length === b.length && timingSafeEqual(a, b);
-  } catch {
-    return false;
-  }
-}
-
-export function lozinkaTacna(unos: string): boolean {
-  const tacna = process.env.ADMIN_LOZINKA || "";
-  if (!tacna) return false;
-  const a = Buffer.from(unos);
-  const b = Buffer.from(tacna);
-  return a.length === b.length && timingSafeEqual(a, b);
-}
-
-/** Da li je trenutni zahtev autentikovan kao admin. */
 export async function jeAdmin(): Promise<boolean> {
-  const c = await cookies();
-  return tokenValjan(c.get(ADMIN_COOKIE)?.value);
+  const u = await getKorisnik();
+  if (!u) return false;
+  const allow = adminEmails();
+  if (allow.length === 0) return true;
+  return Boolean(u.email && allow.includes(u.email.toLowerCase()));
+}
+
+export async function adminEmail(): Promise<string | null> {
+  const u = await getKorisnik();
+  return u?.email ?? null;
 }

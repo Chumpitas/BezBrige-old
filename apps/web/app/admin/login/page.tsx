@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { adminLozinkaPodesena } from "@/lib/admin-auth";
+import { authConfigured } from "@/lib/admin-auth";
 import { LoginForm } from "./LoginForm";
 
 export const metadata: Metadata = { title: "Admin prijava", robots: { index: false } };
@@ -10,7 +10,7 @@ export default async function AdminLoginPage({
   searchParams: Promise<{ od?: string }>;
 }) {
   const { od } = await searchParams;
-  const podesena = adminLozinkaPodesena();
+  const podesena = authConfigured();
 
   return (
     <div className="container-page flex min-h-[70vh] items-center justify-center py-16">
@@ -24,10 +24,10 @@ export default async function AdminLoginPage({
             <LoginForm od={od ?? "/admin"} />
           ) : (
             <div className="rounded-lg border border-bakar-200 bg-bakar-50 px-4 py-3 text-sm text-bakar-800">
-              Admin lozinka još nije podešena. Dodaj env varijablu{" "}
-              <code className="font-mono">ADMIN_LOZINKA</code> (i{" "}
-              <code className="font-mono">SUPABASE_SERVICE_ROLE_KEY</code>) pa
-              osveži stranicu.
+              Supabase još nije podešen. Dodaj{" "}
+              <code className="font-mono">NEXT_PUBLIC_SUPABASE_URL</code> i{" "}
+              <code className="font-mono">NEXT_PUBLIC_SUPABASE_ANON_KEY</code>, pa
+              napravi korisnika u Supabase Auth.
             </div>
           )}
         </div>

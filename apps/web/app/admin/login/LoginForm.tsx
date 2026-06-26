@@ -5,18 +5,18 @@ import { prijaviSe } from "./actions";
 
 export function LoginForm({ od }: { od: string }) {
   const [greska, action, pending] = useActionState(prijaviSe, null);
+  const inputCls =
+    "mt-1 w-full rounded-lg border border-sljiva-200 px-3 py-2 outline-none focus:border-bakar-500";
   return (
     <form action={action} className="space-y-4">
       <input type="hidden" name="od" value={od} />
       <label className="block text-sm">
-        <span className="text-sljiva-600">Admin lozinka</span>
-        <input
-          name="lozinka"
-          type="password"
-          autoFocus
-          required
-          className="mt-1 w-full rounded-lg border border-sljiva-200 px-3 py-2 outline-none focus:border-bakar-500"
-        />
+        <span className="text-sljiva-600">Email</span>
+        <input name="email" type="email" autoFocus required className={inputCls} />
+      </label>
+      <label className="block text-sm">
+        <span className="text-sljiva-600">Lozinka</span>
+        <input name="lozinka" type="password" required className={inputCls} />
       </label>
       {greska && (
         <p className="rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700">

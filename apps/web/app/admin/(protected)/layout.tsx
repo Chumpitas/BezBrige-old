@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { jeAdmin } from "@/lib/admin-auth";
+import { adminEmail, jeAdmin } from "@/lib/admin-auth";
 import { odjaviSe } from "../login/actions";
 
 const NAV = [
@@ -20,6 +20,7 @@ export default async function AdminLayout({
   children: React.ReactNode;
 }) {
   if (!(await jeAdmin())) redirect("/admin/login");
+  const email = await adminEmail();
 
   return (
     <div className="container-page py-10">
@@ -40,11 +41,14 @@ export default async function AdminLayout({
             ))}
           </nav>
         </div>
-        <form action={odjaviSe}>
-          <button className="text-sm font-medium text-sljiva-500 hover:text-red-600">
-            Odjava
-          </button>
-        </form>
+        <div className="flex items-center gap-3">
+          {email && <span className="text-xs text-sljiva-400">{email}</span>}
+          <form action={odjaviSe}>
+            <button className="text-sm font-medium text-sljiva-500 hover:text-red-600">
+              Odjava
+            </button>
+          </form>
+        </div>
       </div>
       <div className="mt-8">{children}</div>
     </div>
