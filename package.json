@@ -1,0 +1,16 @@
+{
+  "name": "rakija-platforma",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Platforma 'Rakija – kulturno dobro Srbije': sajt događaja + baza proizvođača rakije",
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "start": "turbo run start"
+  },
+  "devDependencies": {
+    "turbo": "^2.3.3"
+  }
+}

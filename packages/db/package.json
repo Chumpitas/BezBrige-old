@@ -1,0 +1,6 @@
+{
+  "name": "@rakija/db",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Šema baze i migracije (Supabase/Postgres) za Rakija platformu"
+}
