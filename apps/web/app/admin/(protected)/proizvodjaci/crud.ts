@@ -40,6 +40,8 @@ export async function sacuvajProizvodjaca(formData: FormData) {
     region: txt(formData.get("region")),
     velicina: velicina && VELICINE.has(velicina) ? velicina : null,
     sajt: txt(formData.get("sajt")),
+    logo_url: txt(formData.get("logo_url")),
+    foto_url: txt(formData.get("foto_url")),
     prica: txt(formData.get("prica")),
     lat: num(formData.get("lat")),
     lng: num(formData.get("lng")),

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { obrisiProizvodjaca, sacuvajProizvodjaca } from "./crud";
+import { Uploader } from "@/components/uploader";
 import type { Proizvodjac } from "@/lib/types";
 
 const inputCls =
@@ -65,6 +66,11 @@ export function ProizvodjacForm({ p }: { p?: Proizvodjac }) {
         <Polje label="Sajt" name="sajt" defaultValue={p?.sajt} placeholder="https://" />
         <Polje label="Lat (geo. širina)" name="lat" defaultValue={p?.lat} />
         <Polje label="Lng (geo. dužina)" name="lng" defaultValue={p?.lng} />
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2">
+        <Uploader name="logo_url" folder="logo" label="Logo" defaultValue={p?.logo_url} />
+        <Uploader name="foto_url" folder="proizvodjaci" label="Fotografija" defaultValue={p?.foto_url} />
       </div>
 
       <label className="block text-sm">

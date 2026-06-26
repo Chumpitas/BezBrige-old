@@ -1,5 +1,6 @@
 import { getSupabaseAdmin, isAdminConfigured } from "@/lib/supabase-admin";
 import { dodajMedij, obrisiMedij, toggleMedij } from "./crud";
+import { Uploader } from "@/components/uploader";
 
 export const metadata = { title: "Admin · Galerija", robots: { index: false } };
 export const dynamic = "force-dynamic";
@@ -51,10 +52,13 @@ export default async function AdminGalerija() {
           <span className="text-sljiva-600">Redosled</span>
           <input name="redosled" type="number" defaultValue={0} className={`mt-1 w-full ${inputCls}`} />
         </label>
-        <label className="text-sm sm:col-span-2">
-          <span className="text-sljiva-600">URL (slika ili YouTube/Vimeo/mp4) *</span>
-          <input name="url" required placeholder="https://" className={`mt-1 w-full ${inputCls}`} />
-        </label>
+        <div className="sm:col-span-2">
+          <Uploader
+            name="url"
+            folder="galerija"
+            label="URL (slika ili YouTube/Vimeo/mp4) — ili otpremi sliku *"
+          />
+        </div>
         <label className="text-sm">
           <span className="text-sljiva-600">Naslov</span>
           <input name="naslov" className={`mt-1 w-full ${inputCls}`} />

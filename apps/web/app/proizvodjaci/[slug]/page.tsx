@@ -51,10 +51,29 @@ export default async function ProizvodjacPage({
         ← Svi proizvođači
       </Link>
 
+      {p.foto_url && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={p.foto_url}
+          alt={p.naziv}
+          className="mt-6 h-64 w-full rounded-2xl border border-sljiva-200 object-cover"
+        />
+      )}
+
       {/* Header */}
       <header className="mt-6 border-b border-sljiva-200 pb-8">
-        <h1 className="font-serif text-4xl font-bold text-sljiva-900">{p.naziv}</h1>
-        {lokacija && <p className="mt-2 text-sljiva-600">{lokacija}</p>}
+        <div className="flex items-center gap-4">
+          {p.logo_url && (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img
+              src={p.logo_url}
+              alt=""
+              className="h-16 w-16 rounded-xl border border-sljiva-200 object-contain"
+            />
+          )}
+          <h1 className="font-serif text-4xl font-bold text-sljiva-900">{p.naziv}</h1>
+        </div>
+        {lokacija && <p className="mt-3 text-sljiva-600">{lokacija}</p>}
         <div className="mt-4 flex flex-wrap gap-2">
           {p.porodica && (
             <span className="rounded-full bg-sljiva-100 px-3 py-1 text-xs font-semibold text-sljiva-700">
