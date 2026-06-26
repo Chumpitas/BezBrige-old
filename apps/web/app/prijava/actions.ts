@@ -1,9 +1,11 @@
 "use server";
 
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase";
+import { posaljiAdminEmail, escapeHtml } from "@/lib/email";
 import {
   izracunajBodove,
   kategorija,
+  KATEGORIJE_INFO,
   type PrijavaUlaz,
 } from "@/lib/scoring";
 
@@ -72,6 +74,17 @@ export async function posaljiPrijavu(
       poruka: "Došlo je do greške pri čuvanju prijave. Pokušajte ponovo.",
     };
   }
+
+  await posaljiAdminEmail(
+    `Nova prijava: ${p.nazivDestilerije} (${bodovi.ukupno} — ${KATEGORIJE_INFO[kat].naziv})`,
+    `<h2>Nova prijava proizvođača</h2>
+     <p><strong>Destilerija:</strong> ${escapeHtml(p.nazivDestilerije)}</p>
+     <p><strong>Kontakt:</strong> ${escapeHtml(p.kontaktIme)} — ${escapeHtml(p.email)}${p.telefon ? " — " + escapeHtml(p.telefon) : ""}</p>
+     <p><strong>Grad:</strong> ${escapeHtml(p.grad || "—")}</p>
+     <p><strong>Bodovi:</strong> ${bodovi.ukupno}/100 — <strong>${KATEGORIJE_INFO[kat].naziv}</strong></p>
+     <p>Tradicija ${bodovi.tradicija} · Proizvodnja ${bodovi.proizvodnja} · Nagrade ${bodovi.nagrade} · Brend ${bodovi.brend} · Organizacija ${bodovi.organizacija} · Vrednost ${bodovi.vrednost}</p>
+     <p>Pregled u admin panelu: /admin/prijave</p>`,
+  );
 
   return {
     ok: true,

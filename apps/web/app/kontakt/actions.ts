@@ -1,6 +1,7 @@
 "use server";
 
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase";
+import { posaljiAdminEmail, escapeHtml } from "@/lib/email";
 
 export interface KontaktRezultat {
   ok: boolean;
@@ -37,5 +38,15 @@ export async function posaljiPoruku(
   if (error) {
     return { ok: false, poruka: "Greška pri slanju. Pokušajte ponovo." };
   }
+
+  await posaljiAdminEmail(
+    `Nova kontakt poruka: ${ime}`,
+    `<h2>Nova poruka sa sajta</h2>
+     <p><strong>Ime:</strong> ${escapeHtml(ime)}</p>
+     <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+     <p><strong>Poruka:</strong></p>
+     <p>${escapeHtml(poruka).replace(/\n/g, "<br/>")}</p>`,
+  );
+
   return { ok: true, poruka: "Hvala! Vaša poruka je poslata." };
 }
