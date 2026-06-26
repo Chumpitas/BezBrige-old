@@ -1,21 +1,26 @@
 import Link from "next/link";
+import { getLang, tFactory } from "@/lib/i18n";
+import { LanguageSwitcher } from "./language-switcher";
 
-const NAV = [
-  { href: "/o-projektu", label: "O projektu" },
-  { href: "/program", label: "Program" },
-  { href: "/summit", label: "Summit" },
-  { href: "/proizvodjaci", label: "Proizvođači" },
-  { href: "/galerija", label: "Galerija" },
-  { href: "/vesti", label: "Vesti" },
-  { href: "/partneri", label: "Partneri" },
-  { href: "/kontakt", label: "Kontakt" },
-  { href: "/prijava", label: "Prijava" },
-];
+export async function SiteHeader() {
+  const lang = await getLang();
+  const t = tFactory(lang);
 
-export function SiteHeader() {
+  const NAV = [
+    { href: "/o-projektu", label: t("nav_o_projektu") },
+    { href: "/program", label: t("nav_program") },
+    { href: "/summit", label: t("nav_summit") },
+    { href: "/proizvodjaci", label: t("nav_proizvodjaci") },
+    { href: "/galerija", label: t("nav_galerija") },
+    { href: "/vesti", label: t("nav_vesti") },
+    { href: "/partneri", label: t("nav_partneri") },
+    { href: "/kontakt", label: t("nav_kontakt") },
+    { href: "/prijava", label: t("nav_prijava") },
+  ];
+
   return (
     <header className="sticky top-0 z-40 border-b border-sljiva-200/60 bg-sljiva-50/90 backdrop-blur">
-      <div className="container-page flex h-16 items-center justify-between">
+      <div className="container-page flex h-16 items-center justify-between gap-4">
         <Link href="/" className="flex items-center gap-2">
           <span className="text-2xl">🥃</span>
           <span className="font-serif text-lg font-bold leading-tight text-sljiva-900">
@@ -25,7 +30,7 @@ export function SiteHeader() {
             </span>
           </span>
         </Link>
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-5 lg:flex">
           {NAV.map((n) => (
             <Link
               key={n.href}
@@ -36,12 +41,15 @@ export function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <Link
-          href="/prijava"
-          className="rounded-full bg-bakar-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-bakar-700 md:hidden"
-        >
-          Prijavi se
-        </Link>
+        <div className="flex items-center gap-3">
+          <LanguageSwitcher lang={lang} />
+          <Link
+            href="/prijava"
+            className="rounded-full bg-bakar-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-bakar-700 lg:hidden"
+          >
+            {t("cta_prijavi")}
+          </Link>
+        </div>
       </div>
     </header>
   );
