@@ -8,6 +8,7 @@ import type {
   ProgramStavka,
   Proizvod,
   Proizvodjac,
+  Vest,
 } from "./types";
 
 export const FALLBACK_PARTNERI: Partner[] = [
@@ -56,4 +57,29 @@ export const FALLBACK_PROIZVODI: Proizvod[] = [
 
 export const FALLBACK_NAGRADE: Nagrada[] = [
   { id: "n1", proizvodjac_id: "d1", naziv: "USA Ratings 2025 — najbolja voćna rakija", nivo: "zlato", medjunarodna: true, godina: 2025 },
+];
+
+export const FALLBACK_VESTI: Vest[] = [
+  {
+    id: "v1",
+    slug: "najava-izlozbe-rakija-kulturno-dobro-srbije",
+    naslov: "Najava izložbe „Rakija – kulturno dobro Srbije”",
+    sazetak:
+      "U Etnografskom muzeju u Beogradu priprema se nacionalna izložba o tradicionalnoj porodičnoj proizvodnji rakije u Srbiji i Bajinoj Bašti.",
+    sadrzaj:
+      "Izložba „Rakija – kulturno dobro Srbije” predstavlja rakiju kao jedinstveni simbol srpske kulture, tradicije i porodičnog preduzetništva. Kroz pet nivoa događaja — izložbu, Rakija Summit, tematske dane, medijsku komponentu i Veliku noć rakije — projekat povezuje nauku, proizvođače, medije i širu javnost.\n\nBajina Bašta je u središtu priče kao kraj sa najstarijom tradicijom porodične proizvodnje šljivovice.",
+    cover_url: null,
+    objavljeno_at: "2026-06-20T10:00:00Z",
+  },
+  {
+    id: "v2",
+    slug: "istrazivanje-tradicionalne-proizvodnje-sljivovice",
+    naslov: "Naučno istraživanje tradicionalne proizvodnje šljivovice",
+    sazetak:
+      "Etnolozi i antropolozi beleže narative i običaje porodica sa najdužom tradicijom proizvodnje rakije u Bajinoj Bašti.",
+    sadrzaj:
+      "Terensko istraživanje u Bajinoj Bašti i okolnim selima dokumentuje prenošenje veština i običaja kroz generacije. Posebno mesto zauzima porodica Bogdanović (Stara Sokolova), čija tradicija seže do 1830. godine.\n\nRezultati istraživanja biće predstavljeni na panelima i u okviru izložbe.",
+    cover_url: null,
+    objavljeno_at: "2026-06-22T10:00:00Z",
+  },
 ];

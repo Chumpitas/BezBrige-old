@@ -9,6 +9,7 @@ import {
   FALLBACK_PROGRAM,
   FALLBACK_PROIZVODI,
   FALLBACK_PROIZVODJACI,
+  FALLBACK_VESTI,
 } from "./fallback";
 import type {
   Nagrada,
@@ -17,6 +18,7 @@ import type {
   Proizvod,
   Proizvodjac,
   ProizvodjacDetalji,
+  Vest,
 } from "./types";
 
 const PROIZVODJAC_KOLONE =
@@ -99,6 +101,38 @@ export async function getProizvodjac(
     proizvodi: (proizvodi ?? []) as Proizvod[],
     nagrade: (nagrade ?? []) as Nagrada[],
   };
+}
+
+export async function getVesti(): Promise<Vest[]> {
+  const sb = getSupabase();
+  if (!sb) return FALLBACK_VESTI;
+  const { data, error } = await sb
+    .from("vesti")
+    .select("id, slug, naslov, sazetak, sadrzaj, cover_url, objavljeno_at")
+    .eq("objavljen", true)
+    .order("objavljeno_at", { ascending: false, nullsFirst: false });
+  if (error || !data || data.length === 0) return FALLBACK_VESTI;
+  return data as Vest[];
+}
+
+export async function getVest(slug: string): Promise<Vest | null> {
+  const sb = getSupabase();
+  if (!sb) return FALLBACK_VESTI.find((v) => v.slug === slug) ?? null;
+  const { data, error } = await sb
+    .from("vesti")
+    .select("id, slug, naslov, sazetak, sadrzaj, cover_url, objavljeno_at")
+    .eq("slug", slug)
+    .eq("objavljen", true)
+    .maybeSingle();
+  if (error || !data) return null;
+  return data as Vest;
+}
+
+export async function getSveVestiSlugove(): Promise<string[]> {
+  const sb = getSupabase();
+  if (!sb) return FALLBACK_VESTI.map((v) => v.slug);
+  const { data } = await sb.from("vesti").select("slug").eq("objavljen", true);
+  return (data ?? []).map((r) => (r as { slug: string }).slug).filter(Boolean);
 }
 
 export async function getSviSlugovi(): Promise<string[]> {

@@ -52,6 +52,16 @@ export interface ProizvodjacDetalji extends Proizvodjac {
   nagrade: Nagrada[];
 }
 
+export interface Vest {
+  id: string;
+  slug: string;
+  naslov: string;
+  sazetak: string | null;
+  sadrzaj: string | null;
+  cover_url: string | null;
+  objavljeno_at: string | null;
+}
+
 export interface Partner {
   id: string;
   naziv: string;

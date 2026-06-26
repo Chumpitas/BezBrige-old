@@ -21,6 +21,8 @@ export function SiteFooter() {
             <li><Link href="/o-projektu" className="hover:text-bakar-300">O projektu</Link></li>
             <li><Link href="/program" className="hover:text-bakar-300">Program</Link></li>
             <li><Link href="/proizvodjaci" className="hover:text-bakar-300">Proizvođači</Link></li>
+            <li><Link href="/vesti" className="hover:text-bakar-300">Vesti</Link></li>
+            <li><Link href="/kontakt" className="hover:text-bakar-300">Kontakt</Link></li>
             <li><Link href="/prijava" className="hover:text-bakar-300">Prijava za učešće</Link></li>
           </ul>
         </div>
@@ -29,9 +31,9 @@ export function SiteFooter() {
             Kontakt
           </p>
           <p className="mt-3 text-sm text-sljiva-300">
-            Za partnerstva i medijske upite pišite preko stranice{" "}
-            <Link href="/prijava" className="underline hover:text-bakar-300">
-              Prijava
+            Za partnerstva i medijske upite pišite preko{" "}
+            <Link href="/kontakt" className="underline hover:text-bakar-300">
+              kontakt stranice
             </Link>
             .
           </p>
