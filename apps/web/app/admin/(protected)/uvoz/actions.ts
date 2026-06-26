@@ -3,27 +3,13 @@
 import { revalidatePath } from "next/cache";
 import { getSupabaseAdmin } from "@/lib/supabase-admin";
 import { jeAdmin } from "@/lib/admin-auth";
+import { slugify } from "@/lib/slug";
 
 export interface UvozRezultat {
   ok: boolean;
   poruka: string;
   uvezeno?: number;
   preskoceno?: number;
-}
-
-const DIJAKRITIK: Record<string, string> = {
-  č: "c", ć: "c", š: "s", ž: "z", đ: "dj",
-  Č: "c", Ć: "c", Š: "s", Ž: "z", Đ: "dj",
-};
-
-function slugify(s: string): string {
-  return s
-    .split("")
-    .map((c) => DIJAKRITIK[c] ?? c)
-    .join("")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
 }
 
 /** Jednostavan CSV parser (podržava navodnike i zareze unutar polja). */

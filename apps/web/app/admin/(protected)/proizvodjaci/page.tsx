@@ -37,12 +37,20 @@ export default async function AdminProizvodjaci() {
         <h1 className="font-serif text-2xl font-bold text-sljiva-900">
           Proizvođači ({redovi.length})
         </h1>
-        <Link
-          href="/admin/uvoz"
-          className="rounded-full bg-bakar-600 px-4 py-2 text-sm font-semibold text-white hover:bg-bakar-700"
-        >
-          Uvezi (CSV)
-        </Link>
+        <div className="flex gap-2">
+          <Link
+            href="/admin/uvoz"
+            className="rounded-full border border-sljiva-300 px-4 py-2 text-sm font-semibold text-sljiva-700 hover:border-bakar-400"
+          >
+            Uvezi (CSV)
+          </Link>
+          <Link
+            href="/admin/proizvodjaci/novi"
+            className="rounded-full bg-bakar-600 px-4 py-2 text-sm font-semibold text-white hover:bg-bakar-700"
+          >
+            + Dodaj
+          </Link>
+        </div>
       </div>
 
       <div className="mt-6 overflow-x-auto rounded-2xl border border-sljiva-200 bg-white shadow-sm">
@@ -86,17 +94,25 @@ export default async function AdminProizvodjaci() {
                   </span>
                 </td>
                 <td className="px-4 py-3">
-                  <form action={postaviObjavljen}>
-                    <input type="hidden" name="id" value={r.id} />
-                    <input
-                      type="hidden"
-                      name="objavljen"
-                      value={(!r.objavljen).toString()}
-                    />
-                    <button className="rounded-lg bg-sljiva-900 px-3 py-1 text-xs font-semibold text-white hover:bg-sljiva-800">
-                      {r.objavljen ? "Sakrij" : "Objavi"}
-                    </button>
-                  </form>
+                  <div className="flex items-center gap-2">
+                    <form action={postaviObjavljen}>
+                      <input type="hidden" name="id" value={r.id} />
+                      <input
+                        type="hidden"
+                        name="objavljen"
+                        value={(!r.objavljen).toString()}
+                      />
+                      <button className="rounded-lg bg-sljiva-900 px-3 py-1 text-xs font-semibold text-white hover:bg-sljiva-800">
+                        {r.objavljen ? "Sakrij" : "Objavi"}
+                      </button>
+                    </form>
+                    <Link
+                      href={`/admin/proizvodjaci/${r.id}/uredi`}
+                      className="rounded-lg border border-sljiva-300 px-3 py-1 text-xs font-semibold text-sljiva-700 hover:border-bakar-400"
+                    >
+                      Uredi
+                    </Link>
+                  </div>
                 </td>
               </tr>
             ))}
