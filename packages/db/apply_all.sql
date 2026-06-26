@@ -392,3 +392,11 @@ alter table paneli enable row level security;
 drop policy if exists "javno cita panele" on paneli;
 create policy "javno cita panele" on paneli
   for select using (objavljen = true);
+
+
+-- =====================================================================
+--  STORAGE bucket za upload (slike/video)
+-- =====================================================================
+insert into storage.buckets (id, name, public)
+values ('media','media', true)
+on conflict (id) do nothing;
