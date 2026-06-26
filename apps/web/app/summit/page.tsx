@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { getPaneli } from "@/lib/data";
 import type { Panel } from "@/lib/types";
+import { SLIKE } from "@/lib/slike";
 
 export const metadata: Metadata = {
   title: "Rakija Summit",
@@ -39,8 +40,11 @@ export default async function SummitPage() {
 
   return (
     <>
-      <section className="bg-gradient-to-br from-sljiva-900 to-bakar-900 text-white">
-        <div className="container-page py-16">
+      <section className="relative overflow-hidden bg-sljiva-900 text-white">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={SLIKE.summit} alt="" className="absolute inset-0 h-full w-full object-cover opacity-35" />
+        <div className="absolute inset-0 bg-gradient-to-br from-sljiva-900/90 to-bakar-900/80" />
+        <div className="container-page relative z-10 py-16">
           <h1 className="font-serif text-4xl font-bold sm:text-5xl">Rakija Summit</h1>
           <p className="mt-4 max-w-2xl text-lg text-sljiva-100/90">
             Centralno mesto susreta proizvođača, stručnjaka, medija i šire

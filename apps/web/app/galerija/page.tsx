@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { getGalerija } from "@/lib/data";
 import { videoEmbedUrl } from "@/lib/embed";
+import { GALERIJA_MOCKUP } from "@/lib/slike";
+import type { MedijGalerije } from "@/lib/types";
 
 export const metadata: Metadata = {
   title: "Galerija",
@@ -9,7 +11,17 @@ export const metadata: Metadata = {
 export const revalidate = 60;
 
 export default async function GalerijaPage() {
-  const mediji = await getGalerija();
+  const baza = await getGalerija();
+  const mediji: MedijGalerije[] = baza.length
+    ? baza
+    : GALERIJA_MOCKUP.map((m, i) => ({
+        id: m.id,
+        tip: "slika" as const,
+        url: m.url,
+        naslov: m.naslov,
+        opis: m.opis,
+        redosled: i,
+      }));
 
   return (
     <div className="container-page py-16">

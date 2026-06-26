@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { VnrForm } from "./VnrForm";
+import { SLIKE } from "@/lib/slike";
 
 export const metadata: Metadata = {
   title: "Velika noć rakije",
@@ -10,8 +11,11 @@ export const metadata: Metadata = {
 export default function VelikaNocRakijePage() {
   return (
     <>
-      <section className="bg-gradient-to-br from-sljiva-900 via-sljiva-800 to-bakar-900 text-white">
-        <div className="container-page py-20">
+      <section className="relative overflow-hidden bg-sljiva-900 text-white">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={SLIKE.gala} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40" />
+        <div className="absolute inset-0 bg-gradient-to-br from-sljiva-900/90 via-sljiva-900/80 to-bakar-900/80" />
+        <div className="container-page relative z-10 py-20">
           <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-bakar-200">
             Gala veče · Etnografski muzej
           </p>
