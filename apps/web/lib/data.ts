@@ -14,6 +14,7 @@ import {
 import type {
   MedijGalerije,
   Nagrada,
+  Panel,
   Partner,
   ProgramStavka,
   Proizvod,
@@ -102,6 +103,19 @@ export async function getProizvodjac(
     proizvodi: (proizvodi ?? []) as Proizvod[],
     nagrade: (nagrade ?? []) as Nagrada[],
   };
+}
+
+export async function getPaneli(): Promise<Panel[]> {
+  const sb = getSupabase();
+  if (!sb) return [];
+  const { data, error } = await sb
+    .from("paneli")
+    .select("id, naslov, opis, govornici, sala, datum, vreme_od, vreme_do, redosled")
+    .eq("objavljen", true)
+    .order("datum", { ascending: true, nullsFirst: false })
+    .order("redosled", { ascending: true });
+  if (error || !data) return [];
+  return data as Panel[];
 }
 
 export async function getGalerija(): Promise<MedijGalerije[]> {

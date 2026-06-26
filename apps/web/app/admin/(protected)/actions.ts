@@ -14,6 +14,16 @@ export async function promeniStatusPrijave(formData: FormData) {
   revalidatePath("/admin/prijave");
 }
 
+export async function promeniVnrStatus(formData: FormData) {
+  if (!(await jeAdmin())) return;
+  const sb = getSupabaseAdmin();
+  if (!sb) return;
+  const id = String(formData.get("id"));
+  const status = String(formData.get("status"));
+  await sb.from("vnr_prijave").update({ status }).eq("id", id);
+  revalidatePath("/admin/vnr");
+}
+
 export async function postaviObjavljen(formData: FormData) {
   if (!(await jeAdmin())) return;
   const sb = getSupabaseAdmin();

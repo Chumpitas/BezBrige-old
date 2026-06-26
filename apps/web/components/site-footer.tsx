@@ -22,6 +22,7 @@ export function SiteFooter() {
             <li><Link href="/program" className="hover:text-bakar-300">Program</Link></li>
             <li><Link href="/proizvodjaci" className="hover:text-bakar-300">Proizvođači</Link></li>
             <li><Link href="/galerija" className="hover:text-bakar-300">Galerija</Link></li>
+            <li><Link href="/velika-noc-rakije" className="hover:text-bakar-300">Velika noć rakije</Link></li>
             <li><Link href="/vesti" className="hover:text-bakar-300">Vesti</Link></li>
             <li><Link href="/kontakt" className="hover:text-bakar-300">Kontakt</Link></li>
             <li><Link href="/prijava" className="hover:text-bakar-300">Prijava za učešće</Link></li>

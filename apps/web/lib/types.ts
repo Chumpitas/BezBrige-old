@@ -71,6 +71,18 @@ export interface MedijGalerije {
   redosled: number;
 }
 
+export interface Panel {
+  id: string;
+  naslov: string;
+  opis: string | null;
+  govornici: string | null;
+  sala: string | null;
+  datum: string | null;
+  vreme_od: string | null;
+  vreme_do: string | null;
+  redosled: number;
+}
+
 export interface Partner {
   id: string;
   naziv: string;

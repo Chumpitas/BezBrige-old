@@ -6,7 +6,9 @@ import { odjaviSe } from "../login/actions";
 const NAV = [
   { href: "/admin", label: "Pregled" },
   { href: "/admin/prijave", label: "Prijave" },
+  { href: "/admin/vnr", label: "Velika noć" },
   { href: "/admin/proizvodjaci", label: "Proizvođači" },
+  { href: "/admin/summit", label: "Summit" },
   { href: "/admin/vesti", label: "Vesti" },
   { href: "/admin/galerija", label: "Galerija" },
   { href: "/admin/uvoz", label: "Uvoz" },

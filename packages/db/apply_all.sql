@@ -338,3 +338,57 @@ alter table galerija enable row level security;
 drop policy if exists "javno cita galeriju" on galerija;
 create policy "javno cita galeriju" on galerija
   for select using (objavljen = true);
+
+
+-- =====================================================================
+--  VELIKA NOĆ RAKIJE — RSVP / prijave gostiju
+-- =====================================================================
+
+do $$ begin
+  create type vnr_status as enum ('nova', 'potvrdjena', 'odbijena');
+exception when duplicate_object then null; end $$;
+
+create table if not exists vnr_prijave (
+  id uuid primary key default gen_random_uuid(),
+  ime text not null,
+  email text not null,
+  telefon text,
+  organizacija text,
+  broj_osoba int not null default 1,
+  napomena text,
+  status vnr_status not null default 'nova',
+  created_at timestamptz not null default now()
+);
+create index if not exists idx_vnr_status on vnr_prijave (status);
+
+alter table vnr_prijave enable row level security;
+
+drop policy if exists "anon salje vnr prijavu" on vnr_prijave;
+create policy "anon salje vnr prijavu" on vnr_prijave
+  for insert with check (true);
+
+
+-- =====================================================================
+--  RAKIJA SUMMIT — paneli i govornici
+-- =====================================================================
+
+create table if not exists paneli (
+  id uuid primary key default gen_random_uuid(),
+  naslov text not null,
+  opis text,
+  govornici text,                    -- imena govornika (slobodan tekst)
+  sala text,
+  datum date,
+  vreme_od time,
+  vreme_do time,
+  redosled int not null default 0,
+  objavljen boolean not null default true,
+  created_at timestamptz not null default now()
+);
+create index if not exists idx_paneli_datum on paneli (datum, redosled);
+
+alter table paneli enable row level security;
+
+drop policy if exists "javno cita panele" on paneli;
+create policy "javno cita panele" on paneli
+  for select using (objavljen = true);
