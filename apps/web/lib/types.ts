@@ -62,6 +62,15 @@ export interface Vest {
   objavljeno_at: string | null;
 }
 
+export interface MedijGalerije {
+  id: string;
+  tip: "slika" | "video";
+  url: string;
+  naslov: string | null;
+  opis: string | null;
+  redosled: number;
+}
+
 export interface Partner {
   id: string;
   naziv: string;

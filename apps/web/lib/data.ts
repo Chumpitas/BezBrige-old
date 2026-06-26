@@ -12,6 +12,7 @@ import {
   FALLBACK_VESTI,
 } from "./fallback";
 import type {
+  MedijGalerije,
   Nagrada,
   Partner,
   ProgramStavka,
@@ -101,6 +102,18 @@ export async function getProizvodjac(
     proizvodi: (proizvodi ?? []) as Proizvod[],
     nagrade: (nagrade ?? []) as Nagrada[],
   };
+}
+
+export async function getGalerija(): Promise<MedijGalerije[]> {
+  const sb = getSupabase();
+  if (!sb) return [];
+  const { data, error } = await sb
+    .from("galerija")
+    .select("id, tip, url, naslov, opis, redosled")
+    .eq("objavljen", true)
+    .order("redosled", { ascending: true });
+  if (error || !data) return [];
+  return data as MedijGalerije[];
 }
 
 export async function getVesti(): Promise<Vest[]> {

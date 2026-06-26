@@ -4,6 +4,7 @@ const NAV = [
   { href: "/o-projektu", label: "O projektu" },
   { href: "/program", label: "Program" },
   { href: "/proizvodjaci", label: "Proizvođači" },
+  { href: "/galerija", label: "Galerija" },
   { href: "/vesti", label: "Vesti" },
   { href: "/partneri", label: "Partneri" },
   { href: "/kontakt", label: "Kontakt" },
