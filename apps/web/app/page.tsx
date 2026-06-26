@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getPartneri, getProizvodjaci } from "@/lib/data";
 
+export const revalidate = 60;
+
 const CILJEVI = [
   {
     ikona: "🏛️",

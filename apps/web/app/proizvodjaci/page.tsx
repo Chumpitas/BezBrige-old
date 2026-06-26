@@ -14,6 +14,8 @@ const VELICINA_LABEL: Record<string, string> = {
   velika: "Velika destilerija",
 };
 
+export const revalidate = 60;
+
 export default async function ProizvodjaciPage() {
   const proizvodjaci = await getProizvodjaci();
   const povezano = isSupabaseConfigured();

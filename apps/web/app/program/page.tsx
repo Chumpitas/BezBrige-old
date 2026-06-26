@@ -3,6 +3,7 @@ import { getProgram } from "@/lib/data";
 import type { ProgramStavka } from "@/lib/types";
 
 export const metadata: Metadata = { title: "Program" };
+export const revalidate = 60;
 
 const REDOSLED_NIVOA = [
   "Izložba",

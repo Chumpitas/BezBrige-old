@@ -3,6 +3,7 @@ import { getPartneri } from "@/lib/data";
 import type { TipPartnera } from "@/lib/types";
 
 export const metadata: Metadata = { title: "Partneri" };
+export const revalidate = 60;
 
 const SEKCIJE: { tip: TipPartnera; naslov: string }[] = [
   { tip: "pokrovitelj", naslov: "Pokrovitelji" },
