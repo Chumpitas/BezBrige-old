@@ -129,7 +129,17 @@ export function PrijavaForm() {
                 : "border border-red-200 bg-red-50 text-red-800"
             }`}
           >
-            {rezultat.poruka}
+            <p>{rezultat.poruka}</p>
+            {rezultat.ok && rezultat.bodovi != null && rezultat.kategorija && (
+              <a
+                href={`/api/sertifikat?naziv=${encodeURIComponent(naziv)}&bodovi=${rezultat.bodovi}&kategorija=${rezultat.kategorija}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-3 inline-block rounded-full bg-bakar-600 px-5 py-2 font-semibold text-white hover:bg-bakar-700"
+              >
+                Preuzmi sertifikat →
+              </a>
+            )}
           </div>
         )}
 

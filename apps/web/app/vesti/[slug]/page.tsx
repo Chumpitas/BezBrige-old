@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getSveVestiSlugove, getVest } from "@/lib/data";
+import { JsonLd } from "@/components/json-ld";
+import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 60;
 
@@ -45,6 +47,17 @@ export default async function VestPage({
 
   return (
     <article className="container-page max-w-3xl py-12">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "NewsArticle",
+          headline: v.naslov,
+          description: v.sazetak ?? undefined,
+          image: v.cover_url ?? undefined,
+          datePublished: v.objavljeno_at ?? undefined,
+          url: `${SITE_URL}/vesti/${v.slug}`,
+        }}
+      />
       <Link href="/vesti" className="text-sm font-medium text-bakar-700 hover:underline">
         ← Sve vesti
       </Link>

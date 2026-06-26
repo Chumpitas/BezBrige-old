@@ -3,6 +3,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getProizvodjac, getSviSlugovi } from "@/lib/data";
 import { MapaDestilerija } from "@/components/mapa-destilerija";
+import { JsonLd } from "@/components/json-ld";
+import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 60;
 
@@ -44,6 +46,26 @@ export default async function ProizvodjacPage({
 
   return (
     <div className="container-page py-12">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "FoodEstablishment",
+          name: p.naziv,
+          description: p.prica ?? undefined,
+          url: p.slug ? `${SITE_URL}/proizvodjaci/${p.slug}` : undefined,
+          image: p.foto_url ?? p.logo_url ?? undefined,
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: [p.selo, p.grad].filter(Boolean).join(", ") || undefined,
+            addressRegion: p.region ?? undefined,
+            addressCountry: "RS",
+          },
+          geo:
+            typeof p.lat === "number" && typeof p.lng === "number"
+              ? { "@type": "GeoCoordinates", latitude: p.lat, longitude: p.lng }
+              : undefined,
+        }}
+      />
       <Link
         href="/proizvodjaci"
         className="text-sm font-medium text-bakar-700 hover:underline"

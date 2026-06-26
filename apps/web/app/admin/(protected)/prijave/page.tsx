@@ -57,9 +57,19 @@ export default async function AdminPrijave() {
 
   return (
     <div>
-      <h1 className="font-serif text-2xl font-bold text-sljiva-900">
-        Prijave ({prijave.length})
-      </h1>
+      <div className="flex items-center justify-between">
+        <h1 className="font-serif text-2xl font-bold text-sljiva-900">
+          Prijave ({prijave.length})
+        </h1>
+        {prijave.length > 0 && (
+          <a
+            href="/api/admin/export/prijave"
+            className="rounded-full border border-sljiva-300 px-4 py-2 text-sm font-semibold text-sljiva-700 hover:border-bakar-400"
+          >
+            ↓ Export CSV
+          </a>
+        )}
+      </div>
 
       {prijave.length === 0 ? (
         <p className="mt-6 rounded-xl border border-sljiva-200 bg-white px-5 py-8 text-center text-sljiva-500">

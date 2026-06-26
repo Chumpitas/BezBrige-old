@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { getPartneri, getProizvodjaci } from "@/lib/data";
 import { getLang, tFactory } from "@/lib/i18n";
+import { JsonLd } from "@/components/json-ld";
+import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 60;
 
@@ -33,6 +35,28 @@ export default async function HomePage() {
 
   return (
     <>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Event",
+          name: "Rakija – kulturno dobro Srbije",
+          description:
+            "Nacionalna izložba o tradicionalnoj porodičnoj proizvodnji rakije u Srbiji i Bajinoj Bašti.",
+          eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+          location: {
+            "@type": "Place",
+            name: "Etnografski muzej u Beogradu",
+            address: {
+              "@type": "PostalAddress",
+              addressLocality: "Beograd",
+              addressCountry: "RS",
+            },
+          },
+          organizer: { "@type": "Organization", name: "Etnografski muzej u Beogradu" },
+          url: SITE_URL,
+        }}
+      />
+
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-to-br from-sljiva-900 via-sljiva-800 to-bakar-900 text-white">
         <div className="container-page py-24 sm:py-32">
