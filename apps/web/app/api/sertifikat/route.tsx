@@ -1,6 +1,20 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "fs/promises";
+import { join } from "path";
 
 export const runtime = "nodejs";
+
+async function ucitajFontove() {
+  const dir = join(process.cwd(), "public", "fonts");
+  const [regular, bold] = await Promise.all([
+    readFile(join(dir, "DejaVuSans.ttf")),
+    readFile(join(dir, "DejaVuSans-Bold.ttf")),
+  ]);
+  return [
+    { name: "DejaVu Sans", data: regular, weight: 400 as const, style: "normal" as const },
+    { name: "DejaVu Sans", data: bold, weight: 700 as const, style: "normal" as const },
+  ];
+}
 
 const KAT: Record<string, { naziv: string; boja: string }> = {
   veliki_majstori: { naziv: "Veliki majstor rakije", boja: "#c26f33" },
@@ -14,6 +28,7 @@ export async function GET(req: Request) {
   const bodovi = (searchParams.get("bodovi") || "0").slice(0, 6);
   const katKey = searchParams.get("kategorija") || "mladi_majstori";
   const kat = KAT[katKey] ?? KAT.mladi_majstori;
+  const fonts = await ucitajFontove();
 
   return new ImageResponse(
     (
@@ -27,7 +42,7 @@ export async function GET(req: Request) {
           justifyContent: "center",
           background: "linear-gradient(135deg, #f7f3f8 0%, #efe5f1 100%)",
           padding: 60,
-          fontFamily: "serif",
+          fontFamily: "DejaVu Sans",
         }}
       >
         <div
@@ -65,7 +80,7 @@ export async function GET(req: Request) {
             {kat.naziv}
           </div>
           <div style={{ fontSize: 28, color: "#6a3d73", marginTop: 28 }}>
-            Ukupno bodova: {bodovi} / 100
+            {`Ukupno bodova: ${bodovi} / 100`}
           </div>
           <div style={{ fontSize: 18, color: "#a06fab", marginTop: 40 }}>
             Preliminarna kategorizacija · konačnu potvrđuje komisija
@@ -73,6 +88,6 @@ export async function GET(req: Request) {
         </div>
       </div>
     ),
-    { width: 1200, height: 850 },
+    { width: 1200, height: 850, fonts },
   );
 }

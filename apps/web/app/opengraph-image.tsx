@@ -1,10 +1,18 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "fs/promises";
+import { join } from "path";
 
 export const alt = "Rakija – kulturno dobro Srbije";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OgImage() {
+export default async function OgImage() {
+  const dir = join(process.cwd(), "public", "fonts");
+  const [regular, bold] = await Promise.all([
+    readFile(join(dir, "DejaVuSans.ttf")),
+    readFile(join(dir, "DejaVuSans-Bold.ttf")),
+  ]);
+
   return new ImageResponse(
     (
       <div
@@ -17,6 +25,7 @@ export default function OgImage() {
           padding: "80px",
           background: "linear-gradient(135deg, #3d2443 0%, #48294e 45%, #642f21 100%)",
           color: "white",
+          fontFamily: "DejaVu Sans",
         }}
       >
         <div
@@ -40,6 +49,12 @@ export default function OgImage() {
         </div>
       </div>
     ),
-    size,
+    {
+      ...size,
+      fonts: [
+        { name: "DejaVu Sans", data: regular, weight: 400, style: "normal" },
+        { name: "DejaVu Sans", data: bold, weight: 700, style: "normal" },
+      ],
+    },
   );
 }
