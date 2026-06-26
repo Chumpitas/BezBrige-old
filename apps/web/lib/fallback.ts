@@ -2,7 +2,13 @@
  * Statički fallback podaci — koriste se kad Supabase nije povezan,
  * da bi sajt bio funkcionalan u prikazu. Identično seed migraciji.
  */
-import type { Partner, ProgramStavka, Proizvodjac } from "./types";
+import type {
+  Nagrada,
+  Partner,
+  ProgramStavka,
+  Proizvod,
+  Proizvodjac,
+} from "./types";
 
 export const FALLBACK_PARTNERI: Partner[] = [
   { id: "1", naziv: "Ministarstvo kulture Republike Srbije", tip: "pokrovitelj", logo_url: null, sajt: null, redosled: 1 },
@@ -36,7 +42,18 @@ export const FALLBACK_PROGRAM: ProgramStavka[] = [
 ];
 
 export const FALLBACK_PROIZVODJACI: Proizvodjac[] = [
-  { id: "d1", naziv: "Stara Sokolova", slug: "stara-sokolova", porodica: "Bogdanović", generacija: 7, godina_osnivanja: 1830, selo: "Kostojevići", grad: "Bajina Bašta", region: "Sokolski kraj", velicina: "velika", prica: "Porodica Bogdanović, poreklom iz Krivaje, postavila je prve kazane još 1830. Danas u Kostojevićima proizvodi Staru Sokolovu — sa nizom domaćih i međunarodnih nagrada (USA Ratings 2025).", logo_url: null, foto_url: null, sajt: null, objavljen: true, istaknut: true },
-  { id: "d2", naziv: "Stara Pesma", slug: "stara-pesma", porodica: "Ilić", generacija: null, godina_osnivanja: null, selo: "Pepelj", grad: "Bajina Bašta", region: "Sokolski kraj", velicina: "srednja", prica: "Vekovna tradicija familije Ilić u proizvodnji voćnih rakija vrhunskog kvaliteta po tradicionalnoj tehnologiji.", logo_url: null, foto_url: null, sajt: "https://starapesma.com", objavljen: true, istaknut: false },
-  { id: "d3", naziv: "BB Kleka", slug: "bb-kleka", porodica: null, generacija: null, godina_osnivanja: null, selo: null, grad: "Bajina Bašta", region: "Sokolski kraj", velicina: "srednja", prica: "Prepoznatljiva klekovača iz Bajine Bašte.", logo_url: null, foto_url: null, sajt: null, objavljen: true, istaknut: false },
+  { id: "d1", naziv: "Stara Sokolova", slug: "stara-sokolova", porodica: "Bogdanović", generacija: 7, godina_osnivanja: 1830, selo: "Kostojevići", grad: "Bajina Bašta", region: "Sokolski kraj", velicina: "velika", prica: "Porodica Bogdanović, poreklom iz Krivaje, postavila je prve kazane još 1830. Danas u Kostojevićima proizvodi Staru Sokolovu — sa nizom domaćih i međunarodnih nagrada (USA Ratings 2025).", logo_url: null, foto_url: null, sajt: null, lat: 43.9305, lng: 19.6321, objavljen: true, istaknut: true },
+  { id: "d2", naziv: "Stara Pesma", slug: "stara-pesma", porodica: "Ilić", generacija: null, godina_osnivanja: null, selo: "Pepelj", grad: "Bajina Bašta", region: "Sokolski kraj", velicina: "srednja", prica: "Vekovna tradicija familije Ilić u proizvodnji voćnih rakija vrhunskog kvaliteta po tradicionalnoj tehnologiji.", logo_url: null, foto_url: null, sajt: "https://starapesma.com", lat: 43.9182, lng: 19.6604, objavljen: true, istaknut: false },
+  { id: "d3", naziv: "BB Kleka", slug: "bb-kleka", porodica: null, generacija: null, godina_osnivanja: null, selo: null, grad: "Bajina Bašta", region: "Sokolski kraj", velicina: "srednja", prica: "Prepoznatljiva klekovača iz Bajine Bašte.", logo_url: null, foto_url: null, sajt: null, lat: 43.9719, lng: 19.5681, objavljen: true, istaknut: false },
+];
+
+export const FALLBACK_PROIZVODI: Proizvod[] = [
+  { id: "pr1", proizvodjac_id: "d1", naziv: "Stara Sokolova šljivovica", vrsta: "Šljivovica", sorta: "Crvena ranka", opis: "Vrhunska prepečenica od šljive, odležala u hrastovim bačvama.", foto_url: null },
+  { id: "pr2", proizvodjac_id: "d1", naziv: "Stara Sokolova kajsija", vrsta: "Kajsijevača", sorta: null, opis: "Mekana i aromatična rakija od kajsije.", foto_url: null },
+  { id: "pr3", proizvodjac_id: "d2", naziv: "Stara Pesma viljamovka", vrsta: "Kruškovača", sorta: "Viljamovka", opis: "Rakija od kruške viljamovke, intenzivnog mirisa.", foto_url: null },
+  { id: "pr4", proizvodjac_id: "d3", naziv: "BB Klekovača", vrsta: "Klekovača", sorta: null, opis: "Tradicionalna klekovača sa bobicama kleke.", foto_url: null },
+];
+
+export const FALLBACK_NAGRADE: Nagrada[] = [
+  { id: "n1", proizvodjac_id: "d1", naziv: "USA Ratings 2025 — najbolja voćna rakija", nivo: "zlato", medjunarodna: true, godina: 2025 },
 ];

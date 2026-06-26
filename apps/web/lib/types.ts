@@ -22,8 +22,34 @@ export interface Proizvodjac {
   logo_url: string | null;
   foto_url: string | null;
   sajt: string | null;
+  lat: number | null;
+  lng: number | null;
   objavljen: boolean;
   istaknut: boolean;
+}
+
+export interface Proizvod {
+  id: string;
+  proizvodjac_id: string;
+  naziv: string;
+  vrsta: string | null;
+  sorta: string | null;
+  opis: string | null;
+  foto_url: string | null;
+}
+
+export interface Nagrada {
+  id: string;
+  proizvodjac_id: string | null;
+  naziv: string;
+  nivo: "zlato" | "srebro" | "bronza" | null;
+  medjunarodna: boolean;
+  godina: number | null;
+}
+
+export interface ProizvodjacDetalji extends Proizvodjac {
+  proizvodi: Proizvod[];
+  nagrade: Nagrada[];
 }
 
 export interface Partner {
