@@ -108,7 +108,7 @@ export async function getProizvodjac(
 
 export async function getPaneli(): Promise<Panel[]> {
   const sb = getSupabase();
-  if (!sb) return [];
+  if (!sb) return FALLBACK_PANELI;
   const { data, error } = await sb
     .from("paneli")
     .select("id, naslov, opis, govornici, sala, datum, vreme_od, vreme_do, redosled")
