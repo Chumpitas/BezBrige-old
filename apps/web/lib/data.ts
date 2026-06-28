@@ -7,6 +7,7 @@ import {
   FALLBACK_NAGRADE,
   FALLBACK_PARTNERI,
   FALLBACK_PROGRAM,
+  FALLBACK_PANELI,
   FALLBACK_PROIZVODI,
   FALLBACK_PROIZVODJACI,
   FALLBACK_VESTI,
@@ -114,7 +115,7 @@ export async function getPaneli(): Promise<Panel[]> {
     .eq("objavljen", true)
     .order("datum", { ascending: true, nullsFirst: false })
     .order("redosled", { ascending: true });
-  if (error || !data) return [];
+  if (error || !data || data.length === 0) return FALLBACK_PANELI;
   return data as Panel[];
 }
 

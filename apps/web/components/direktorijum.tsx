@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { Proizvodjac } from "@/lib/types";
+import { fotoZaProizvodjaca, lokalnaFotoProizvodjaca } from "@/lib/slike";
+import { Slika } from "@/components/slika";
 
 const VELICINA_LABEL: Record<string, string> = {
   mala: "Mala destilerija",
@@ -74,6 +76,12 @@ export function Direktorijum({ proizvodjaci }: { proizvodjaci: Proizvodjac[] }) 
         {filtrirani.map((p) => {
           const inner = (
             <>
+              <Slika
+                src={p.foto_url ?? lokalnaFotoProizvodjaca(p.slug) ?? fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
+                fallback={fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
+                alt={p.naziv}
+                className="-mx-6 -mt-6 mb-4 h-40 w-[calc(100%+3rem)] max-w-none object-cover"
+              />
               <div className="flex items-start justify-between gap-3">
                 <h2 className="font-serif text-xl font-bold text-sljiva-900">
                   {p.naziv}
@@ -121,14 +129,14 @@ export function Direktorijum({ proizvodjaci }: { proizvodjaci: Proizvodjac[] }) 
             <Link
               key={p.id}
               href={`/proizvodjaci/${p.slug}`}
-              className="group flex flex-col rounded-2xl border border-sljiva-200 bg-white p-6 shadow-sm transition hover:border-bakar-300 hover:shadow-md"
+              className="group flex flex-col overflow-hidden rounded-2xl border border-sljiva-200 bg-white p-6 shadow-sm transition hover:border-bakar-300 hover:shadow-md"
             >
               {inner}
             </Link>
           ) : (
             <div
               key={p.id}
-              className="flex flex-col rounded-2xl border border-sljiva-200 bg-white p-6 shadow-sm"
+              className="flex flex-col overflow-hidden rounded-2xl border border-sljiva-200 bg-white p-6 shadow-sm"
             >
               {inner}
             </div>

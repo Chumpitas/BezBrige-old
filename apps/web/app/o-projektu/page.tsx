@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
+import { SLIKE } from "@/lib/slike";
 
 export const metadata: Metadata = { title: "O projektu" };
 
 export default function OProjektuPage() {
   return (
     <div className="container-page py-16">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={SLIKE.kazan}
+        alt="Tradicionalno pečenje rakije"
+        className="mb-10 h-64 w-full rounded-2xl object-cover shadow-sm sm:h-80"
+      />
       <h1 className="font-serif text-4xl font-bold text-sljiva-900">O projektu</h1>
       <div className="prose prose-sljiva mt-8 max-w-3xl text-sljiva-700">
         <p className="text-lg">

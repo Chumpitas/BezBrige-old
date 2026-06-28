@@ -20,6 +20,7 @@ export const DICT: Dict = {
   nav_vesti: { sr: "Vesti", en: "News" },
   nav_partneri: { sr: "Partneri", en: "Partners" },
   nav_kontakt: { sr: "Kontakt", en: "Contact" },
+  nav_doprinesi: { sr: "Doprinesi", en: "Contribute" },
   nav_prijava: { sr: "Prijava", en: "Apply" },
   cta_prijavi: { sr: "Prijavi se", en: "Apply" },
 

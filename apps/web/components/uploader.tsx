@@ -7,11 +7,13 @@ export function Uploader({
   folder,
   defaultValue,
   label,
+  endpoint = "/api/admin/upload",
 }: {
   name: string;
   folder: string;
   defaultValue?: string | null;
   label: string;
+  endpoint?: string;
 }) {
   const [url, setUrl] = useState(defaultValue ?? "");
   const [busy, setBusy] = useState(false);
@@ -26,7 +28,7 @@ export function Uploader({
       const fd = new FormData();
       fd.append("file", file);
       fd.append("folder", folder);
-      const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
+      const res = await fetch(endpoint, { method: "POST", body: fd });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || "Greška pri otpremanju.");
       setUrl(data.url);

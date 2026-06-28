@@ -14,6 +14,7 @@ export async function SiteHeader() {
     { href: "/galerija", label: t("nav_galerija") },
     { href: "/vesti", label: t("nav_vesti") },
     { href: "/partneri", label: t("nav_partneri") },
+    { href: "/posalji", label: t("nav_doprinesi") },
     { href: "/kontakt", label: t("nav_kontakt") },
     { href: "/prijava", label: t("nav_prijava") },
   ];
