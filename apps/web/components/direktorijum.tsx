@@ -3,7 +3,8 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { Proizvodjac } from "@/lib/types";
-import { fotoZaProizvodjaca } from "@/lib/slike";
+import { fotoZaProizvodjaca, lokalnaFotoProizvodjaca } from "@/lib/slike";
+import { Slika } from "@/components/slika";
 
 const VELICINA_LABEL: Record<string, string> = {
   mala: "Mala destilerija",
@@ -75,9 +76,9 @@ export function Direktorijum({ proizvodjaci }: { proizvodjaci: Proizvodjac[] }) 
         {filtrirani.map((p) => {
           const inner = (
             <>
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
+              <Slika
+                src={p.foto_url ?? lokalnaFotoProizvodjaca(p.slug) ?? fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
+                fallback={fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
                 alt={p.naziv}
                 className="-mx-6 -mt-6 mb-4 h-40 w-[calc(100%+3rem)] max-w-none object-cover"
               />

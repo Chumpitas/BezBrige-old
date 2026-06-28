@@ -3,7 +3,8 @@ import { getPartneri, getProizvodjaci } from "@/lib/data";
 import { getLang, tFactory } from "@/lib/i18n";
 import { JsonLd } from "@/components/json-ld";
 import { SITE_URL } from "@/lib/site";
-import { SLIKE, fotoZaProizvodjaca } from "@/lib/slike";
+import { SLIKE, LOKALNE, fotoZaProizvodjaca, lokalnaFotoProizvodjaca } from "@/lib/slike";
+import { Slika } from "@/components/slika";
 
 export const revalidate = 60;
 
@@ -60,13 +61,13 @@ export default async function HomePage() {
 
       {/* HERO */}
       <section className="relative overflow-hidden bg-sljiva-900 text-white">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={SLIKE.sljive}
+        <Slika
+          src={LOKALNE.naslovna}
+          fallback={SLIKE.sljive}
           alt=""
-          className="absolute inset-0 h-full w-full object-cover opacity-40"
+          className="absolute inset-0 h-full w-full object-cover opacity-50"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-sljiva-900/90 via-sljiva-900/80 to-bakar-900/80" />
+        <div className="absolute inset-0 bg-gradient-to-br from-sljiva-900/85 via-sljiva-900/75 to-bakar-900/75" />
         <div className="container-page relative z-10 py-24 sm:py-32">
           <p className="mb-4 inline-block rounded-full border border-bakar-300/40 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-bakar-200">
             {t("hero_eyebrow")}
@@ -157,9 +158,9 @@ export default async function HomePage() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {prikazani.map((p) => (
             <div key={p.id} className="flex flex-col overflow-hidden rounded-2xl border border-sljiva-200 bg-white p-6 shadow-sm">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
+              <Slika
+                src={p.foto_url ?? lokalnaFotoProizvodjaca(p.slug) ?? fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
+                fallback={fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
                 alt={p.naziv}
                 className="-mx-6 -mt-6 mb-4 h-40 w-[calc(100%+3rem)] max-w-none object-cover"
               />

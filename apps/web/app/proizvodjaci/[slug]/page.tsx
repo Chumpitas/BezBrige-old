@@ -5,7 +5,8 @@ import { getProizvodjac, getSviSlugovi } from "@/lib/data";
 import { MapaDestilerija } from "@/components/mapa-destilerija";
 import { JsonLd } from "@/components/json-ld";
 import { SITE_URL } from "@/lib/site";
-import { fotoZaProizvodjaca } from "@/lib/slike";
+import { fotoZaProizvodjaca, lokalnaFotoProizvodjaca } from "@/lib/slike";
+import { Slika } from "@/components/slika";
 
 export const revalidate = 60;
 
@@ -74,9 +75,9 @@ export default async function ProizvodjacPage({
         ← Svi proizvođači
       </Link>
 
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
+      <Slika
+        src={p.foto_url ?? lokalnaFotoProizvodjaca(p.slug) ?? fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
+        fallback={fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
         alt={p.naziv}
         className="mt-6 h-64 w-full rounded-2xl border border-sljiva-200 object-cover sm:h-80"
       />

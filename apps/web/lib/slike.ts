@@ -15,6 +15,39 @@ export const SLIKE = {
   summit: `${BASE}/hf_20260626_131156_369bf3d6-820c-4723-b282-2b0a374a3032.jpeg`,
 } as const;
 
+/**
+ * Lokalne (prave) fotografije — ubaciti fajlove u apps/web/public/slike/.
+ * Dok ne postoje, <Slika> komponenta prikazuje mockup fallback.
+ */
+export const LOKALNE = {
+  naslovna: "/slike/naslovna-podrum.jpg", // hero naslovne (otac i sin u podrumu)
+  staraSokolovaBurad: "/slike/stara-sokolova-burad.jpg",
+  staraSokolovaCasa: "/slike/stara-sokolova-casa.jpg",
+  stariKazan1: "/slike/stari-kazan-1.jpg",
+  stariKazan2: "/slike/stari-kazan-2.jpg",
+  podrumBurad: "/slike/podrum-burad.jpg",
+} as const;
+
+/** Prava galerija (lokalne slike sa mockup fallback-om). */
+export const GALERIJA_PRAVE = [
+  { id: "g1", src: LOKALNE.stariKazan1, fallback: SLIKE.kazan, naslov: "Pečenje rakije", opis: "Tradicionalni kazan, zidani ložište" },
+  { id: "g2", src: LOKALNE.stariKazan2, fallback: SLIKE.kazan, naslov: "Stari bakarni kazan", opis: "Seoska kazandžinica" },
+  { id: "g3", src: LOKALNE.podrumBurad, fallback: SLIKE.burad, naslov: "Stari podrum", opis: "Bačve i alat za proizvodnju" },
+  { id: "g4", src: LOKALNE.staraSokolovaBurad, fallback: SLIKE.burad, naslov: "Odležavanje", opis: "Stara Sokolova — hrastove bačve" },
+  { id: "g5", src: LOKALNE.staraSokolovaCasa, fallback: SLIKE.case, naslov: "Degustacija", opis: "Stara Sokolova rakija" },
+  { id: "g6", src: LOKALNE.naslovna, fallback: SLIKE.pejzaz, naslov: "Sa kolena na koleno", opis: "Porodična tradicija" },
+];
+
+const LOKALNA_FOTO_PROIZVODJACA: Record<string, string> = {
+  "stara-sokolova": LOKALNE.staraSokolovaBurad,
+};
+
+/** Lokalna prava foto za poznatog proizvođača (ili null). */
+export function lokalnaFotoProizvodjaca(slug?: string | null): string | null {
+  if (!slug) return null;
+  return LOKALNA_FOTO_PROIZVODJACA[slug] ?? null;
+}
+
 /** Rotacioni fallback za kartice/profile proizvođača bez fotografije. */
 export const FALLBACK_FOTO = [SLIKE.kazan, SLIKE.burad, SLIKE.case, SLIKE.sljive];
 

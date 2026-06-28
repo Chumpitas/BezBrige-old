@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getGalerija } from "@/lib/data";
 import { videoEmbedUrl } from "@/lib/embed";
-import { GALERIJA_MOCKUP } from "@/lib/slike";
-import type { MedijGalerije } from "@/lib/types";
+import { GALERIJA_PRAVE } from "@/lib/slike";
+import { Slika } from "@/components/slika";
 
 export const metadata: Metadata = {
   title: "Galerija",
@@ -12,17 +12,7 @@ export const metadata: Metadata = {
 export const revalidate = 60;
 
 export default async function GalerijaPage() {
-  const baza = await getGalerija();
-  const mediji: MedijGalerije[] = baza.length
-    ? baza
-    : GALERIJA_MOCKUP.map((m, i) => ({
-        id: m.id,
-        tip: "slika" as const,
-        url: m.url,
-        naslov: m.naslov,
-        opis: m.opis,
-        redosled: i,
-      }));
+  const mediji = await getGalerija();
 
   return (
     <div className="container-page py-16">
@@ -48,9 +38,25 @@ export default async function GalerijaPage() {
       </div>
 
       {mediji.length === 0 ? (
-        <p className="mt-10 rounded-xl border border-sljiva-200 bg-white px-5 py-10 text-center text-sljiva-500">
-          Galerija će uskoro biti popunjena.
-        </p>
+        <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {GALERIJA_PRAVE.map((m) => (
+            <figure
+              key={m.id}
+              className="overflow-hidden rounded-2xl border border-sljiva-200 bg-white shadow-sm"
+            >
+              <Slika
+                src={m.src}
+                fallback={m.fallback}
+                alt={m.naslov}
+                className="aspect-video w-full object-cover"
+              />
+              <figcaption className="p-4">
+                <p className="font-semibold text-sljiva-900">{m.naslov}</p>
+                <p className="mt-1 text-sm text-sljiva-600">{m.opis}</p>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       ) : (
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {mediji.map((m) => {
