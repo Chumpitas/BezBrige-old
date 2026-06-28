@@ -34,6 +34,16 @@ export async function promeniPredlogStatus(formData: FormData) {
   revalidatePath("/admin/predlozi");
 }
 
+export async function promeniTuraStatus(formData: FormData) {
+  if (!(await jeAdmin())) return;
+  const sb = getSupabaseAdmin();
+  if (!sb) return;
+  const id = String(formData.get("id"));
+  const status = String(formData.get("status"));
+  await sb.from("ture_rezervacije").update({ status }).eq("id", id);
+  revalidatePath("/admin/ture");
+}
+
 export async function postaviObjavljen(formData: FormData) {
   if (!(await jeAdmin())) return;
   const sb = getSupabaseAdmin();

@@ -11,6 +11,7 @@ export async function SiteHeader() {
     { href: "/program", label: t("nav_program") },
     { href: "/summit", label: t("nav_summit") },
     { href: "/proizvodjaci", label: t("nav_proizvodjaci") },
+    { href: "/ture", label: t("nav_ture") },
     { href: "/galerija", label: t("nav_galerija") },
     { href: "/vesti", label: t("nav_vesti") },
     { href: "/partneri", label: t("nav_partneri") },

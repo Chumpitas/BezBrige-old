@@ -7,6 +7,7 @@ const NAV = [
   { href: "/admin", label: "Pregled" },
   { href: "/admin/prijave", label: "Prijave" },
   { href: "/admin/vnr", label: "Velika noć" },
+  { href: "/admin/ture", label: "Ture" },
   { href: "/admin/predlozi", label: "Predlozi" },
   { href: "/admin/proizvodjaci", label: "Proizvođači" },
   { href: "/admin/summit", label: "Summit" },

@@ -17,6 +17,7 @@ export const DICT: Dict = {
   nav_summit: { sr: "Summit", en: "Summit" },
   nav_proizvodjaci: { sr: "Proizvođači", en: "Producers" },
   nav_galerija: { sr: "Galerija", en: "Gallery" },
+  nav_ture: { sr: "Ture", en: "Tours" },
   nav_vesti: { sr: "Vesti", en: "News" },
   nav_partneri: { sr: "Partneri", en: "Partners" },
   nav_kontakt: { sr: "Kontakt", en: "Contact" },
