@@ -25,6 +25,7 @@ export async function SiteFooter() {
             <li><Link href="/galerija" className="hover:text-bakar-300">{t("nav_galerija")}</Link></li>
             <li><Link href="/velika-noc-rakije" className="hover:text-bakar-300">Velika noć rakije</Link></li>
             <li><Link href="/vesti" className="hover:text-bakar-300">{t("nav_vesti")}</Link></li>
+            <li><Link href="/posalji" className="hover:text-bakar-300">{t("nav_doprinesi")}</Link></li>
             <li><Link href="/kontakt" className="hover:text-bakar-300">{t("nav_kontakt")}</Link></li>
             <li><Link href="/prijava" className="hover:text-bakar-300">{t("nav_prijava")}</Link></li>
           </ul>

@@ -4,6 +4,7 @@
  */
 import type {
   Nagrada,
+  Panel,
   Partner,
   ProgramStavka,
   Proizvod,
@@ -57,6 +58,53 @@ export const FALLBACK_PROIZVODI: Proizvod[] = [
 
 export const FALLBACK_NAGRADE: Nagrada[] = [
   { id: "n1", proizvodjac_id: "d1", naziv: "USA Ratings 2025 — najbolja voćna rakija", nivo: "zlato", medjunarodna: true, godina: 2025 },
+];
+
+export const FALLBACK_PANELI: Panel[] = [
+  {
+    id: "pan4",
+    naslov: "Sa kolena na koleno — porodična tradicija proizvodnje šljivovice u kraju Bajine Bašte",
+    opis: "Naučno istraživanje. Medijatori: prof. dr Predrag Vujović i Duška Jovanić. Nakon panela koktel za sve učesnike: degustacija rakija Besede i uparivanje sa hranom.",
+    govornici: "dr Nevena Minić Milanović i dr Bogdan Dražeta (Katedra za antropologiju i etnologiju Filozofskog fakulteta), Bosa Rosić (etnolog, kustos Muzeja u Užicu), praunuk Đoje Jankovića",
+    sala: "Bioskopska sala",
+    datum: null,
+    vreme_od: null,
+    vreme_do: null,
+    redosled: 1,
+  },
+  {
+    id: "pan1",
+    naslov: "Bajina Bašta — kraj tradicionalne proizvodnje rakije",
+    opis: "Medijatori: prof. dr Predrag Vujović i Duška Jovanić. Nakon panela koktel za sve učesnike: degustacija rakija Stara Sokolova i uparivanje sa hranom.",
+    govornici: "Dragan Glamočić (Ministar poljoprivrede), dr Ivan Urošević (Poljoprivredni fakultet), Milenko Ordagić (Predsednik Opštine), Radisav Bogdanović (Predsednik, Stara Sokolova)",
+    sala: "Bioskopska sala",
+    datum: null,
+    vreme_od: null,
+    vreme_do: null,
+    redosled: 2,
+  },
+  {
+    id: "pan2",
+    naslov: "Rakija — jedan od bitnih elemenata turističkog brenda Bajine Bašte",
+    opis: "Medijatori: prof. dr Predrag Vujović i Duška Jovanić. Nakon panela koktel za sve učesnike: degustacija rakija BB Kleka i uparivanje sa hranom.",
+    govornici: "Husein Memić (Ministar turizma), dr Milenko Đurić (Fakultet za turizam), predstavnik TO Tara-Drina, Dragan Gavrić (vlasnik, BB Kleka)",
+    sala: "Bioskopska sala",
+    datum: null,
+    vreme_od: null,
+    vreme_do: null,
+    redosled: 3,
+  },
+  {
+    id: "pan3",
+    naslov: "Kulturne vrednosti Bajine Bašte",
+    opis: "Medijatori: prof. dr Predrag Vujović i Duška Jovanić. Nakon panela koktel za sve učesnike: degustacija rakija Stara pesma i uparivanje sa hranom.",
+    govornici: "Nikola Selaković (Ministar kulture), predstavnik kulture Bajine Bašte, Dimitrije Bukvić (književnik), urednik TV Prva",
+    sala: "Bioskopska sala",
+    datum: null,
+    vreme_od: null,
+    vreme_do: null,
+    redosled: 4,
+  },
 ];
 
 export const FALLBACK_VESTI: Vest[] = [

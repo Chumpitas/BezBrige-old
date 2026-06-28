@@ -24,6 +24,16 @@ export async function promeniVnrStatus(formData: FormData) {
   revalidatePath("/admin/vnr");
 }
 
+export async function promeniPredlogStatus(formData: FormData) {
+  if (!(await jeAdmin())) return;
+  const sb = getSupabaseAdmin();
+  if (!sb) return;
+  const id = String(formData.get("id"));
+  const status = String(formData.get("status"));
+  await sb.from("predlozi").update({ status }).eq("id", id);
+  revalidatePath("/admin/predlozi");
+}
+
 export async function postaviObjavljen(formData: FormData) {
   if (!(await jeAdmin())) return;
   const sb = getSupabaseAdmin();
