@@ -9,6 +9,7 @@ export async function SiteHeader() {
 
   const NAV = [
     { href: "/o-projektu", label: t("nav_o_projektu") },
+    { href: "/bajina-basta", label: t("nav_bajina") },
     { href: "/program", label: t("nav_program") },
     { href: "/summit", label: t("nav_summit") },
     { href: "/proizvodjaci", label: t("nav_proizvodjaci") },
@@ -33,7 +34,7 @@ export async function SiteHeader() {
             </span>
           </span>
         </Link>
-        <nav className="hidden items-center gap-5 lg:flex">
+        <nav className="hidden items-center gap-4 xl:flex">
           {NAV.map((n) => (
             <Link
               key={n.href}
@@ -48,7 +49,7 @@ export async function SiteHeader() {
           <LanguageSwitcher lang={lang} />
           <Link
             href="/prijava"
-            className="hidden rounded-full bg-bakar-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-bakar-700 sm:inline-block lg:hidden"
+            className="hidden rounded-full bg-bakar-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-bakar-700 sm:inline-block xl:hidden"
           >
             {t("cta_prijavi")}
           </Link>

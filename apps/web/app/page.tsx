@@ -133,16 +133,17 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* BAND — pejzaž */}
-      <section className="relative h-56 sm:h-72">
+      {/* BAND — pejzaž (link ka Bajinoj Bašti) */}
+      <Link href="/bajina-basta" className="group relative block h-56 overflow-hidden sm:h-72">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={SLIKE.pejzaz} alt="Bajina Bašta i Drina" className="h-full w-full object-cover" />
-        <div className="absolute inset-0 flex items-center justify-center bg-sljiva-950/40">
-          <p className="container-page text-center font-serif text-2xl font-bold text-white sm:text-3xl">
+        <img src={SLIKE.pejzaz} alt="Bajina Bašta i Drina" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-sljiva-950/40 text-center">
+          <p className="container-page font-serif text-2xl font-bold text-white sm:text-3xl">
             Bajina Bašta — kraj najstarije tradicije rakije
           </p>
+          <span className="text-sm font-semibold text-bakar-200 group-hover:underline">Saznaj više →</span>
         </div>
-      </section>
+      </Link>
 
       {/* ISTAKNUTI PROIZVOĐAČI */}
       <section className="container-page py-20">

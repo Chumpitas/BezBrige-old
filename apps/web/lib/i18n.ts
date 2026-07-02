@@ -13,6 +13,7 @@ type Dict = Record<string, { sr: string; en: string }>;
 export const DICT: Dict = {
   // Navigacija
   nav_o_projektu: { sr: "O projektu", en: "About" },
+  nav_bajina: { sr: "Bajina Bašta", en: "Bajina Bašta" },
   nav_program: { sr: "Program", en: "Programme" },
   nav_summit: { sr: "Summit", en: "Summit" },
   nav_proizvodjaci: { sr: "Proizvođači", en: "Producers" },
