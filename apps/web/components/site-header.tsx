@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { getLang, tFactory } from "@/lib/i18n";
 import { LanguageSwitcher } from "./language-switcher";
+import { MobileMenu } from "./mobile-menu";
 
 export async function SiteHeader() {
   const lang = await getLang();
@@ -43,14 +44,15 @@ export async function SiteHeader() {
             </Link>
           ))}
         </nav>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2">
           <LanguageSwitcher lang={lang} />
           <Link
             href="/prijava"
-            className="rounded-full bg-bakar-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-bakar-700 lg:hidden"
+            className="hidden rounded-full bg-bakar-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-bakar-700 sm:inline-block lg:hidden"
           >
             {t("cta_prijavi")}
           </Link>
+          <MobileMenu items={NAV} />
         </div>
       </div>
     </header>
