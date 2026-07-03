@@ -109,7 +109,10 @@ export default function BajinaBastaPage() {
               </Link>
             ))}
           </div>
-          <p className="mt-6 text-center">
+          <p className="mt-6 flex flex-wrap justify-center gap-x-8 gap-y-2 text-center">
+            <Link href="/naucno-istrazivanje" className="font-semibold text-bakar-700 hover:underline">
+              Naučno istraživanje →
+            </Link>
             <Link href="/proizvodjaci" className="font-semibold text-bakar-700 hover:underline">
               Svi proizvođači →
             </Link>
