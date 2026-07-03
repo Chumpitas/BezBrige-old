@@ -24,6 +24,8 @@ import type {
   Vest,
 } from "./types";
 
+import { primeniPricaOverride } from "./content-override";
+
 const PROIZVODJAC_KOLONE =
   "id, naziv, slug, porodica, generacija, godina_osnivanja, selo, grad, region, velicina, prica, logo_url, foto_url, sajt, lat, lng, objavljen, istaknut";
 
@@ -60,8 +62,9 @@ export async function getProizvodjaci(): Promise<Proizvodjac[]> {
     .eq("objavljen", true)
     .order("istaknut", { ascending: false })
     .order("naziv", { ascending: true });
-  if (error || !data || data.length === 0) return FALLBACK_PROIZVODJACI;
-  return data as unknown as Proizvodjac[];
+  if (error || !data || data.length === 0)
+    return FALLBACK_PROIZVODJACI.map(primeniPricaOverride);
+  return (data as unknown as Proizvodjac[]).map(primeniPricaOverride);
 }
 
 export async function getProizvodjac(
@@ -72,7 +75,7 @@ export async function getProizvodjac(
     const p = FALLBACK_PROIZVODJACI.find((x) => x.slug === slug);
     if (!p) return null;
     return {
-      ...p,
+      ...primeniPricaOverride(p),
       proizvodi: FALLBACK_PROIZVODI.filter((x) => x.proizvodjac_id === p.id),
       nagrade: FALLBACK_NAGRADE.filter((x) => x.proizvodjac_id === p.id),
     };
@@ -84,7 +87,7 @@ export async function getProizvodjac(
     .eq("objavljen", true)
     .maybeSingle();
   if (error || !data) return null;
-  const p = data as unknown as Proizvodjac;
+  const p = primeniPricaOverride(data as unknown as Proizvodjac);
 
   const [{ data: proizvodi }, { data: nagrade }] = await Promise.all([
     sb
