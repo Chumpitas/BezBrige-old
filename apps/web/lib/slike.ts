@@ -25,6 +25,17 @@ export const GEN = {
   muzej: "/slike/gen-muzej.jpg",
   casa: "/slike/gen-casa.jpg",
   porodica: "/slike/gen-porodica.jpg",
+  // Nova serija (proces + atmosfera)
+  forum: "/slike/gen-forum.jpg",
+  berba: "/slike/gen-berba.jpg",
+  vatra: "/slike/gen-vatra.jpg",
+  tocenje: "/slike/gen-tocenje.jpg",
+  velikaNoc: "/slike/gen-velika-noc.jpg",
+  majstor: "/slike/gen-majstor.jpg",
+  nagrade: "/slike/gen-nagrade.jpg",
+  izlozba: "/slike/gen-izlozba.jpg",
+  tara: "/slike/gen-tara.jpg",
+  nazdravlje: "/slike/gen-nazdravlje.jpg",
 } as const;
 
 /** Tematski aliasi (koriste ih heroji stranica). */
@@ -38,7 +49,25 @@ export const SLIKE = {
   summit: GEN.summit,
   muzej: GEN.muzej,
   porodica: GEN.porodica,
+  forum: GEN.forum,
+  berba: GEN.berba,
+  vatra: GEN.vatra,
+  tocenje: GEN.tocenje,
+  velikaNoc: GEN.velikaNoc,
+  majstor: GEN.majstor,
+  nagrade: GEN.nagrade,
+  izlozba: GEN.izlozba,
+  tara: GEN.tara,
+  nazdravlje: GEN.nazdravlje,
 } as const;
+
+/** Koraci procesa (berba → pečenje → točenje → odležavanje). */
+export const PROCES = [
+  { slika: GEN.berba, naslov: "Berba šljive", opis: "Zrela šljiva iz porodičnih voćnjaka." },
+  { slika: GEN.vatra, naslov: "Pečenje", opis: "Kazan nad otvorenom vatrom." },
+  { slika: GEN.tocenje, naslov: "Točenje", opis: "Prvi tok bistre rakije." },
+  { slika: LOKALNE.podrumBurad, naslov: "Odležavanje", opis: "Hrastova burad u podrumu." },
+] as const;
 
 /** Slike regiona (rotira se po karticama na /regioni). */
 export const REGION_SLIKE = [

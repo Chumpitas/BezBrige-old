@@ -1,28 +1,33 @@
 "use client";
 
-import type { Lang } from "@/lib/i18n";
+import type { Lang, Pismo } from "@/lib/i18n";
 
-export function LanguageSwitcher({ lang }: { lang: Lang }) {
-  function set(next: Lang) {
-    if (next === lang) return;
-    document.cookie = `lang=${next};path=/;max-age=${60 * 60 * 24 * 365}`;
+const YEAR = 60 * 60 * 24 * 365;
+
+export function LanguageSwitcher({ lang, pismo }: { lang: Lang; pismo: Pismo }) {
+  function go(nextLang: Lang, nextPismo: Pismo) {
+    document.cookie = `lang=${nextLang};path=/;max-age=${YEAR}`;
+    document.cookie = `pismo=${nextPismo};path=/;max-age=${YEAR}`;
     window.location.reload();
   }
   const cell = "px-[9px] py-[2px] text-[14px] font-bold";
+  const on = `${cell} bg-crvena text-krem`;
+  const off = `${cell} text-lan`;
+  const cirActive = lang === "sr" && pismo === "cir";
+  const latActive = lang === "sr" && pismo === "lat";
+  const enActive = lang === "en";
   return (
-    <span className="inline-flex overflow-hidden rounded border border-plava-ivica font-sc">
-      <button
-        onClick={() => set("sr")}
-        aria-pressed={lang === "sr"}
-        className={lang === "sr" ? `${cell} bg-crvena text-krem` : `${cell} text-lan`}
-      >
-        SR
+    <span
+      data-no-cyr
+      className="inline-flex overflow-hidden rounded border border-plava-ivica font-sc"
+    >
+      <button onClick={() => go("sr", "cir")} aria-pressed={cirActive} className={cirActive ? on : off}>
+        Ћир
       </button>
-      <button
-        onClick={() => set("en")}
-        aria-pressed={lang === "en"}
-        className={lang === "en" ? `${cell} bg-crvena text-krem` : `${cell} text-lan`}
-      >
+      <button onClick={() => go("sr", "lat")} aria-pressed={latActive} className={latActive ? on : off}>
+        Lat
+      </button>
+      <button onClick={() => go("en", pismo)} aria-pressed={enActive} className={enActive ? on : off}>
         EN
       </button>
     </span>

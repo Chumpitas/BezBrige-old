@@ -68,11 +68,11 @@ export default async function HomePage() {
             Rakija iz kućnog kazana
           </h1>
           <p className="font-serif text-[26px] italic text-bela">
-            Bajina Bašta i Sokolski kraj — Etnografski muzej u Beogradu
+            Tradicionalna proizvodnja rakije kao deo kulturnog identiteta Srbije
           </p>
           <p className="max-w-[56ch] text-[19px] text-lan">
-            Prva nacionalna izložba o tradicionalnoj porodičnoj proizvodnji rakije: zanat, alat i
-            običaji koji se prenose s kolena na koleno.
+            Prva nacionalna izložba posvećena Bajinoj Bašti i Sokolskom kraju —
+            Etnografski muzej u Beogradu.
           </p>
           <div className="pointer-events-auto flex flex-wrap justify-center gap-3">
             <Link href="/nacionalna-izlozba" className="rounded bg-crvena px-[26px] py-[14px] font-bold text-krem hover:bg-[#a12932]">

@@ -3,9 +3,19 @@ import { cookies } from "next/headers";
 export type Lang = "sr" | "en";
 export const LANG_COOKIE = "lang";
 
+/** Pismo za srpski: ćirilica (podrazumevano) ili latinica. */
+export type Pismo = "cir" | "lat";
+export const PISMO_COOKIE = "pismo";
+
 export async function getLang(): Promise<Lang> {
   const c = await cookies();
   return c.get(LANG_COOKIE)?.value === "en" ? "en" : "sr";
+}
+
+export async function getPismo(): Promise<Pismo> {
+  const c = await cookies();
+  // Podrazumevano ćirilica (zvanično pismo izložbe i projekta).
+  return c.get(PISMO_COOKIE)?.value === "lat" ? "lat" : "cir";
 }
 
 type Dict = Record<string, { sr: string; en: string }>;
@@ -88,7 +98,7 @@ export const DICT: Dict = {
   cta_dugme: { sr: "Popuni prijavu", en: "Fill in the application" },
 
   // Footer
-  footer_opis: { sr: "Tradicionalna porodična proizvodnja rakije u Srbiji i Bajinoj Bašti.", en: "Traditional family production of rakija in Serbia and Bajina Bašta." },
+  footer_opis: { sr: "Tradicionalna proizvodnja rakije kao deo kulturnog identiteta Srbije.", en: "Traditional production of rakija as part of Serbia's cultural identity." },
   footer_izlozba: { sr: "Izložba u Etnografskom muzeju u Beogradu.", en: "Exhibition at the Ethnographic Museum in Belgrade." },
   footer_navigacija: { sr: "Navigacija", en: "Navigation" },
   footer_kontakt: { sr: "Kontakt", en: "Contact" },

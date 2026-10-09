@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 66" fill="none" role="img" aria-label="Rakija Srbije">
+  <!-- Plum mark -->
+  <g stroke="#ffffff" stroke-width="3" stroke-linecap="round" fill="none">
+    <!-- plum body: almost-closed ring, gap at top for stem/leaf -->
+    <path d="M33 11
+             C20 11 11 21 11 34
+             C11 47 21 56 33 56
+             C45 56 55 47 55 34
+             C55 24 49 16 40 13" />
+    <!-- seam -->
+    <path d="M33 13 C29 22 29 30 33 36" stroke-width="2" />
+  </g>
+  <!-- leaf -->
+  <path d="M34 12 C40 3 50 4 54 9 C48 15 39 15 34 12 Z" fill="#ffffff"/>
+  <!-- droplet of rakija -->
+  <path d="M33 25 C27 34 29 45 33 45 C37 45 39 34 33 25 Z" fill="#ffffff"/>
+  <!-- wordmark -->
+  <text x="70" y="31" font-family="'Alegreya SC','Alegreya',Georgia,serif" font-size="23" font-weight="700" fill="#ffffff" letter-spacing="1.5">РАКИЈА</text>
+  <text x="70" y="55" font-family="'Alegreya SC','Alegreya',Georgia,serif" font-size="23" font-weight="700" fill="#ffffff" letter-spacing="1.5">СРБИЈЕ</text>
+</svg>

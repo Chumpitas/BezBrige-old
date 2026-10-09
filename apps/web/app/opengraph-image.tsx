@@ -45,7 +45,7 @@ export default async function OgImage() {
           kulturno dobro Srbije
         </div>
         <div style={{ fontSize: 30, marginTop: 32, color: "#dcc6e0", maxWidth: 900 }}>
-          Tradicionalna porodična proizvodnja rakije u Srbiji i Bajinoj Bašti
+          Tradicionalna proizvodnja rakije kao deo kulturnog identiteta Srbije
         </div>
       </div>
     ),

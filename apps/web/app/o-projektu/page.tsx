@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SLIKE, LOKALNE } from "@/lib/slike";
+import { SLIKE, LOKALNE, PROCES } from "@/lib/slike";
 import { Slika } from "@/components/slika";
 
 export const metadata: Metadata = {
@@ -21,25 +21,30 @@ const PARTNERI = [
 export default function OProjektuPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-plava text-white">
+      <section className="relative overflow-hidden bg-plava text-krem">
         <Slika src={LOKALNE.stariKazan1} fallback={SLIKE.kazan} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 to-plava/75" />
+        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 via-plava/85 to-plava/75" />
         <div className="container-page relative z-10 py-20">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-bela">
-            Nacionalni projekat
-          </p>
+          <div className="mb-3 flex items-center gap-3 font-sc text-sm font-bold tracking-[0.08em] text-bela">
+            <span className="romb-marker" aria-hidden="true" />
+            nacionalni projekat
+          </div>
           <h1 className="font-serif text-4xl font-bold sm:text-5xl">Rakija Srbije</h1>
           <p className="mt-4 max-w-2xl text-lg text-lan">Rakija je priča o Srbiji.</p>
         </div>
       </section>
+      <div aria-hidden="true">
+        <div className="h-1.5 bg-crvena" />
+        <div className="vez-traka" />
+      </div>
 
       <section className="container-page py-16">
         <div className="mx-auto max-w-3xl space-y-5 leading-relaxed text-mastilo-meko">
           <p>
             Nacionalni projekat{" "}
             <strong>
-              „Rakija Srbije — Tradicionalna porodična proizvodnja rakije u
-              Srbiji kao deo kulturnog identiteta Srbije“
+              „Tradicionalna proizvodnja rakije kao deo kulturnog identiteta
+              Srbije“
             </strong>{" "}
             posvećen je istraživanju, očuvanju, razvoju i promociji kulture
             rakije kao važnog dela nacionalnog nasleđa.
@@ -76,6 +81,33 @@ export default function OProjektuPage() {
               Da srpska rakija, čuvajući svoje kulturno i porodično nasleđe,
               postane jedan od prepoznatljivih simbola Srbije u svetu.
             </p>
+          </div>
+        </div>
+
+        {/* Proces: od šljive do rakije */}
+        <div className="mx-auto mt-16 max-w-4xl">
+          <div className="flex items-center gap-3">
+            <span className="romb-marker text-crvena" aria-hidden="true" />
+            <h2 className="font-serif text-2xl font-bold text-mastilo">Od šljive do rakije</h2>
+          </div>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {PROCES.map((k, i) => (
+              <div
+                key={k.naslov}
+                className="overflow-hidden rounded-md border-2 border-mastilo bg-lan-svetli"
+              >
+                <div className="aspect-[4/3] border-b-2 border-mastilo bg-lan-tamni">
+                  <Slika src={k.slika} fallback={k.slika} alt={k.naslov} className="h-full w-full object-cover" />
+                </div>
+                <div className="p-4">
+                  <span className="font-sc text-sm font-bold text-crvena">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="font-serif text-lg font-bold leading-tight text-mastilo">{k.naslov}</h3>
+                  <p className="mt-1 text-sm text-mastilo-meko">{k.opis}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 

@@ -13,7 +13,7 @@ export default function PosaljiPage() {
   return (
     <>
       <EtnoHero
-        slika={SLIKE.muzej}
+        slika={SLIKE.forum}
         natpis="poziv zajednici"
         naslov="Sačuvajmo zajedno priču o rakiji"
         opis="Podelite stare fotografije proizvodnje rakije i predložite stare predmete za izložbu — kazane, alat, posude. Svaki kraj Srbije ima svoj tip kazana i svoju priču; zajedno pravimo najpotpuniju sliku tradicije."

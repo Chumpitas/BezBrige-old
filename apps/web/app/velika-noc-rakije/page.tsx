@@ -13,7 +13,7 @@ export default function VelikaNocRakijePage() {
     <>
       <section className="relative overflow-hidden bg-plava text-white">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={SLIKE.gala} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40" />
+        <img src={SLIKE.velikaNoc} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40" />
         <div className="absolute inset-0 bg-gradient-to-br from-plava/90 via-plava/85 to-plava/75" />
         <div className="container-page relative z-10 py-20">
           <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-bela">

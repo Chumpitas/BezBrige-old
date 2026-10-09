@@ -30,7 +30,7 @@ export default async function ProgramPage() {
   return (
     <>
       <EtnoHero
-        slika={SLIKE.muzej}
+        slika={SLIKE.izlozba}
         natpis="pet nivoa događaja"
         naslov="Program"
         opis="Događaj je organizovan kroz pet nivoa — od stalne izložbene postavke do gala večeri „Velika noć rakije”."

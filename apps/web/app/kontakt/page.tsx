@@ -12,7 +12,7 @@ export default function KontaktPage() {
   return (
     <>
       <EtnoHero
-        slika={SLIKE.case}
+        slika={SLIKE.nazdravlje}
         natpis="pišite nam"
         naslov="Kontakt"
         opis="Za partnerstva, medijske upite i pitanja proizvođača — pišite nam."

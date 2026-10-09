@@ -1,10 +1,12 @@
 import Link from "next/link";
-import { getLang, tFactory } from "@/lib/i18n";
+import { getLang, getPismo, tFactory } from "@/lib/i18n";
 import { LanguageSwitcher } from "./language-switcher";
 import { MobileMenu } from "./mobile-menu";
+import { BrandLogo } from "./brand-logo";
 
 export async function SiteHeader() {
   const lang = await getLang();
+  const pismo = await getPismo();
   const t = tFactory(lang);
 
   // Desktop (xl+) — mala slova (SC font ih prikazuje kao kapitelke)
@@ -41,16 +43,8 @@ export async function SiteHeader() {
       <div className="zupci-na-plavoj" aria-hidden="true" />
       <header className="bg-plava text-lan">
         <div className="container-page flex flex-wrap items-center justify-between gap-5 py-4">
-          <Link href="/" className="flex items-center gap-3">
-            <span
-              className="flex h-[38px] w-[38px] rotate-45 items-center justify-center bg-zastava-crvena"
-              aria-hidden="true"
-            >
-              <span className="h-[14px] w-[14px] border-[3px] border-bela bg-plava" />
-            </span>
-            <span className="ml-1.5 font-serif text-[26px] font-extrabold leading-none text-lan">
-              Rakija Srbije
-            </span>
+          <Link href="/" className="flex items-center" aria-label="Rakija Srbije — početna">
+            <BrandLogo className="h-[46px] w-auto" />
           </Link>
 
           <nav className="hidden items-center gap-5 font-sc text-[15px] tracking-[0.04em] xl:flex">
@@ -59,7 +53,7 @@ export async function SiteHeader() {
                 {n.label.toLowerCase()}
               </Link>
             ))}
-            <LanguageSwitcher lang={lang} />
+            <LanguageSwitcher lang={lang} pismo={pismo} />
             <Link
               href="/partneri"
               className="rounded bg-bela px-4 py-[7px] font-bold text-mastilo hover:bg-krem"
@@ -69,7 +63,7 @@ export async function SiteHeader() {
           </nav>
 
           <div className="flex items-center gap-3 xl:hidden">
-            <LanguageSwitcher lang={lang} />
+            <LanguageSwitcher lang={lang} pismo={pismo} />
             <MobileMenu items={NAV_MOBILE} />
           </div>
         </div>

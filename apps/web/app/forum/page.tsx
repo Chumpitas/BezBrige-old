@@ -80,7 +80,7 @@ export default function ForumPage() {
   return (
     <>
       <section className="relative overflow-hidden bg-plava text-white">
-        <Slika src={LOKALNE.staraSokolovaCasa} fallback={SLIKE.case} alt="" className="absolute inset-0 h-full w-full object-cover opacity-35" />
+        <Slika src={SLIKE.forum} fallback={SLIKE.case} alt="" className="absolute inset-0 h-full w-full object-cover opacity-35" />
         <div className="absolute inset-0 bg-gradient-to-br from-plava/90 to-plava/75" />
         <div className="container-page relative z-10 py-20">
           <h1 className="font-serif text-4xl font-bold sm:text-5xl">Forum „Rakija Srbije“</h1>

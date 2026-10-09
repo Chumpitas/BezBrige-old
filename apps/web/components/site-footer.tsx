@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { getLang, tFactory } from "@/lib/i18n";
+import { BrandLogo } from "./brand-logo";
 
 export async function SiteFooter() {
   const lang = await getLang();
@@ -30,8 +31,8 @@ export async function SiteFooter() {
       <div className="container-page py-10">
         <div className="flex flex-wrap items-start justify-between gap-8">
           <div className="max-w-sm">
-            <p className="font-serif text-2xl font-extrabold text-lan">Rakija Srbije</p>
-            <p className="mt-2 text-[15px]">
+            <BrandLogo className="h-[44px] w-auto" />
+            <p className="mt-3 text-[15px]">
               Nacionalna izložba 2026 · Etnografski muzej u Beogradu
             </p>
           </div>

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { Transliterator } from "@/components/transliterator";
+import { getLang, getPismo } from "@/lib/i18n";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -24,19 +26,22 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Rakija – kulturno dobro Srbije",
     description:
-      "Tradicionalna porodična proizvodnja rakije u Srbiji i Bajinoj Bašti.",
+      "Tradicionalna proizvodnja rakije kao deo kulturnog identiteta Srbije.",
     type: "website",
     locale: "sr_RS",
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const lang = await getLang();
+  const pismo = await getPismo();
+  const htmlLang = lang === "en" ? "en" : pismo === "cir" ? "sr-Cyrl" : "sr-Latn";
   return (
-    <html lang="sr">
+    <html lang={htmlLang}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
@@ -46,6 +51,7 @@ export default function RootLayout({
         />
       </head>
       <body className="flex min-h-screen flex-col">
+        <Transliterator active={lang === "sr" && pismo === "cir"} />
         <SiteHeader />
         <main className="flex-1">{children}</main>
         <SiteFooter />

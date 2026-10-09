@@ -16,7 +16,7 @@ export default function PrijavaPage() {
   return (
     <>
       <EtnoHero
-        slika={SLIKE.kazan}
+        slika={SLIKE.majstor}
         natpis="prijava destilerije"
         naslov="Prijava za učešće"
         opis="Popunite podatke o destileriji — rezultat i kategorija se računaju trenutno, po zvaničnim kriterijumima projekta. Konačnu kategorizaciju potvrđuje komisija."

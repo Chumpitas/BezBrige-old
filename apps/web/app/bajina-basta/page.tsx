@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 };
 
 const DESTILERIJE = [
-  { slug: "bb-kleka", naziv: "BB Kleka", oznaka: "Najstariji proizvođač rakije u Srbiji" },
+  { slug: "bb-kleka", naziv: "BB Klekovača", oznaka: "Najstariji proizvođač rakije u Srbiji" },
   { slug: "stara-sokolova", naziv: "Stara Sokolova", oznaka: "Svetski brend i najveći izvoznik" },
   { slug: "stara-pesma", naziv: "Stara Pesma", oznaka: "Vrhunska porodična rakija" },
 ];
@@ -74,7 +74,7 @@ export default function BajinaBastaPage() {
               </p>
               <p>
                 Srećom, danas imamo desetak vrlo značajnih destilerija u i oko
-                Bajine Bašte. BB Kleka je najstariji proizvođač rakije u Srbiji.
+                Bajine Bašte. BB Klekovača je najstariji proizvođač rakije u Srbiji.
                 Stara Sokolova je danas svetski brend, ubedljivo najveći izvoznik
                 rakije iz Srbije. Tu je i Stara Pesma, jednako kvalitetna rakija,
                 ali i svi drugi proizvođači koji danas uspešno privređuju. I zato

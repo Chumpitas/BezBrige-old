@@ -19,7 +19,7 @@ export default async function PartneriPage() {
   return (
     <>
       <EtnoHero
-        slika={SLIKE.gala}
+        slika={SLIKE.nagrade}
         natpis="podrška projektu"
         naslov="Partneri i pokrovitelji"
         opis="Projekat realizujemo uz podršku ključnih državnih institucija, strukovnih organizacija i nacionalnih medija."
