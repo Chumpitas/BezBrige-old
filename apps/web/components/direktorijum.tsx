@@ -5,149 +5,134 @@ import { useMemo, useState } from "react";
 import type { Proizvodjac } from "@/lib/types";
 import { fotoZaProizvodjaca, lokalnaFotoProizvodjaca } from "@/lib/slike";
 import { Slika } from "@/components/slika";
+import { MapaDestilerija } from "@/components/mapa-destilerija";
+import { VRSTE_RAKIJE, vrsteProizvodjaca, vrsteLabel } from "@/lib/vrste";
 
-const VELICINA_LABEL: Record<string, string> = {
-  mala: "Mala destilerija",
-  srednja: "Srednja destilerija",
-  velika: "Velika destilerija",
-};
+function Cip({
+  label,
+  aktivan,
+  onClick,
+  tip,
+}: {
+  label: string;
+  aktivan: boolean;
+  onClick: () => void;
+  tip: "kraj" | "rakija";
+}) {
+  if (aktivan) {
+    const boja = tip === "kraj" ? "bg-crvena border-crvena text-krem" : "bg-plava border-plava text-lan";
+    return (
+      <button onClick={onClick} className={`rounded-full border-2 px-3.5 py-1.5 text-[15px] font-bold ${boja}`}>
+        {label}
+      </button>
+    );
+  }
+  return (
+    <button onClick={onClick} className="rounded-full border-2 border-mastilo px-3.5 py-1.5 text-[15px] hover:bg-lan-tamni/40">
+      {label}
+    </button>
+  );
+}
 
 export function Direktorijum({ proizvodjaci }: { proizvodjaci: Proizvodjac[] }) {
   const [q, setQ] = useState("");
-  const [region, setRegion] = useState("");
-  const [velicina, setVelicina] = useState("");
+  const [region, setRegion] = useState("Sve");
+  const [vrsta, setVrsta] = useState("Sve");
 
   const regioni = useMemo(
-    () =>
-      [...new Set(proizvodjaci.map((p) => p.region).filter(Boolean))].sort() as string[],
+    () => ["Sve", ...[...new Set(proizvodjaci.map((p) => p.region).filter(Boolean))].sort()] as string[],
     [proizvodjaci],
   );
 
   const filtrirani = useMemo(() => {
     const tekst = q.trim().toLowerCase();
     return proizvodjaci.filter((p) => {
-      if (region && p.region !== region) return false;
-      if (velicina && p.velicina !== velicina) return false;
+      if (region !== "Sve" && p.region !== region) return false;
+      if (vrsta !== "Sve" && !vrsteProizvodjaca(p).includes(vrsta)) return false;
       if (tekst) {
-        const haystack = [p.naziv, p.porodica, p.selo, p.grad, p.region]
-          .filter(Boolean)
-          .join(" ")
-          .toLowerCase();
-        if (!haystack.includes(tekst)) return false;
+        const hay = [p.naziv, p.porodica, p.selo, p.grad].filter(Boolean).join(" ").toLowerCase();
+        if (!hay.includes(tekst)) return false;
       }
       return true;
     });
-  }, [proizvodjaci, q, region, velicina]);
+  }, [proizvodjaci, q, region, vrsta]);
 
-  const inputCls =
-    "rounded-lg border border-sljiva-200 px-3 py-2 text-sm outline-none focus:border-bakar-500";
+  const resetuj = () => {
+    setQ("");
+    setRegion("Sve");
+    setVrsta("Sve");
+  };
 
   return (
-    <div>
-      {/* Filteri */}
-      <div className="flex flex-wrap items-center gap-3">
+    <div className="container-page flex flex-col gap-7 py-10 pb-[88px]">
+      {/* Filter panel */}
+      <div className="flex flex-col gap-3.5 rounded-md border-2 border-mastilo bg-lan-svetli p-5">
         <input
           value={q}
           onChange={(e) => setQ(e.target.value)}
-          placeholder="Pretraži destileriju, porodicu, mesto…"
-          className={`${inputCls} min-w-[240px] flex-1`}
+          placeholder="Pretražite po nazivu ili mestu…"
+          className="rounded border-2 border-mastilo bg-white px-3.5 py-3 text-[17px] text-mastilo outline-none"
         />
-        <select value={region} onChange={(e) => setRegion(e.target.value)} className={inputCls}>
-          <option value="">Sve regije</option>
+        <div className="flex flex-wrap items-center gap-2">
+          <b className="w-16 text-[15px]">Kraj</b>
           {regioni.map((r) => (
-            <option key={r} value={r}>
-              {r}
-            </option>
+            <Cip key={r} label={r} tip="kraj" aktivan={region === r} onClick={() => setRegion(r)} />
           ))}
-        </select>
-        <select value={velicina} onChange={(e) => setVelicina(e.target.value)} className={inputCls}>
-          <option value="">Sve veličine</option>
-          <option value="mala">Mala</option>
-          <option value="srednja">Srednja</option>
-          <option value="velika">Velika</option>
-        </select>
+        </div>
+        <div className="flex flex-wrap items-center gap-2">
+          <b className="w-16 text-[15px]">Rakija</b>
+          {["Sve", ...VRSTE_RAKIJE].map((v) => (
+            <Cip key={v} label={v} tip="rakija" aktivan={vrsta === v} onClick={() => setVrsta(v)} />
+          ))}
+        </div>
       </div>
 
-      <p className="mt-4 text-sm text-sljiva-500">
-        Prikazano {filtrirani.length} od {proizvodjaci.length} proizvođača.
-      </p>
+      {/* Mapa */}
+      <div className="overflow-hidden rounded-md border-2 border-mastilo">
+        <MapaDestilerija proizvodjaci={filtrirani} />
+      </div>
 
-      <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {filtrirani.map((p) => {
-          const inner = (
-            <>
-              <Slika
-                src={p.foto_url ?? lokalnaFotoProizvodjaca(p.slug) ?? fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
-                fallback={fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
-                alt={p.naziv}
-                className="-mx-6 -mt-6 mb-4 h-40 w-[calc(100%+3rem)] max-w-none object-cover"
-              />
-              <div className="flex items-start justify-between gap-3">
-                <h2 className="font-serif text-xl font-bold text-sljiva-900">
-                  {p.naziv}
-                </h2>
-                {p.istaknut && (
-                  <span className="rounded-full bg-sljiva-900 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-bakar-200">
-                    istaknuto
-                  </span>
-                )}
-              </div>
-              <p className="mt-1 text-sm text-sljiva-500">
-                {[p.porodica && `Porodica ${p.porodica}`, p.selo || p.grad, p.region]
-                  .filter(Boolean)
-                  .join(" · ")}
-              </p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {p.godina_osnivanja && (
-                  <span className="rounded-full bg-bakar-100 px-3 py-1 text-xs font-semibold text-bakar-700">
-                    od {p.godina_osnivanja}.
-                  </span>
-                )}
-                {p.generacija && (
-                  <span className="rounded-full bg-sljiva-100 px-3 py-1 text-xs font-semibold text-sljiva-700">
-                    {p.generacija}. generacija
-                  </span>
-                )}
-                {p.velicina && (
-                  <span className="rounded-full bg-sljiva-100 px-3 py-1 text-xs font-semibold text-sljiva-700">
-                    {VELICINA_LABEL[p.velicina]}
-                  </span>
-                )}
-              </div>
-              {p.prica && (
-                <p className="mt-4 line-clamp-4 text-sm text-sljiva-600">{p.prica}</p>
-              )}
-              {p.slug && (
-                <span className="mt-4 text-sm font-semibold text-bakar-700 group-hover:underline">
-                  Pogledaj profil →
-                </span>
-              )}
-            </>
-          );
+      {/* Brojač */}
+      <p className="font-bold">Pronađeno: {filtrirani.length}</p>
 
-          return p.slug ? (
+      {/* Grid kartica */}
+      {filtrirani.length === 0 ? (
+        <div className="rounded-md border-2 border-dashed border-crvena p-8 text-center">
+          <p className="font-serif text-[24px] font-bold">Nema domaćina za izabrane filtere.</p>
+          <button onClick={resetuj} className="mt-3 font-bold text-crvena hover:text-mastilo hover:underline">
+            Poništi filtere
+          </button>
+        </div>
+      ) : (
+        <div className="grid gap-5" style={{ gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 280px), 1fr))" }}>
+          {filtrirani.map((p) => (
             <Link
               key={p.id}
-              href={`/proizvodjaci/${p.slug}`}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-sljiva-200 bg-white p-6 shadow-sm transition hover:border-bakar-300 hover:shadow-md"
+              href={p.slug ? `/proizvodjaci/${p.slug}` : "/proizvodjaci"}
+              className="group flex flex-col overflow-hidden rounded-md border-2 border-mastilo bg-lan-svetli transition hover:-translate-y-0.5"
             >
-              {inner}
+              <div className="aspect-[4/3] border-b-2 border-mastilo bg-lan-tamni">
+                <Slika
+                  src={p.foto_url ?? lokalnaFotoProizvodjaca(p.slug) ?? fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
+                  fallback={fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
+                  alt={p.naziv}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="flex flex-1 flex-col gap-1.5 p-[18px]">
+                <span className="font-sc text-[14px] font-bold text-plava">
+                  {[p.region, p.selo || p.grad].filter(Boolean).join(" · ")}
+                </span>
+                <span className="font-serif text-[24px] font-extrabold leading-[1.1]">{p.naziv}</span>
+                {p.prica && <p className="line-clamp-3 flex-1 text-[15px] text-mastilo-meko">{p.prica}</p>}
+                <div className="mt-2 flex items-center justify-between border-t border-dashed border-crvena pt-2.5 text-[14px]">
+                  <span className="font-bold text-crvena">{vrsteLabel(p)}</span>
+                  {p.godina_osnivanja && <span className="text-mastilo-meko">od {p.godina_osnivanja}.</span>}
+                </div>
+              </div>
             </Link>
-          ) : (
-            <div
-              key={p.id}
-              className="flex flex-col overflow-hidden rounded-2xl border border-sljiva-200 bg-white p-6 shadow-sm"
-            >
-              {inner}
-            </div>
-          );
-        })}
-      </div>
-
-      {filtrirani.length === 0 && (
-        <p className="mt-10 rounded-xl border border-sljiva-200 bg-white px-5 py-8 text-center text-sljiva-500">
-          Nema rezultata za zadate filtere.
-        </p>
+          ))}
+        </div>
       )}
     </div>
   );

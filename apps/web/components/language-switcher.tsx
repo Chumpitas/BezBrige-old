@@ -8,23 +8,23 @@ export function LanguageSwitcher({ lang }: { lang: Lang }) {
     document.cookie = `lang=${next};path=/;max-age=${60 * 60 * 24 * 365}`;
     window.location.reload();
   }
+  const cell = "px-[9px] py-[2px] text-[14px] font-bold";
   return (
-    <div className="flex items-center gap-1 text-xs font-semibold">
+    <span className="inline-flex overflow-hidden rounded border border-plava-ivica font-sc">
       <button
         onClick={() => set("sr")}
-        className={lang === "sr" ? "text-bakar-700" : "text-sljiva-400 hover:text-sljiva-600"}
         aria-pressed={lang === "sr"}
+        className={lang === "sr" ? `${cell} bg-crvena text-krem` : `${cell} text-lan`}
       >
         SR
       </button>
-      <span className="text-sljiva-300">/</span>
       <button
         onClick={() => set("en")}
-        className={lang === "en" ? "text-bakar-700" : "text-sljiva-400 hover:text-sljiva-600"}
         aria-pressed={lang === "en"}
+        className={lang === "en" ? `${cell} bg-crvena text-krem` : `${cell} text-lan`}
       >
         EN
       </button>
-    </div>
+    </span>
   );
 }

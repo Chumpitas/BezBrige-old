@@ -7,20 +7,16 @@ export async function SiteHeader() {
   const lang = await getLang();
   const t = tFactory(lang);
 
-  // Desktop (xl+) — kraći nazivi da sve stane u jedan red
+  // Desktop (xl+) — mala slova (SC font ih prikazuje kao kapitelke)
   const NAV = [
     { href: "/o-projektu", label: t("nav_o_projektu") },
     { href: "/nacionalna-izlozba", label: t("nav_izlozba") },
     { href: "/forum", label: t("nav_forum") },
     { href: "/regioni", label: t("nav_regioni") },
     { href: "/proizvodjaci", label: t("nav_proizvodjaci") },
-    { href: "/ture", label: t("nav_ture") },
-    { href: "/galerija", label: t("nav_galerija") },
     { href: "/vesti", label: t("nav_vesti") },
-    { href: "/prijava", label: t("nav_prijava") },
   ];
 
-  // Mobilni meni — kompletan spisak (puni nazivi)
   const NAV_MOBILE = [
     { href: "/o-projektu", label: t("nav_o_projektu") },
     { href: "/nacionalna-izlozba", label: "Nacionalna izložba" },
@@ -40,39 +36,44 @@ export async function SiteHeader() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-sljiva-200/60 bg-sljiva-50/90 backdrop-blur">
-      <div className="container-page flex h-16 items-center justify-between gap-4">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="text-2xl">🥃</span>
-          <span className="font-serif text-lg font-bold leading-tight text-sljiva-900">
-            RAKIJA
-            <span className="block text-[10px] font-sans font-medium uppercase tracking-widest text-bakar-600">
-              kulturno dobro Srbije
-            </span>
-          </span>
-        </Link>
-        <nav className="hidden items-center gap-4 xl:flex">
-          {NAV.map((n) => (
-            <Link
-              key={n.href}
-              href={n.href}
-              className="text-sm font-medium text-sljiva-700 transition-colors hover:text-bakar-600"
+    <div className="sticky top-0 z-40">
+      {/* zupci traka iznad headera */}
+      <div className="zupci-na-plavoj" aria-hidden="true" />
+      <header className="bg-plava text-lan">
+        <div className="container-page flex flex-wrap items-center justify-between gap-5 py-4">
+          <Link href="/" className="flex items-center gap-3">
+            <span
+              className="flex h-[38px] w-[38px] rotate-45 items-center justify-center bg-zastava-crvena"
+              aria-hidden="true"
             >
-              {n.label}
-            </Link>
-          ))}
-        </nav>
-        <div className="flex items-center gap-2">
-          <LanguageSwitcher lang={lang} />
-          <Link
-            href="/prijava"
-            className="hidden rounded-full bg-bakar-600 px-4 py-2 text-sm font-semibold text-white shadow-sm transition hover:bg-bakar-700 sm:inline-block xl:hidden"
-          >
-            {t("cta_prijavi")}
+              <span className="h-[14px] w-[14px] border-[3px] border-bela bg-plava" />
+            </span>
+            <span className="ml-1.5 font-serif text-[26px] font-extrabold leading-none text-lan">
+              Rakija Srbije
+            </span>
           </Link>
-          <MobileMenu items={NAV_MOBILE} />
+
+          <nav className="hidden items-center gap-5 font-sc text-[15px] tracking-[0.04em] xl:flex">
+            {NAV.map((n) => (
+              <Link key={n.href} href={n.href} className="text-lan hover:text-bela">
+                {n.label.toLowerCase()}
+              </Link>
+            ))}
+            <LanguageSwitcher lang={lang} />
+            <Link
+              href="/partneri"
+              className="rounded bg-bela px-4 py-[7px] font-bold text-mastilo hover:bg-krem"
+            >
+              {lang === "en" ? "become a partner" : "postanite partner"}
+            </Link>
+          </nav>
+
+          <div className="flex items-center gap-3 xl:hidden">
+            <LanguageSwitcher lang={lang} />
+            <MobileMenu items={NAV_MOBILE} />
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </div>
   );
 }

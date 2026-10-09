@@ -37,6 +37,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="sr">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,700;0,800;1,500&family=Alegreya+Sans:wght@400;500;700&family=Alegreya+Sans+SC:wght@500;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="flex min-h-screen flex-col">
         <SiteHeader />
         <main className="flex-1">{children}</main>
