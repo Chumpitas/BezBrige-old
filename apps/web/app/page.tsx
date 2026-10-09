@@ -9,9 +9,10 @@ import { vrsteLabel } from "@/lib/vrste";
 export const revalidate = 60;
 
 const STUBOVI = [
-  { br: "I", naslov: "Nacionalna izložba", opis: "Kazani, burad, alat i fotografije iz porodičnih podruma." },
-  { br: "II", naslov: "Naučno istraživanje", opis: "Terenski zapisi i etnografska građa o tradicionalnim postupcima." },
-  { br: "III", naslov: "Forum i Velika noć rakije", opis: "Susreti proizvođača, stručnjaka i javnosti." },
+  { br: "I", naslov: "Nacionalna izložba" },
+  { br: "II", naslov: "Naučno istraživanje" },
+  { br: "III", naslov: "Forum Rakija Srbije" },
+  { br: "IV", naslov: "Velika noć rakije" },
 ];
 
 const PARTNERI_LINKOVI = [
@@ -139,12 +140,9 @@ export default async function HomePage() {
           </div>
           <div className="flex flex-col gap-3.5">
             {STUBOVI.map((s) => (
-              <div key={s.br} className="flex gap-[18px] rounded-md border border-dashed border-crvena bg-lan p-5">
-                <span data-no-cyr className="font-serif text-[32px] font-extrabold leading-none text-crvena">{s.br}</span>
-                <div className="flex flex-col">
-                  <b className="font-serif text-[22px]">{s.naslov}</b>
-                  <span className="text-mastilo-meko">{s.opis}</span>
-                </div>
+              <div key={s.br} className="flex items-center gap-[18px] rounded-md border border-dashed border-crvena bg-lan p-5">
+                <span data-no-cyr className="w-8 font-serif text-[32px] font-extrabold leading-none text-crvena">{s.br}</span>
+                <b className="font-serif text-[22px]">{s.naslov}</b>
               </div>
             ))}
           </div>

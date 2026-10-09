@@ -10,46 +10,67 @@ export const metadata: Metadata = {
 };
 
 const REGIONI = [
-  { br: 1, naziv: "Bajina Bašta i Zapadna Srbija", fokus: true, opis: "Jedno od najprepoznatljivijih područja tradicionalne proizvodnje šljivovice. Bajina Bašta i Sokolski kraj čuvaju priče o porodičnim kazanima, šljivicima, generacijama proizvođača i destilerijama poznatim daleko izvan Srbije. Prvi fokus nacionalne izložbe „Rakija Srbije“." },
-  { br: 2, naziv: "Šumadija i Pomoravlje", fokus: true, opis: "Bogata voćarska tradicija, porodična proizvodnja i savremeni razvoj destilerija. Šljiva i druge voćne vrste, tradicionalni načini i nova znanja čine osnovu rakijskog identiteta. Planirana kao naredni regionalni fokus projekta (2027)." },
-  { br: 3, naziv: "Vojvodina", opis: "Posebna raznovrsnost voćnih rakija, porodičnih tradicija i proizvodnih iskustava. Panonska ravnica, voćarstvo i kulturna raznolikost oblikovali su specifičnu gastronomsku kulturu; tradicionalna znanja povezuju se sa savremenom tehnologijom i kvalitetom." },
-  { br: 4, naziv: "Beograd", opis: "Povezuje tradiciju voćarstva i proizvodnje rakije u prigradskim i seoskim područjima sa velikim gradskim tržištem, ugostiteljstvom i savremenim navikama. Posebne mogućnosti su u predstavljanju rakije kroz gastronomiju, turizam i edukaciju." },
-  { br: 5, naziv: "Mačvansko-kolubarski region", opis: "Mačva i Kolubara — područja sa dugom tradicijom voćarstva i proizvodnje rakije. Porodična domaćinstva, lokalni običaji i iskustva proizvođača važan su deo identiteta; savremene destilerije razvijaju kvalitet, plasman i turističko predstavljanje." },
-  { br: 6, naziv: "Moravičko-raški region", opis: "Objedinjuje različite prirodne uslove, voćarske tradicije i porodična znanja. Proizvodnja rakije deo je života brojnih seoskih domaćinstava, a razvoj destilerija povezuje lokalno nasleđe, kvalitet i turističku ponudu." },
-  { br: 7, naziv: "Rasinski okrug", opis: "Prepoznatljiv po razvijenoj poljoprivrednoj i gastronomskoj tradiciji. Uz vinogradarstvo i voćarstvo, proizvodnja voćnih rakija deo je nasleđa; povezivanje proizvođača, tradicionalnih znanja i savremenih standarda otvara prostor za razvoj." },
-  { br: 8, naziv: "Južna Srbija", opis: "Raznovrsne tradicije proizvodnje rakije povezane sa porodičnim domaćinstvima, lokalnim voćnim vrstama i običajima. Različiti prirodni uslovi i kulturne osobenosti daju regionu poseban identitet." },
-  { br: 9, naziv: "Istočna Srbija", opis: "Područja bogata prirodnim i kulturnim nasleđem, u kojima je proizvodnja rakije deo porodične i seoske tradicije. Lokalna znanja, voćarstvo i običaji osnova su autentičnog turističkog i gastronomskog iskustva." },
-  { br: 10, naziv: "Kosovo i Metohija", opis: "Bogato kulturno i poljoprivredno nasleđe u kojem tradicionalna proizvodnja rakije zauzima svoje mesto. Projekat teži dokumentovanju i predstavljanju tog nasleđa kroz istraživanja, svedočanstva i priče proizvođača." },
+  { br: 1, naziv: "Bajina Bašta i Zapadna Srbija", fokus: true, opis: "Zapadna Srbija jedno je od najprepoznatljivijih područja tradicionalne proizvodnje šljivovice. Bajina Bašta i Sokolski kraj čuvaju priče o porodičnim kazanima, šljivicima, generacijama proizvođača i destilerijama koje su lokalnu tradiciju učinile poznatom daleko izvan Srbije. Ovaj kraj je prvi fokus nacionalne izložbe „Rakija Srbije“." },
+  { br: 2, naziv: "Šumadija i Pomoravlje", fokus: true, opis: "Šumadija i Pomoravlje povezuju bogatu voćarsku tradiciju, porodičnu proizvodnju i savremeni razvoj destilerija. Šljiva i druge voćne vrste, tradicionalni načini proizvodnje i nova znanja čine osnovu rakijskog identiteta ovog kraja. Šumadija je planirana kao naredni regionalni fokus projekta." },
+  { br: 3, naziv: "Vojvodina", opis: "Vojvodina donosi posebnu raznovrsnost voćnih rakija, porodičnih tradicija i proizvodnih iskustava. Panonska ravnica, voćarstvo i kulturna raznolikost stanovništva oblikovali su specifičnu gastronomsku kulturu. Danas se tradicionalna znanja povezuju sa savremenom tehnologijom, kvalitetom i novim pristupima tržištu." },
+  { br: 4, naziv: "Beograd", opis: "Beogradski region povezuje tradiciju voćarstva i proizvodnje rakije u prigradskim i seoskim područjima sa velikim gradskim tržištem, ugostiteljstvom i savremenim potrošačkim navikama. Posebne mogućnosti ovog regiona nalaze se u predstavljanju rakije kroz gastronomiju, turizam, edukaciju i savremene oblike promocije." },
+  { br: 5, naziv: "Mačvansko-kolubarski region", opis: "Mačva i Kolubara pripadaju područjima sa dugom tradicijom voćarstva i proizvodnje rakije. Porodična domaćinstva, lokalni običaji i iskustva proizvođača predstavljaju važan deo identiteta ovog kraja. Savremene destilerije nastavljaju tradiciju i razvijaju nove mogućnosti za kvalitet, plasman i turističko predstavljanje." },
+  { br: 6, naziv: "Moravičko-raški region", opis: "Moravičko-raški region objedinjuje različite prirodne uslove, voćarske tradicije i porodična znanja. Proizvodnja rakije deo je života brojnih seoskih domaćinstava, a razvoj savremenih destilerija stvara mogućnosti za povezivanje lokalnog nasleđa, kvaliteta proizvoda i turističke ponude." },
+  { br: 7, naziv: "Rasinski okrug", opis: "Rasinski okrug prepoznatljiv je po razvijenoj poljoprivrednoj i gastronomskoj tradiciji. Uz vinogradarstvo i voćarstvo, proizvodnja voćnih rakija predstavlja deo nasleđa ovog kraja. Povezivanje proizvođača, tradicionalnih znanja i savremenih standarda otvara prostor za dalji razvoj rakijske proizvodnje." },
+  { br: 8, naziv: "Južna Srbija", opis: "Južna Srbija čuva raznovrsne tradicije proizvodnje rakije, povezane sa porodičnim domaćinstvima, lokalnim voćnim vrstama i običajima. Različiti prirodni uslovi i kulturne osobenosti daju ovom regionu poseban identitet, dok savremeni proizvođači doprinose razvoju kvaliteta i prepoznatljivosti lokalnih proizvoda." },
+  { br: 9, naziv: "Istočna Srbija", opis: "Istočna Srbija obuhvata područja bogata prirodnim i kulturnim nasleđem, u kojima je proizvodnja rakije deo porodične i seoske tradicije. Lokalna znanja, voćarstvo i običaji pružaju osnovu za predstavljanje rakije kao dela autentičnog turističkog i gastronomskog iskustva." },
+  { br: 10, naziv: "Kosovo i Metohija", opis: "Kosovo i Metohija imaju bogato kulturno i poljoprivredno nasleđe, u kojem tradicionalna proizvodnja rakije zauzima svoje mesto. Porodični običaji, voćarstvo i lokalna znanja predstavljaju važan deo priče o ovom regionu. Projekat teži dokumentovanju i predstavljanju tog nasleđa kroz istraživanja, svedočanstva i priče proizvođača." },
 ];
-
 
 export default function RegioniPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-plava text-white">
+      <section className="relative overflow-hidden bg-plava text-krem">
         <Slika src={LOKALNE.naslovna} fallback={SLIKE.pejzaz} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 to-plava/75" />
+        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 via-plava/85 to-plava/75" />
         <div className="container-page relative z-10 py-20">
+          <div className="mb-3 flex items-center gap-3 font-sc text-sm font-bold tracking-[0.08em] text-bela">
+            <span className="romb-marker" aria-hidden="true" />
+            rakijski krajevi
+          </div>
           <h1 className="font-serif text-4xl font-bold sm:text-5xl">Rakijski krajevi Srbije</h1>
           <p className="mt-4 max-w-2xl text-lg text-lan">
-            Deset regiona — mnoštvo tradicija — jedna priča o Srbiji.
+            Deset regiona – mnoštvo tradicija – jedna priča o Srbiji.
           </p>
         </div>
       </section>
+      <div aria-hidden="true">
+        <div className="h-1.5 bg-crvena" />
+        <div className="vez-traka" />
+      </div>
 
       <section className="container-page py-16">
         <div className="mx-auto max-w-3xl space-y-4 leading-relaxed text-mastilo-meko">
           <p>
             Rakija se proizvodi širom Srbije, ali svaki kraj ima svoje voćne
-            vrste, prirodne uslove, znanja, običaje i porodične priče — od
-            šljivika zapadne Srbije i Šumadije, preko voćnjaka Vojvodine i
-            Pomoravlja, do brdskih i planinskih područja juga i istoka.
+            vrste, prirodne uslove, znanja, običaje i porodične priče.
+          </p>
+          <p>
+            Od šljivika zapadne Srbije i Šumadije, preko voćnjaka Vojvodine i
+            Pomoravlja, do brdskih i planinskih područja južne i istočne Srbije,
+            tradicija proizvodnje rakije deo je lokalnog kulturnog i privrednog
+            identiteta.
           </p>
           <p>
             Nacionalni projekat „Rakija Srbije“ predstavlja deset rakijskih
             regiona, njihove proizvođače, porodične tradicije, karakteristične
-            proizvode i turističke potencijale, uz saradnju regionalnih udruženja
-            u okviru Saveza proizvođača rakija Srbije.
+            proizvode i turističke potencijale.
+          </p>
+          <p>
+            Posebna pažnja posvećena je regionalnim udruženjima proizvođača i
+            njihovoj saradnji u okviru Saveza proizvođača rakija Srbije.
+          </p>
+          <p>
+            Cilj je da svaki region dobije svoj prostor za predstavljanje, a da
+            zajedno pokažu bogatstvo i raznovrsnost srpske rakije.
+          </p>
+          <p className="font-serif text-xl italic text-mastilo">
+            Rakija je priča o Srbiji – ali i o svakom njenom kraju.
           </p>
         </div>
 
@@ -59,7 +80,7 @@ export default function RegioniPage() {
               <div className="relative h-40">
                 <Slika src={REGION_SLIKE[i % REGION_SLIKE.length]} fallback={SLIKE.pejzaz} alt={r.naziv} className="h-full w-full object-cover" />
                 {r.fokus && (
-                  <span className="absolute left-3 top-3 rounded-full bg-crvena px-3 py-1 text-xs font-semibold text-white">
+                  <span className="absolute left-3 top-3 rounded-full bg-crvena px-3 py-1 text-xs font-semibold text-krem">
                     Fokus projekta
                   </span>
                 )}

@@ -12,21 +12,26 @@ export const metadata: Metadata = {
 export default function NacionalnaIzlozbaPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-plava text-white">
+      <section className="relative overflow-hidden bg-plava text-krem">
         <Slika src={LOKALNE.podrumBurad} fallback={SLIKE.burad} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 to-plava/75" />
+        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 via-plava/85 to-plava/75" />
         <div className="container-page relative z-10 py-20">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-bela">
+          <div className="mb-3 flex items-center gap-3 font-sc text-sm font-bold tracking-[0.08em] text-bela">
+            <span className="romb-marker" aria-hidden="true" />
             Etnografski muzej · Beograd · 2026.
-          </p>
+          </div>
           <h1 className="max-w-3xl font-serif text-4xl font-bold leading-tight sm:text-5xl">
             Nacionalna izložba „Rakija Srbije“
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-lan">
-            Bajina Bašta i Sokolski kraj
+            Bajina Bašta i Sokolski kraj – 2026.
           </p>
         </div>
       </section>
+      <div aria-hidden="true">
+        <div className="h-1.5 bg-crvena" />
+        <div className="vez-traka" />
+      </div>
 
       <section className="container-page py-16">
         <div className="mx-auto max-w-3xl space-y-5 leading-relaxed text-mastilo-meko">
