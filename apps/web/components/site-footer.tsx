@@ -1,10 +1,9 @@
 import Link from "next/link";
-import { getLang, tFactory } from "@/lib/i18n";
+import { tFactory } from "@/lib/i18n";
 import { BrandLogo } from "./brand-logo";
 
 export async function SiteFooter() {
-  const lang = await getLang();
-  const t = tFactory(lang);
+  const t = tFactory("sr");
 
   const LINKOVI = [
     { href: "/o-projektu", label: t("nav_o_projektu") },

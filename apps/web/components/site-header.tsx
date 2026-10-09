@@ -7,7 +7,8 @@ import { BrandLogo } from "./brand-logo";
 export async function SiteHeader() {
   const lang = await getLang();
   const pismo = await getPismo();
-  const t = tFactory(lang);
+  // Meni je uvek na srpskom (ćirilica/latinica preko pisma); EN se ne koristi za navigaciju.
+  const t = tFactory("sr");
 
   // Desktop (xl+) — mala slova (SC font ih prikazuje kao kapitelke)
   const NAV = [
@@ -58,7 +59,7 @@ export async function SiteHeader() {
               href="/partneri"
               className="rounded bg-bela px-4 py-[7px] font-bold text-mastilo hover:bg-krem"
             >
-              {lang === "en" ? "become a partner" : "postanite partner"}
+              postanite partner
             </Link>
           </nav>
 
