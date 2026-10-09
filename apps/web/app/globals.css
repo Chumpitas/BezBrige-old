@@ -100,7 +100,7 @@ textarea:focus-visible {
       10px repeat-x,
     conic-gradient(from -45deg at 50% 100%, #0c4076 90deg, transparent 0) 20px 10px /
       40px 10px repeat-x,
-    #faf3e6;
+    var(--vez-bg, #f1e6d2);
 }
 /* Mali romb-marker (◆) za natpise iznad naslova */
 .romb-marker {
