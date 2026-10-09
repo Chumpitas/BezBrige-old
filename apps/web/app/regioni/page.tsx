@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SLIKE, LOKALNE } from "@/lib/slike";
+import { SLIKE, LOKALNE, REGION_SLIKE } from "@/lib/slike";
 import { Slika } from "@/components/slika";
 
 export const metadata: Metadata = {
@@ -22,7 +22,6 @@ const REGIONI = [
   { br: 10, naziv: "Kosovo i Metohija", opis: "Bogato kulturno i poljoprivredno nasleđe u kojem tradicionalna proizvodnja rakije zauzima svoje mesto. Projekat teži dokumentovanju i predstavljanju tog nasleđa kroz istraživanja, svedočanstva i priče proizvođača." },
 ];
 
-const SLIKE_ROT = [SLIKE.pejzaz, SLIKE.kazan, SLIKE.case, SLIKE.burad, LOKALNE.podrumBurad, LOKALNE.stariKazan2];
 
 export default function RegioniPage() {
   return (
@@ -58,7 +57,7 @@ export default function RegioniPage() {
           {REGIONI.map((r, i) => (
             <div key={r.br} className="overflow-hidden rounded-2xl border border-sljiva-200 bg-white shadow-sm">
               <div className="relative h-40">
-                <Slika src={SLIKE_ROT[i % SLIKE_ROT.length]} fallback={SLIKE.pejzaz} alt={r.naziv} className="h-full w-full object-cover" />
+                <Slika src={REGION_SLIKE[i % REGION_SLIKE.length]} fallback={SLIKE.pejzaz} alt={r.naziv} className="h-full w-full object-cover" />
                 {r.fokus && (
                   <span className="absolute left-3 top-3 rounded-full bg-bakar-600 px-3 py-1 text-xs font-semibold text-white">
                     Fokus projekta

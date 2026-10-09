@@ -1,11 +1,12 @@
 /**
- * Slike sajta. Prave (autentične) fotografije su u apps/web/public/slike/.
- * Sve referencirane slike koriste lokalne fajlove — bez zavisnosti od eksternog CDN-a.
+ * Slike sajta. Sve su lokalni fajlovi u apps/web/public/slike/ — bez eksternog CDN-a.
+ * - LOKALNE: autentične fotografije (naslovna, Stara Sokolova, kazani, podrum)
+ * - GEN: AI-generisane (Gemini) etno/rakija/Srbija slike, optimizovane
  */
 
-/** Lokalne (prave) fotografije — fajlovi u apps/web/public/slike/. */
+/** Autentične fotografije. */
 export const LOKALNE = {
-  naslovna: "/slike/naslovna-podrum.jpg", // otac i sin u podrumu
+  naslovna: "/slike/naslovna-podrum.jpg",
   staraSokolovaBurad: "/slike/stara-sokolova-burad.jpg",
   staraSokolovaCasa: "/slike/stara-sokolova-casa.jpg",
   stariKazan1: "/slike/stari-kazan-1.jpg",
@@ -13,26 +14,53 @@ export const LOKALNE = {
   podrumBurad: "/slike/podrum-burad.jpg",
 } as const;
 
-/**
- * Tematske slike (aliasi na prave lokalne fotografije).
- * Ranije su bile AI-generisane (CDN) — sada koriste autentične etno fotke.
- */
-export const SLIKE = {
-  sljive: LOKALNE.naslovna,
-  kazan: LOKALNE.stariKazan1,
-  case: LOKALNE.staraSokolovaCasa,
-  gala: LOKALNE.staraSokolovaCasa,
-  pejzaz: LOKALNE.naslovna,
-  burad: LOKALNE.podrumBurad,
-  summit: LOKALNE.stariKazan2,
+/** Generisane tematske slike (16:9). */
+export const GEN = {
+  sljive: "/slike/gen-sljive.jpg",
+  kazan: "/slike/gen-kazan.jpg",
+  burad: "/slike/gen-burad.jpg",
+  pejzaz: "/slike/gen-pejzaz.jpg",
+  gala: "/slike/gen-gala.jpg",
+  summit: "/slike/gen-summit.jpg",
+  muzej: "/slike/gen-muzej.jpg",
+  casa: "/slike/gen-casa.jpg",
+  porodica: "/slike/gen-porodica.jpg",
 } as const;
+
+/** Tematski aliasi (koriste ih heroji stranica). */
+export const SLIKE = {
+  sljive: GEN.sljive,
+  kazan: GEN.kazan,
+  case: GEN.casa,
+  gala: GEN.gala,
+  pejzaz: GEN.pejzaz,
+  burad: GEN.burad,
+  summit: GEN.summit,
+  muzej: GEN.muzej,
+  porodica: GEN.porodica,
+} as const;
+
+/** Slike regiona (rotira se po karticama na /regioni). */
+export const REGION_SLIKE = [
+  "/slike/gen-region-zapad.jpg",
+  "/slike/gen-region-sumadija.jpg",
+  "/slike/gen-region-vojvodina.jpg",
+  GEN.pejzaz,
+  "/slike/gen-region-zapad.jpg",
+  "/slike/gen-region-sumadija.jpg",
+  "/slike/gen-region-jug.jpg",
+  "/slike/gen-region-jug.jpg",
+  "/slike/gen-region-istok.jpg",
+  "/slike/gen-region-istok.jpg",
+];
 
 /** Rotacioni fallback za kartice/profile proizvođača bez fotografije. */
 export const FALLBACK_FOTO = [
   LOKALNE.stariKazan1,
+  GEN.burad,
   LOKALNE.podrumBurad,
+  GEN.kazan,
   LOKALNE.staraSokolovaBurad,
-  LOKALNE.stariKazan2,
 ];
 
 export function fotoZaProizvodjaca(seed: string, foto?: string | null): string {
@@ -46,18 +74,19 @@ const LOKALNA_FOTO_PROIZVODJACA: Record<string, string> = {
   "stara-sokolova": LOKALNE.staraSokolovaBurad,
 };
 
-/** Lokalna prava foto za poznatog proizvođača (ili null). */
 export function lokalnaFotoProizvodjaca(slug?: string | null): string | null {
   if (!slug) return null;
   return LOKALNA_FOTO_PROIZVODJACA[slug] ?? null;
 }
 
-/** Prava galerija (lokalne slike). */
+/** Prava galerija (mix autentičnih i generisanih lokalnih slika). */
 export const GALERIJA_PRAVE = [
-  { id: "g1", src: LOKALNE.stariKazan1, fallback: LOKALNE.stariKazan2, naslov: "Pečenje rakije", opis: "Tradicionalni kazan, zidano ložište" },
-  { id: "g2", src: LOKALNE.stariKazan2, fallback: LOKALNE.stariKazan1, naslov: "Stari bakarni kazan", opis: "Seoska kazandžinica" },
-  { id: "g3", src: LOKALNE.podrumBurad, fallback: LOKALNE.staraSokolovaBurad, naslov: "Stari podrum", opis: "Bačve i alat za proizvodnju" },
-  { id: "g4", src: LOKALNE.staraSokolovaBurad, fallback: LOKALNE.podrumBurad, naslov: "Odležavanje", opis: "Stara Sokolova — hrastove bačve" },
-  { id: "g5", src: LOKALNE.staraSokolovaCasa, fallback: LOKALNE.staraSokolovaBurad, naslov: "Degustacija", opis: "Stara Sokolova rakija" },
-  { id: "g6", src: LOKALNE.naslovna, fallback: LOKALNE.podrumBurad, naslov: "Sa kolena na koleno", opis: "Porodična tradicija" },
+  { id: "g1", src: LOKALNE.stariKazan1, fallback: GEN.kazan, naslov: "Pečenje rakije", opis: "Tradicionalni kazan, zidano ložište" },
+  { id: "g2", src: GEN.kazan, fallback: LOKALNE.stariKazan2, naslov: "Kazandžinica", opis: "Bakarni kazan i para" },
+  { id: "g3", src: LOKALNE.podrumBurad, fallback: GEN.burad, naslov: "Stari podrum", opis: "Bačve i alat za proizvodnju" },
+  { id: "g4", src: LOKALNE.staraSokolovaBurad, fallback: GEN.burad, naslov: "Odležavanje", opis: "Stara Sokolova — hrastove bačve" },
+  { id: "g5", src: GEN.sljive, fallback: GEN.pejzaz, naslov: "Šljivici", opis: "Berba u zapadnoj Srbiji" },
+  { id: "g6", src: GEN.casa, fallback: LOKALNE.staraSokolovaCasa, naslov: "Degustacija", opis: "Čaša vrhunske rakije" },
+  { id: "g7", src: GEN.muzej, fallback: GEN.burad, naslov: "Eksponati", opis: "Stari predmeti proizvodnje" },
+  { id: "g8", src: GEN.porodica, fallback: LOKALNE.naslovna, naslov: "Sa kolena na koleno", opis: "Porodična tradicija" },
 ];
