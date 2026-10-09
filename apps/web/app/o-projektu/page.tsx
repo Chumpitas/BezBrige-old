@@ -16,6 +16,8 @@ const PARTNERI = [
   "Etnografski institut SANU",
   "Filozofski fakultet Univerziteta u Beogradu — Odeljenje za etnologiju i antropologiju",
   "Udruženje somelijera Srbije",
+  "Opština Bajina Bašta",
+  "Turistička organizacija Tara-Drina, Bajina Bašta",
 ];
 
 export default function OProjektuPage() {

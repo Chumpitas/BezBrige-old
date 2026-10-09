@@ -259,8 +259,8 @@ create policy "anon salje kontakt" on kontakt_poruke
 -- ---------- Pokrovitelji / partneri / mediji ----------
 insert into partneri (naziv, tip, redosled) values
   ('Ministarstvo kulture Republike Srbije', 'pokrovitelj', 1),
-  ('Ministarstvo turizma i omladine Republike Srbije', 'pokrovitelj', 2),
-  ('Ministarstvo poljoprivrede, šumarstva i vodoprivrede Republike Srbije', 'pokrovitelj', 3),
+  ('Ministarstvo poljoprivrede, šumarstva i vodoprivrede Republike Srbije', 'pokrovitelj', 2),
+  ('Ministarstvo turizma i omladine Republike Srbije', 'pokrovitelj', 3),
   ('Privredna komora Srbije', 'partner', 10),
   ('Savez udruženja rakijaša Srbije', 'partner', 11),
   ('Udruženje somelijera Srbije', 'partner', 12),

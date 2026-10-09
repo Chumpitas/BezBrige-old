@@ -14,11 +14,16 @@ import type {
 
 export const FALLBACK_PARTNERI: Partner[] = [
   { id: "1", naziv: "Ministarstvo kulture Republike Srbije", tip: "pokrovitelj", logo_url: null, sajt: null, redosled: 1 },
-  { id: "2", naziv: "Ministarstvo turizma i omladine Republike Srbije", tip: "pokrovitelj", logo_url: null, sajt: null, redosled: 2 },
-  { id: "3", naziv: "Ministarstvo poljoprivrede, šumarstva i vodoprivrede", tip: "pokrovitelj", logo_url: null, sajt: null, redosled: 3 },
+  { id: "3", naziv: "Ministarstvo poljoprivrede, šumarstva i vodoprivrede Republike Srbije", tip: "pokrovitelj", logo_url: null, sajt: null, redosled: 2 },
+  { id: "2", naziv: "Ministarstvo turizma i omladine Republike Srbije", tip: "pokrovitelj", logo_url: null, sajt: null, redosled: 3 },
   { id: "4", naziv: "Privredna komora Srbije", tip: "partner", logo_url: null, sajt: null, redosled: 10 },
   { id: "5", naziv: "Savez udruženja rakijaša Srbije", tip: "partner", logo_url: null, sajt: null, redosled: 11 },
   { id: "6", naziv: "Udruženje somelijera Srbije", tip: "partner", logo_url: null, sajt: null, redosled: 12 },
+  { id: "14", naziv: "Etnografski muzej u Beogradu", tip: "partner", logo_url: null, sajt: null, redosled: 13 },
+  { id: "15", naziv: "Etnografski institut SANU", tip: "partner", logo_url: null, sajt: null, redosled: 14 },
+  { id: "16", naziv: "Filozofski fakultet Univerziteta u Beogradu – Odeljenje za etnologiju i antropologiju", tip: "partner", logo_url: null, sajt: null, redosled: 15 },
+  { id: "17", naziv: "Opština Bajina Bašta", tip: "partner", logo_url: null, sajt: null, redosled: 16 },
+  { id: "18", naziv: "Turistička organizacija Tara-Drina, Bajina Bašta", tip: "partner", logo_url: null, sajt: null, redosled: 17 },
   { id: "7", naziv: "Radio-televizija Srbije (RTS)", tip: "medijski_partner", logo_url: null, sajt: null, redosled: 20 },
   { id: "8", naziv: "TV Prva", tip: "medijski_partner", logo_url: null, sajt: null, redosled: 21 },
   { id: "9", naziv: "TV Euronews", tip: "medijski_partner", logo_url: null, sajt: null, redosled: 22 },

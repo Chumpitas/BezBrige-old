@@ -5,11 +5,16 @@
 -- ---------- Pokrovitelji / partneri / mediji ----------
 insert into partneri (naziv, tip, redosled) values
   ('Ministarstvo kulture Republike Srbije', 'pokrovitelj', 1),
-  ('Ministarstvo turizma i omladine Republike Srbije', 'pokrovitelj', 2),
-  ('Ministarstvo poljoprivrede, šumarstva i vodoprivrede Republike Srbije', 'pokrovitelj', 3),
+  ('Ministarstvo poljoprivrede, šumarstva i vodoprivrede Republike Srbije', 'pokrovitelj', 2),
+  ('Ministarstvo turizma i omladine Republike Srbije', 'pokrovitelj', 3),
   ('Privredna komora Srbije', 'partner', 10),
   ('Savez udruženja rakijaša Srbije', 'partner', 11),
   ('Udruženje somelijera Srbije', 'partner', 12),
+  ('Etnografski muzej u Beogradu', 'partner', 13),
+  ('Etnografski institut SANU', 'partner', 14),
+  ('Filozofski fakultet Univerziteta u Beogradu – Odeljenje za etnologiju i antropologiju', 'partner', 15),
+  ('Opština Bajina Bašta', 'partner', 16),
+  ('Turistička organizacija Tara-Drina, Bajina Bašta', 'partner', 17),
   ('Radio-televizija Srbije (RTS)', 'medijski_partner', 20),
   ('TV Prva', 'medijski_partner', 21),
   ('TV Euronews', 'medijski_partner', 22),
