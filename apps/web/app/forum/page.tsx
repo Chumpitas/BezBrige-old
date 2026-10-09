@@ -79,21 +79,31 @@ const CELINE: { oznaka: string; naslov: string; opis?: string; dogadjaji: Dogadj
 export default function ForumPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-plava text-white">
+      <section className="relative overflow-hidden bg-plava text-krem">
         <Slika src={SLIKE.forum} fallback={SLIKE.case} alt="" className="absolute inset-0 h-full w-full object-cover opacity-35" />
-        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 to-plava/75" />
+        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 via-plava/85 to-plava/75" />
         <div className="container-page relative z-10 py-20">
+          <div className="mb-3 flex items-center gap-3 font-sc text-sm font-bold tracking-[0.08em] text-bela">
+            <span className="romb-marker" aria-hidden="true" />
+            Forum Rakija Srbije
+          </div>
           <h1 className="font-serif text-4xl font-bold sm:text-5xl">Forum „Rakija Srbije“</h1>
-          <p className="mt-4 max-w-2xl text-lg text-lan">
+          <p className="mt-4 max-w-2xl font-serif text-xl italic text-bela">
             Znanje • Tradicija • Kvalitet • Identitet • Svet
           </p>
-          <p className="mt-3 max-w-2xl text-lan">
-            Centralni stručni i razvojni program projekta — 15 događaja tokom 12
-            meseci, koji okupljaju institucije, nauku, proizvođače, privredu,
-            turizam i međunarodne stručnjake.
+          <p className="mt-4 max-w-3xl text-lg text-lan">
+            Forum „Rakija Srbije“ je centralni stručni, razvojni i komunikacioni
+            program nacionalnog projekta „Rakija Srbije“. Tokom dvanaest meseci
+            planirano je 15 programskih događaja koji će okupiti predstavnike
+            institucija, naučne i akademske zajednice, proizvođače, privredu,
+            turistički sektor i međunarodne stručnjake.
           </p>
         </div>
       </section>
+      <div aria-hidden="true">
+        <div className="h-1.5 bg-crvena" />
+        <div className="vez-traka" />
+      </div>
 
       {/* Programske oblasti */}
       <section className="container-page py-16">

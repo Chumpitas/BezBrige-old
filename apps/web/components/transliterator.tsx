@@ -30,6 +30,9 @@ function lat2cir(str: string): string {
 const FOREIGN = new Set([
   "usa", "ratings", "rb", "global", "press", "kit",
   "wine", "vision", "expo", "summit",
+  // strane organizacije / brendovi (Forum, međunarodni dijalozi)
+  "inao", "bnic", "bnia", "chambre", "commerce", "paris", "camera",
+  "commercio", "italo", "serba", "confindustria", "horeca", "grappa", "de", "di",
 ]);
 
 /* Transliteriše reč po reč — strane reči (FOREIGN) ostavlja latinicom. */
