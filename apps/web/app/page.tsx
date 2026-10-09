@@ -65,7 +65,7 @@ export default async function HomePage() {
             <span className="h-2.5 w-2.5 rotate-45 bg-bela" aria-hidden="true" />
           </div>
           <h1 className="max-w-[14ch] font-serif text-[clamp(48px,7vw,96px)] font-extrabold leading-[0.98] tracking-[-0.01em]">
-            Rakija iz kućnog kazana
+            Rakija je priča o Srbiji
           </h1>
           <p className="font-serif text-[26px] italic text-bela">
             Tradicionalna proizvodnja rakije kao deo kulturnog identiteta Srbije
@@ -95,21 +95,21 @@ export default async function HomePage() {
           <div className="flex flex-col justify-center gap-5 bg-plava p-8 text-krem md:p-12">
             <div className="flex items-center gap-3 font-sc text-sm font-bold tracking-[0.08em] text-bela">
               <span className="romb-marker" aria-hidden="true" />
-              forum uz izložbu
+              Forum Rakija Srbije
             </div>
             <h2 className="font-serif text-[clamp(30px,4vw,46px)] font-extrabold leading-[1.05]">
-              15 događaja tokom izložbe
+              15 događaja tokom godine
             </h2>
             <p className="text-[18px] text-lan">
-              Predavanja, degustacije, radionice pečenja i susreti proizvođača,
-              stručnjaka i javnosti — ceo program uz nacionalnu izložbu.
+              Forum „Rakija Srbije“ je centralni stručni, razvojni i komunikacioni
+              program nacionalnog projekta „Rakija Srbije“. Tokom dvanaest meseci
+              planirano je 15 programskih događaja koji će okupiti predstavnike
+              institucija, naučne i akademske zajednice, proizvođače, privredu,
+              turistički sektor i međunarodne stručnjake.
             </p>
-            <div className="flex flex-wrap gap-3 pt-1">
-              <Link href="/forum" className="rounded bg-crvena px-[22px] py-3 font-bold text-krem hover:bg-[#a12932]">
+            <div className="pt-1">
+              <Link href="/forum" className="inline-block rounded bg-crvena px-[22px] py-3 font-bold text-krem hover:bg-[#a12932]">
                 Program Foruma →
-              </Link>
-              <Link href="/program" className="rounded border-2 border-krem px-5 py-3 font-bold text-krem hover:bg-krem/10">
-                Ceo program
               </Link>
             </div>
           </div>
