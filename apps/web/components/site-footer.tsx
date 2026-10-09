@@ -25,6 +25,7 @@ export async function SiteFooter() {
 
   return (
     <footer className="mt-20 bg-plava text-lan-tamni">
+      <div className="vez-traka" aria-hidden="true" />
       <div className="zupci-crvena" aria-hidden="true" />
       <div className="container-page py-10">
         <div className="flex flex-wrap items-start justify-between gap-8">

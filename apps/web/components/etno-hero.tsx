@@ -41,7 +41,11 @@ export function EtnoHero({
           {opis && <p className="max-w-2xl text-lg text-lan">{opis}</p>}
         </div>
       </section>
-      <div className="zupci-crvena" aria-hidden="true" />
+      {/* vez traka ispod hero-a (lanac rombova) */}
+      <div aria-hidden="true">
+        <div className="h-1.5 bg-crvena" />
+        <div className="vez-traka" />
+      </div>
     </>
   );
 }
