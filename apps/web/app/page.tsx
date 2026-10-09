@@ -86,40 +86,41 @@ export default async function HomePage() {
       </section>
       <div className="zupci-plava" aria-hidden="true" />
 
-      {/* b) FEATURE — Forum / događaji (hero slika sa tekstom preko) */}
-      <section className="relative overflow-hidden">
-        <div className="relative min-h-[440px] md:min-h-[540px]">
-          <Slika src={SLIKE.forum} fallback={SLIKE.vatra} alt="" className="absolute inset-0 h-full w-full object-cover" />
-          <div
-            className="absolute inset-0"
-            aria-hidden="true"
-            style={{ background: "linear-gradient(100deg, rgba(12,64,118,0.95) 0%, rgba(12,64,118,0.82) 42%, rgba(43,29,20,0.42) 100%)" }}
-          />
-          <div className="container-page relative z-10 flex min-h-[440px] flex-col justify-center gap-5 py-16 text-krem md:min-h-[540px]">
+      {/* b) FEATURE — Forum / događaji (split: slika + plavi panel, u kontejneru) */}
+      <section className="container-page py-16 md:py-20">
+        <div className="grid overflow-hidden rounded-md border-2 border-mastilo md:grid-cols-2">
+          <div className="relative min-h-[260px] bg-lan-tamni md:min-h-[440px]">
+            <Slika src={SLIKE.forum} fallback={SLIKE.vatra} alt="Forum uz izložbu" className="absolute inset-0 h-full w-full object-cover" />
+          </div>
+          <div className="flex flex-col justify-center gap-5 bg-plava p-8 text-krem md:p-12">
             <div className="flex items-center gap-3 font-sc text-sm font-bold tracking-[0.08em] text-bela">
               <span className="romb-marker" aria-hidden="true" />
               forum uz izložbu
             </div>
-            <h2 className="max-w-[18ch] font-serif text-[clamp(38px,5.5vw,68px)] font-extrabold leading-[1.0]">
+            <h2 className="font-serif text-[clamp(30px,4vw,46px)] font-extrabold leading-[1.05]">
               15 događaja tokom izložbe
             </h2>
-            <p className="max-w-[46ch] text-[19px] text-lan">
+            <p className="text-[18px] text-lan">
               Predavanja, degustacije, radionice pečenja i susreti proizvođača,
               stručnjaka i javnosti — ceo program uz nacionalnu izložbu.
             </p>
             <div className="flex flex-wrap gap-3 pt-1">
-              <Link href="/forum" className="rounded bg-crvena px-[26px] py-[14px] font-bold text-krem hover:bg-[#a12932]">
+              <Link href="/forum" className="rounded bg-crvena px-[22px] py-3 font-bold text-krem hover:bg-[#a12932]">
                 Program Foruma →
               </Link>
-              <Link href="/program" className="rounded border-2 border-krem px-6 py-3 font-bold text-krem hover:bg-krem/10">
+              <Link href="/program" className="rounded border-2 border-krem px-5 py-3 font-bold text-krem hover:bg-krem/10">
                 Ceo program
               </Link>
             </div>
           </div>
         </div>
-        <div className="h-1.5 bg-crvena" aria-hidden="true" />
-        <div className="vez-traka" aria-hidden="true" />
       </section>
+
+      {/* c) TRAKA — vez (lanac rombova) */}
+      <div aria-hidden="true">
+        <div className="h-1.5 bg-crvena" />
+        <div className="vez-traka" />
+      </div>
 
       {/* d) O PROJEKTU */}
       <section className="bg-lan-svetli">
