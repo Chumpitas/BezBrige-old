@@ -92,6 +92,25 @@ export const FALLBACK_FOTO = [
   LOKALNE.staraSokolovaBurad,
 ];
 
+/** Slike za vesti (rotacija kad vest nema svoj cover). */
+export const VESTI_SLIKE = [
+  GEN.forum,
+  GEN.izlozba,
+  GEN.muzej,
+  GEN.nagrade,
+  GEN.berba,
+  GEN.tara,
+  GEN.velikaNoc,
+  GEN.tocenje,
+];
+
+export function slikaZaVest(seed: string, cover?: string | null): string {
+  if (cover) return cover;
+  let n = 0;
+  for (let i = 0; i < seed.length; i++) n = (n + seed.charCodeAt(i)) % VESTI_SLIKE.length;
+  return VESTI_SLIKE[n];
+}
+
 export function fotoZaProizvodjaca(seed: string, foto?: string | null): string {
   if (foto) return foto;
   let n = 0;

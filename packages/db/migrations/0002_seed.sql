@@ -46,7 +46,7 @@ values
    'srednja',
    'Vekovna tradicija familije Ilić u proizvodnji voćnih rakija vrhunskog kvaliteta po tradicionalnoj tehnologiji.',
    true, false),
-  ('BB Kleka', 'bb-kleka', null, null, null, null, 'Bajina Bašta', 'Sokolski kraj',
+  ('BB Klekovača', 'bb-kleka', null, null, null, null, 'Bajina Bašta', 'Sokolski kraj',
    'srednja',
    'Prepoznatljiva klekovača iz Bajine Bašte.',
    true, false)

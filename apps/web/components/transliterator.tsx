@@ -26,6 +26,19 @@ function lat2cir(str: string): string {
   return out;
 }
 
+/* Strani nazivi/brendovi koji ostaju latinicom (match po celoj reči, bez obzira na velika/mala slova). */
+const FOREIGN = new Set([
+  "usa", "ratings", "rb", "global", "press", "kit",
+  "wine", "vision", "expo", "summit",
+]);
+
+/* Transliteriše reč po reč — strane reči (FOREIGN) ostavlja latinicom. */
+function smartCir(str: string): string {
+  return str.replace(/[A-Za-zČĆŽŠĐčćžšđ]+/g, (w) =>
+    FOREIGN.has(w.toLowerCase()) ? w : lat2cir(w),
+  );
+}
+
 const SKIP = new Set([
   "SCRIPT", "STYLE", "CODE", "PRE", "KBD", "SAMP", "TEXTAREA", "SELECT", "NOSCRIPT",
 ]);
@@ -47,7 +60,7 @@ function convText(t: Text) {
   // Preskoči URL-ove i mejlove da se ne pokvare.
   if (v.indexOf("://") >= 0 || v.indexOf("@") >= 0 || v.indexOf("www.") >= 0) return;
   if (skipEl(t.parentElement)) return;
-  const c = lat2cir(v);
+  const c = smartCir(v);
   if (c !== v) t.nodeValue = c;
 }
 
@@ -67,7 +80,7 @@ function walk(root: Node) {
     if (skipEl(el.parentElement)) return;
     const p = el.getAttribute("placeholder");
     if (p) {
-      const c = lat2cir(p);
+      const c = smartCir(p);
       if (c !== p) el.setAttribute("placeholder", c);
     }
   });

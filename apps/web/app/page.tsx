@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getProizvodjaci, getVesti } from "@/lib/data";
 import { JsonLd } from "@/components/json-ld";
 import { SITE_URL } from "@/lib/site";
-import { SLIKE, LOKALNE, fotoZaProizvodjaca, lokalnaFotoProizvodjaca } from "@/lib/slike";
+import { SLIKE, LOKALNE, fotoZaProizvodjaca, lokalnaFotoProizvodjaca, slikaZaVest } from "@/lib/slike";
 import { Slika } from "@/components/slika";
 import { vrsteLabel } from "@/lib/vrste";
 
@@ -86,36 +86,47 @@ export default async function HomePage() {
       </section>
       <div className="zupci-plava" aria-hidden="true" />
 
-      {/* b) KOLAŽ */}
-      <section className="container-page pb-20 pt-14">
-        <div className="grid gap-4" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))" }}>
-          <div className="relative min-h-[480px] border-2 border-mastilo bg-lan-tamni [grid-column:span_2]" style={{ outline: "2px dashed #B8303A", outlineOffset: "-10px" }}>
-            <Slika src={LOKALNE.stariKazan2} fallback={SLIKE.kazan} alt="Domaćin uz kazan" className="h-full w-full object-cover" />
-          </div>
-          <div className="grid grid-cols-2 grid-rows-1 gap-4 sm:grid-cols-1 sm:grid-rows-2">
-            <div className="relative min-h-[180px] border-2 border-mastilo bg-lan-tamni">
-              <Slika src={LOKALNE.podrumBurad} fallback={SLIKE.burad} alt="Burad u podrumu" className="h-full w-full object-cover" />
+      {/* b) FEATURE — Forum / događaji (hero slika sa tekstom preko) */}
+      <section className="relative overflow-hidden">
+        <div className="relative min-h-[440px] md:min-h-[540px]">
+          <Slika src={SLIKE.forum} fallback={SLIKE.vatra} alt="" className="absolute inset-0 h-full w-full object-cover" />
+          <div
+            className="absolute inset-0"
+            aria-hidden="true"
+            style={{ background: "linear-gradient(100deg, rgba(12,64,118,0.95) 0%, rgba(12,64,118,0.82) 42%, rgba(43,29,20,0.42) 100%)" }}
+          />
+          <div className="container-page relative z-10 flex min-h-[440px] flex-col justify-center gap-5 py-16 text-krem md:min-h-[540px]">
+            <div className="flex items-center gap-3 font-sc text-sm font-bold tracking-[0.08em] text-bela">
+              <span className="romb-marker" aria-hidden="true" />
+              forum uz izložbu
             </div>
-            <div className="flex flex-col justify-center gap-1.5 border-2 border-mastilo bg-plava p-5 text-lan sm:p-[22px]">
-              <span className="font-serif text-[clamp(28px,8vw,40px)] font-extrabold leading-none">15 događaja</span>
-              <span className="text-[15px] sm:text-base">Forum uz izložbu: predavanja, degustacije, radionice pečenja.</span>
+            <h2 className="max-w-[18ch] font-serif text-[clamp(38px,5.5vw,68px)] font-extrabold leading-[1.0]">
+              15 događaja tokom izložbe
+            </h2>
+            <p className="max-w-[46ch] text-[19px] text-lan">
+              Predavanja, degustacije, radionice pečenja i susreti proizvođača,
+              stručnjaka i javnosti — ceo program uz nacionalnu izložbu.
+            </p>
+            <div className="flex flex-wrap gap-3 pt-1">
+              <Link href="/forum" className="rounded bg-crvena px-[26px] py-[14px] font-bold text-krem hover:bg-[#a12932]">
+                Program Foruma →
+              </Link>
+              <Link href="/program" className="rounded border-2 border-krem px-6 py-3 font-bold text-krem hover:bg-krem/10">
+                Ceo program
+              </Link>
             </div>
           </div>
         </div>
+        <div className="h-1.5 bg-crvena" aria-hidden="true" />
+        <div className="vez-traka" aria-hidden="true" />
       </section>
-
-      {/* c) TRAKA — vez (lanac rombova) */}
-      <div aria-hidden="true">
-        <div className="h-1.5 bg-crvena" />
-        <div className="vez-traka" />
-      </div>
 
       {/* d) O PROJEKTU */}
       <section className="bg-lan-svetli">
         <div className="container-page grid items-center gap-14 py-[88px]" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 320px), 1fr))" }}>
           <div className="flex flex-col gap-[18px]">
             <span className="font-sc font-bold tracking-[0.08em] text-crvena">o projektu</span>
-            <h2 className="font-serif text-[46px] font-extrabold leading-[1.05]">Zanat koji pamti kraj iz kog dolazi</h2>
+            <h2 className="font-serif text-[46px] font-extrabold leading-[1.05]">Porodična proizvodnja koja se prenosi generacijama</h2>
             <p className="text-[19px] text-mastilo-meko">
               „Rakija Srbije“ je nacionalni projekat koji beleži porodičnu proizvodnju rakije — od berbe
               šljive do odležavanja u buradi. Svaka izložba posvećena je jednom kraju i ljudima koji u
@@ -125,7 +136,7 @@ export default async function HomePage() {
           <div className="flex flex-col gap-3.5">
             {STUBOVI.map((s) => (
               <div key={s.br} className="flex gap-[18px] rounded-md border border-dashed border-crvena bg-lan p-5">
-                <span className="font-serif text-[32px] font-extrabold leading-none text-crvena">{s.br}</span>
+                <span data-no-cyr className="font-serif text-[32px] font-extrabold leading-none text-crvena">{s.br}</span>
                 <div className="flex flex-col">
                   <b className="font-serif text-[22px]">{s.naslov}</b>
                   <span className="text-mastilo-meko">{s.opis}</span>
@@ -208,9 +219,17 @@ export default async function HomePage() {
         </div>
         <div className="grid gap-5" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}>
           {poslednjeVesti.map((v) => (
-            <Link key={v.id} href={`/vesti/${v.slug}`} className="flex flex-col gap-2 border-t-[3px] border-mastilo pt-4">
+            <Link key={v.id} href={`/vesti/${v.slug}`} className="group flex flex-col gap-3">
+              <div className="aspect-[16/9] overflow-hidden rounded-md border-2 border-mastilo bg-lan-tamni">
+                <Slika
+                  src={slikaZaVest(v.slug ?? v.id, v.cover_url)}
+                  fallback={SLIKE.izlozba}
+                  alt={v.naslov}
+                  className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                />
+              </div>
               <span className="font-sc font-bold text-crvena">{datum(v.objavljeno_at)}</span>
-              <span className="font-serif text-[22px] font-bold leading-[1.2]">{v.naslov}</span>
+              <span className="font-serif text-[22px] font-bold leading-[1.2] group-hover:text-crvena">{v.naslov}</span>
             </Link>
           ))}
         </div>
