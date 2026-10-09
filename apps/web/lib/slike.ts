@@ -36,6 +36,7 @@ export const GEN = {
   izlozba: "/slike/gen-izlozba.jpg",
   tara: "/slike/gen-tara.jpg",
   nazdravlje: "/slike/gen-nazdravlje.jpg",
+  istrazivanje: "/slike/gen-istrazivanje.jpg",
 } as const;
 
 /** Tematski aliasi (koriste ih heroji stranica). */
@@ -104,8 +105,15 @@ export const VESTI_SLIKE = [
   GEN.tocenje,
 ];
 
+/** Prikladna slika po konkretnoj vesti (slug). */
+const VESTI_SLUG_SLIKA: Record<string, string> = {
+  "istrazivanje-tradicionalne-proizvodnje-sljivovice": GEN.istrazivanje,
+  "najava-izlozbe-rakija-kulturno-dobro-srbije": GEN.izlozba,
+};
+
 export function slikaZaVest(seed: string, cover?: string | null): string {
   if (cover) return cover;
+  if (VESTI_SLUG_SLIKA[seed]) return VESTI_SLUG_SLIKA[seed];
   let n = 0;
   for (let i = 0; i < seed.length; i++) n = (n + seed.charCodeAt(i)) % VESTI_SLIKE.length;
   return VESTI_SLIKE[n];

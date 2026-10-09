@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 };
 
 const OBLASTI = [
-  { n: "Kultura i identitet", o: "Tradicija, običaji, porodica, etnologija, antropologija i kulturno nasleđe." },
-  { n: "Proizvodnja i kvalitet", o: "Voćarstvo, tehnologija, standardizacija, geografsko poreklo i savremena znanja." },
-  { n: "Turizam", o: "Rakijske rute, destilerije, gastronomija, lokalni razvoj i turistički doživljaji." },
-  { n: "Privreda i međunarodno tržište", o: "Brendiranje, distribucija, izvoz i internacionalizacija." },
-  { n: "Međunarodna iskustva", o: "Modeli zemalja koje su svoja tradicionalna pića uspešno predstavile svetu." },
+  { n: "Kultura i identitet", o: "Tradicija, običaji, porodica, etnologija, antropologija i kulturno nasleđe.", slika: SLIKE.muzej },
+  { n: "Proizvodnja i kvalitet", o: "Voćarstvo, tehnologija, standardizacija, geografsko poreklo i savremena znanja.", slika: SLIKE.vatra },
+  { n: "Turizam", o: "Rakijske rute, destilerije, gastronomija, lokalni razvoj i turistički doživljaji.", slika: SLIKE.tara },
+  { n: "Privreda i međunarodno tržište", o: "Brendiranje, distribucija, izvoz i internacionalizacija.", slika: SLIKE.nagrade },
+  { n: "Međunarodna iskustva", o: "Modeli zemalja koje su svoja tradicionalna pića uspešno predstavile svetu.", slika: SLIKE.gala },
 ];
 
 interface Dogadjaj {
@@ -26,10 +26,11 @@ interface Dogadjaj {
   kickoff?: boolean;
 }
 
-const CELINE: { oznaka: string; naslov: string; opis?: string; dogadjaji: Dogadjaj[] }[] = [
+const CELINE: { oznaka: string; naslov: string; opis?: string; slika: string; dogadjaji: Dogadjaj[] }[] = [
   {
     oznaka: "A",
     naslov: "Privredna komora Srbije — nacionalni i međunarodni deo",
+    slika: SLIKE.summit,
     dogadjaji: [
       {
         br: 1,
@@ -48,6 +49,7 @@ const CELINE: { oznaka: string; naslov: string; opis?: string; dogadjaji: Dogadj
   {
     oznaka: "B",
     naslov: "Međunarodni program „Svetska iskustva — srpska rakija“",
+    slika: SLIKE.gala,
     dogadjaji: [
       { br: 6, naslov: "Francuski dijalog", podnaslov: "Od porekla do svetskog brenda: iskustva konjaka i armanjaka", opis: "Geografsko poreklo, apelacije, standardi, kontrola kvaliteta, međuprofesionalne organizacije, promocija i izvoz.", ucesnici: "Ambasada Francuske, PKS, INAO, BNIC, BNIA, Chambre de Commerce de Paris." },
       { br: 7, naslov: "Italijanski dijalog", podnaslov: "Tradicionalni proizvod kao deo gastronomije, turizma i identiteta", opis: "Grappa i drugi tradicionalni proizvodi: poreklo, dizajn, premiumizacija, porodični proizvođači, gastronomija, turizam i međunarodni marketing.", ucesnici: "Ambasada Italije, PKS, Camera di Commercio Italo-Serba, Confindustria." },
@@ -58,6 +60,7 @@ const CELINE: { oznaka: string; naslov: string; opis?: string; dogadjaji: Dogadj
     oznaka: "C",
     naslov: "Etnografski muzej — „Rakija i njeni krajevi“",
     opis: "Manje državne politike, više ljudi, porodica, krajeva, istraživanja i priča.",
+    slika: SLIKE.muzej,
     dogadjaji: [
       { br: 9, naslov: "Bajina Bašta — Sokolski kraj", podnaslov: "Tradicija najduže porodične proizvodnje rakije", opis: "Istorija, porodice, običaji, šljiva, kulturni identitet kraja.", ucesnici: "Predsednik opštine Bajina Bašta, Radisav Bogdanović (Stara Sokolova), dr Nevena Milanović Minić." },
       { br: 10, naslov: "Bajina Bašta — Veliki majstori rakije", podnaslov: "Porodice koje su stvarale tradiciju", opis: "Porodične priče: generacije, znanje, nasleđe, razvoj. BB Klekovača, Stara Sokolova, Stara Pesma i druge destilerije.", ucesnici: "Direktor TO Tara-Drina, prvi ljudi destilerija, dr Bogdan Dražeta." },
@@ -69,6 +72,7 @@ const CELINE: { oznaka: string; naslov: string; opis?: string; dogadjaji: Dogadj
   {
     oznaka: "D",
     naslov: "Rakija u budućnosti — završni događaji",
+    slika: SLIKE.porodica,
     dogadjaji: [
       { br: 14, naslov: "Porodica i generacije", podnaslov: "Ko će praviti srpsku rakiju 2050. godine?", opis: "Prenošenje znanja, porodično preduzetništvo, profesionalizacija, odnos tradicije i nove generacije.", ucesnici: "PKS, Savez proizvođača rakija, osnivači destilerija i njihovi naslednici." },
       { br: 15, naslov: "Završni forum", podnaslov: "Rakija Srbije 2030: od nacionalnog proizvoda do nacionalnog brenda", opis: "Iz završnog panela nastaje „Deklaracija Rakija Srbije 2030“ sa prioritetima: kvalitet, poreklo, nauka, turizam, izvoz, obrazovanje, kultura, digitalizacija, međunarodna promocija i održivost." },
@@ -110,9 +114,14 @@ export default function ForumPage() {
         <h2 className="font-serif text-2xl font-bold text-mastilo">Pet programskih oblasti</h2>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {OBLASTI.map((o) => (
-            <div key={o.n} className="rounded-md border border-mastilo/20 bg-lan-svetli p-5">
-              <h3 className="font-semibold text-crvena">{o.n}</h3>
-              <p className="mt-1 text-sm text-mastilo-meko">{o.o}</p>
+            <div key={o.n} className="group overflow-hidden rounded-md border border-mastilo/20 bg-lan-svetli">
+              <div className="aspect-[16/9] overflow-hidden bg-lan-tamni">
+                <Slika src={o.slika} fallback={SLIKE.pejzaz} alt={o.n} className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.04]" />
+              </div>
+              <div className="p-5">
+                <h3 className="font-serif text-lg font-bold text-crvena">{o.n}</h3>
+                <p className="mt-1 text-sm text-mastilo-meko">{o.o}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -122,13 +131,19 @@ export default function ForumPage() {
         <div className="mt-8 space-y-12">
           {CELINE.map((c) => (
             <section key={c.oznaka}>
-              <div className="flex items-baseline gap-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-plava font-serif text-sm font-bold text-bela">
-                  {c.oznaka}
-                </span>
-                <div>
-                  <h3 className="font-serif text-xl font-bold text-mastilo">{c.naslov}</h3>
-                  {c.opis && <p className="text-sm text-mastilo-meko">{c.opis}</p>}
+              <div className="relative overflow-hidden rounded-md border-2 border-mastilo">
+                <div className="relative min-h-[130px]">
+                  <Slika src={c.slika} fallback={SLIKE.pejzaz} alt="" className="absolute inset-0 h-full w-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-plava/95 via-plava/85 to-plava/55" aria-hidden="true" />
+                  <div className="relative z-10 flex min-h-[130px] items-center gap-4 px-6 py-5 text-krem">
+                    <span data-no-cyr className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-crvena font-serif text-lg font-bold text-krem">
+                      {c.oznaka}
+                    </span>
+                    <div>
+                      <h3 className="font-serif text-xl font-bold leading-tight sm:text-2xl">{c.naslov}</h3>
+                      {c.opis && <p className="mt-1 text-sm text-lan">{c.opis}</p>}
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="mt-5 space-y-4">
