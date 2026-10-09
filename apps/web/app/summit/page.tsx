@@ -40,11 +40,15 @@ export default async function SummitPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-plava text-white">
+      <section className="relative overflow-hidden bg-plava text-krem">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={SLIKE.summit} alt="" className="absolute inset-0 h-full w-full object-cover opacity-35" />
-        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 to-plava/75" />
+        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 via-plava/85 to-plava/75" />
         <div className="container-page relative z-10 py-16">
+          <div className="mb-3 flex items-center gap-3 font-sc text-sm font-bold tracking-[0.08em] text-bela">
+            <span className="romb-marker" aria-hidden="true" />
+            susreti · paneli · degustacije
+          </div>
           <h1 className="font-serif text-4xl font-bold sm:text-5xl">Rakija Summit</h1>
           <p className="mt-4 max-w-2xl text-lg text-lan">
             Centralno mesto susreta proizvođača, stručnjaka, medija i šire
@@ -52,10 +56,14 @@ export default async function SummitPage() {
           </p>
         </div>
       </section>
+      <div aria-hidden="true">
+        <div className="h-1.5 bg-crvena" />
+        <div className="vez-traka" />
+      </div>
 
       <section className="container-page py-16">
         {paneli.length === 0 ? (
-          <p className="rounded-xl border border-mastilo/20 bg-lan-svetli px-5 py-10 text-center text-mastilo-meko">
+          <p className="rounded-md border border-mastilo/20 bg-lan-svetli px-5 py-10 text-center text-mastilo-meko">
             Program panela će uskoro biti objavljen.
           </p>
         ) : (

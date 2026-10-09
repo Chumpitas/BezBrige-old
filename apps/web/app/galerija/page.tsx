@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getGalerija } from "@/lib/data";
 import { videoEmbedUrl } from "@/lib/embed";
-import { GALERIJA_PRAVE } from "@/lib/slike";
+import { GALERIJA_PRAVE, SLIKE } from "@/lib/slike";
 import { Slika } from "@/components/slika";
+import { EtnoHero } from "@/components/etno-hero";
 
 export const metadata: Metadata = {
   title: "Galerija",
@@ -15,12 +16,14 @@ export default async function GalerijaPage() {
   const mediji = await getGalerija();
 
   return (
-    <div className="container-page py-16">
-      <h1 className="font-serif text-4xl font-bold text-mastilo">Galerija</h1>
-      <p className="mt-3 max-w-2xl text-mastilo-meko">
-        Slike i video zapisi sa izložbe, panela i iz destilerija.
-      </p>
-
+    <>
+      <EtnoHero
+        slika={SLIKE.muzej}
+        natpis="slike i video"
+        naslov="Galerija"
+        opis="Slike i video zapisi sa izložbe, panela i iz destilerija."
+      />
+      <div className="container-page py-16">
       {/* Poziv na akciju */}
       <div className="mt-8 flex flex-col items-start gap-4 rounded-md bg-crvena p-6 text-white sm:flex-row sm:items-center sm:justify-between">
         <div>
@@ -105,6 +108,7 @@ export default async function GalerijaPage() {
           })}
         </div>
       )}
-    </div>
+      </div>
+    </>
   );
 }

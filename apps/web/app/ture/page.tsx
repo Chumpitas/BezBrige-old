@@ -13,9 +13,9 @@ export const metadata: Metadata = {
 export const revalidate = 60;
 
 const KORACI = [
-  { ikona: "🚐", naslov: "Obilazak destilerija", opis: "Posetite porodične destilerije i upoznajte majstore rakije." },
-  { ikona: "🔥", naslov: "Proces proizvodnje", opis: "Pogledajte pečenje rakije na tradicionalnom kazanu." },
-  { ikona: "🥃", naslov: "Degustacija", opis: "Probajte vrhunske rakije uz uparivanje sa domaćom hranom." },
+  { ikona: "🚐", naslov: "Obilazak destilerija", opis: "Posetite porodične destilerije i upoznajte majstore rakije.", slika: SLIKE.majstor },
+  { ikona: "🔥", naslov: "Proces proizvodnje", opis: "Pogledajte pečenje rakije na tradicionalnom kazanu.", slika: SLIKE.vatra },
+  { ikona: "🥃", naslov: "Degustacija", opis: "Probajte vrhunske rakije uz uparivanje sa domaćom hranom.", slika: SLIKE.nazdravlje },
 ];
 
 export default async function TurePage() {
@@ -24,13 +24,14 @@ export default async function TurePage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-plava text-white">
+      <section className="relative overflow-hidden bg-plava text-krem">
         <Slika src={LOKALNE.podrumBurad} fallback={SLIKE.burad} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 to-plava/75" />
+        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 via-plava/85 to-plava/75" />
         <div className="container-page relative z-10 py-20">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-bela">
+          <div className="mb-3 flex items-center gap-3 font-sc text-sm font-bold tracking-[0.08em] text-bela">
+            <span className="romb-marker" aria-hidden="true" />
             Turistički doživljaj · Bajina Bašta i Zapadna Srbija
-          </p>
+          </div>
           <h1 className="max-w-3xl font-serif text-4xl font-bold sm:text-5xl">
             Degustacijske ture rakije
           </h1>
@@ -41,14 +42,23 @@ export default async function TurePage() {
           </p>
         </div>
       </section>
+      <div aria-hidden="true">
+        <div className="h-1.5 bg-crvena" />
+        <div className="vez-traka" />
+      </div>
 
       <section className="container-page py-16">
         <div className="grid gap-6 sm:grid-cols-3">
           {KORACI.map((k) => (
-            <div key={k.naslov} className="rounded-md border border-mastilo/20 bg-lan-svetli p-6">
-              <div className="text-3xl">{k.ikona}</div>
-              <h3 className="mt-3 font-semibold text-mastilo">{k.naslov}</h3>
-              <p className="mt-1 text-sm text-mastilo-meko">{k.opis}</p>
+            <div key={k.naslov} className="overflow-hidden rounded-md border-2 border-mastilo bg-lan-svetli">
+              <div className="aspect-[16/9] overflow-hidden bg-lan-tamni">
+                <Slika src={k.slika} fallback={SLIKE.pejzaz} alt={k.naslov} className="h-full w-full object-cover" />
+              </div>
+              <div className="p-6">
+                <div className="text-2xl">{k.ikona}</div>
+                <h3 className="mt-2 font-serif text-lg font-bold text-mastilo">{k.naslov}</h3>
+                <p className="mt-1 text-sm text-mastilo-meko">{k.opis}</p>
+              </div>
             </div>
           ))}
         </div>
