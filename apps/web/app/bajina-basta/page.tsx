@@ -10,32 +10,37 @@ export const metadata: Metadata = {
 };
 
 const DESTILERIJE = [
-  { slug: "bb-kleka", naziv: "BB Klekovača", oznaka: "Najstariji proizvođač rakije u Srbiji" },
-  { slug: "stara-sokolova", naziv: "Stara Sokolova", oznaka: "Svetski brend i najveći izvoznik" },
-  { slug: "stara-pesma", naziv: "Stara Pesma", oznaka: "Vrhunska porodična rakija" },
+  { slug: "bb-kleka", naziv: "BB Klekovača", oznaka: "Najstariji proizvođač rakije u Srbiji", slika: LOKALNE.podrumBurad },
+  { slug: "stara-sokolova", naziv: "Stara Sokolova", oznaka: "Svetski brend i najveći izvoznik", slika: LOKALNE.staraSokolovaBurad },
+  { slug: "stara-pesma", naziv: "Stara Pesma", oznaka: "Vrhunska porodična rakija", slika: SLIKE.kazan },
 ];
 
 export default function BajinaBastaPage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative overflow-hidden bg-plava text-white">
+      <section className="relative overflow-hidden bg-plava text-krem">
         <Slika
           src={LOKALNE.naslovna}
           fallback={SLIKE.pejzaz}
           alt="Bajina Bašta"
           className="absolute inset-0 h-full w-full object-cover opacity-45"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 via-plava/75 to-plava/75" />
+        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 via-plava/85 to-plava/75" />
         <div className="container-page relative z-10 py-24">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-bela">
+          <div className="mb-3 flex items-center gap-3 font-sc text-sm font-bold tracking-[0.08em] text-bela">
+            <span className="romb-marker" aria-hidden="true" />
             Sokolski kraj · Zapadna Srbija
-          </p>
+          </div>
           <h1 className="max-w-3xl font-serif text-4xl font-bold leading-tight sm:text-5xl">
             Bajina Bašta — kraj najstarije tradicije rakije
           </h1>
         </div>
       </section>
+      <div aria-hidden="true">
+        <div className="h-1.5 bg-crvena" />
+        <div className="vez-traka" />
+      </div>
 
       {/* TEKST */}
       <section className="container-page py-16">
@@ -47,6 +52,14 @@ export default function BajinaBastaPage() {
             porodice koja ne proizvodi svoju rakiju. To je postalo deo
             najznačajnijih porodičnih i kulturnih vrednosti.
           </p>
+
+          {/* Slika kraja */}
+          <figure className="mt-8 overflow-hidden rounded-md border-2 border-mastilo">
+            <Slika src={SLIKE.tara} fallback={SLIKE.pejzaz} alt="Tara i dolina Drine kod Bajine Bašte" className="h-64 w-full object-cover sm:h-80" />
+            <figcaption className="border-t-2 border-mastilo bg-lan-svetli px-4 py-2 text-sm text-mastilo-meko">
+              Tara i dolina Drine — Sokolski kraj, zavičaj šljive i rakije.
+            </figcaption>
+          </figure>
 
           {/* UNESCO callout */}
           <div className="mt-8 rounded-md border border-crvena bg-lan-svetli p-6">
@@ -102,10 +115,15 @@ export default function BajinaBastaPage() {
               <Link
                 key={d.slug}
                 href={`/proizvodjaci/${d.slug}`}
-                className="rounded-md border border-mastilo/20 bg-lan-svetli p-5 text-center transition hover:border-crvena"
+                className="group overflow-hidden rounded-md border-2 border-mastilo bg-lan-svetli text-center transition hover:-translate-y-0.5"
               >
-                <p className="font-serif text-lg font-bold text-mastilo">{d.naziv}</p>
-                <p className="mt-1 text-sm text-mastilo-meko">{d.oznaka}</p>
+                <div className="aspect-[4/3] overflow-hidden border-b-2 border-mastilo bg-lan-tamni">
+                  <Slika src={d.slika} fallback={SLIKE.burad} alt={d.naziv} className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.04]" />
+                </div>
+                <div className="p-5">
+                  <p className="font-serif text-lg font-bold text-mastilo">{d.naziv}</p>
+                  <p className="mt-1 text-sm text-mastilo-meko">{d.oznaka}</p>
+                </div>
               </Link>
             ))}
           </div>

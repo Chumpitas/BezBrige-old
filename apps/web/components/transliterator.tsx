@@ -33,6 +33,8 @@ const FOREIGN = new Set([
   // strane organizacije / brendovi (Forum, međunarodni dijalozi)
   "inao", "bnic", "bnia", "chambre", "commerce", "paris", "camera",
   "commercio", "italo", "serba", "confindustria", "horeca", "grappa", "de", "di",
+  // međunarodni brendovi / akronimi
+  "unesco", "euronews", "newsmax", "balkans",
 ]);
 
 /* Transliteriše reč po reč — strane reči (FOREIGN) ostavlja latinicom. */

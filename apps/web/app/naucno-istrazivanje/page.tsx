@@ -12,18 +12,19 @@ export const metadata: Metadata = {
 export default function NaucnoIstrazivanjePage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-plava text-white">
+      <section className="relative overflow-hidden bg-plava text-krem">
         <Slika
-          src={LOKALNE.stariKazan1}
+          src={SLIKE.istrazivanje}
           fallback={SLIKE.kazan}
           alt=""
           className="absolute inset-0 h-full w-full object-cover opacity-40"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 to-plava/75" />
+        <div className="absolute inset-0 bg-gradient-to-br from-plava/92 via-plava/85 to-plava/72" />
         <div className="container-page relative z-10 py-20">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-bela">
+          <div className="mb-3 flex items-center gap-3 font-sc text-sm font-bold tracking-[0.08em] text-bela">
+            <span className="romb-marker" aria-hidden="true" />
             Katedra za antropologiju i etnologiju · Filozofski fakultet
-          </p>
+          </div>
           <h1 className="max-w-3xl font-serif text-4xl font-bold leading-tight sm:text-5xl">
             Naučno istraživanje
           </h1>
@@ -32,6 +33,10 @@ export default function NaucnoIstrazivanjePage() {
           </p>
         </div>
       </section>
+      <div aria-hidden="true">
+        <div className="h-1.5 bg-crvena" />
+        <div className="vez-traka" />
+      </div>
 
       <section className="container-page py-16">
         <div className="mx-auto max-w-3xl space-y-6 leading-relaxed text-mastilo-meko">
@@ -55,6 +60,13 @@ export default function NaucnoIstrazivanjePage() {
             kako je taj običaj rastao (a ponegde i nestajao) iz generacije u
             generaciju.
           </p>
+
+          <figure className="overflow-hidden rounded-md border-2 border-mastilo">
+            <Slika src={LOKALNE.stariKazan2} fallback={SLIKE.kazan} alt="Stari kazan i alat" className="h-64 w-full object-cover sm:h-80" />
+            <figcaption className="border-t-2 border-mastilo bg-lan-svetli px-4 py-2 text-sm text-mastilo-meko">
+              Stari kazani, alat i predmeti — građa koju terensko istraživanje beleži.
+            </figcaption>
+          </figure>
 
           <div className="rounded-md border border-mastilo/20 bg-lan-svetli p-6">
             <p className="text-sm font-semibold uppercase tracking-wide text-crvena">

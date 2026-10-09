@@ -58,6 +58,22 @@ export default function NacionalnaIzlozbaPage() {
             porodične proizvodnje rakije.
           </p>
 
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+            {[
+              { s: LOKALNE.stariKazan1, f: SLIKE.kazan, c: "Kazani" },
+              { s: LOKALNE.podrumBurad, f: SLIKE.burad, c: "Burad i podrum" },
+              { s: SLIKE.muzej, f: SLIKE.izlozba, c: "Eksponati" },
+              { s: LOKALNE.staraSokolovaCasa, f: SLIKE.case, c: "Rakija" },
+            ].map((g) => (
+              <figure key={g.c} className="overflow-hidden rounded-md border-2 border-mastilo bg-lan-tamni">
+                <Slika src={g.s} fallback={g.f} alt={g.c} className="aspect-square w-full object-cover" />
+                <figcaption className="border-t-2 border-mastilo bg-lan-svetli px-2 py-1.5 text-center text-xs font-semibold text-mastilo-meko">
+                  {g.c}
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+
           <div className="rounded-md border border-crvena bg-lan-svetli p-6 text-mastilo">
             Bajina Bašta je prvi korak u višegodišnjem predstavljanju rakijskih
             krajeva Srbije. Rakija je priča o zemlji, porodici, znanju, običajima

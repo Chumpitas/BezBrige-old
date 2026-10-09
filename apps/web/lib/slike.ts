@@ -60,6 +60,7 @@ export const SLIKE = {
   izlozba: GEN.izlozba,
   tara: GEN.tara,
   nazdravlje: GEN.nazdravlje,
+  istrazivanje: GEN.istrazivanje,
 } as const;
 
 /** Koraci procesa (berba → pečenje → točenje → odležavanje). */
