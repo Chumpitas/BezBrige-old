@@ -4,7 +4,7 @@ import { useActionState } from "react";
 import { posaljiRezervaciju, type TuraRezultat } from "./actions";
 
 const inputCls =
-  "mt-1 w-full rounded-lg border border-sljiva-200 px-3 py-2 outline-none focus:border-bakar-500";
+  "mt-1 w-full rounded-lg border border-mastilo/20 px-3 py-2 outline-none focus:border-plava";
 
 export function TuraForm({ destilerije }: { destilerije: string[] }) {
   const [rez, action, pending] = useActionState<TuraRezultat | null, FormData>(
@@ -28,27 +28,27 @@ export function TuraForm({ destilerije }: { destilerije: string[] }) {
       <input type="text" name="vebsajt" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block text-sm">
-          <span className="text-sljiva-600">Ime i prezime *</span>
+          <span className="text-mastilo-meko">Ime i prezime *</span>
           <input name="ime" required className={inputCls} />
         </label>
         <label className="block text-sm">
-          <span className="text-sljiva-600">Email *</span>
+          <span className="text-mastilo-meko">Email *</span>
           <input name="email" type="email" required className={inputCls} />
         </label>
         <label className="block text-sm">
-          <span className="text-sljiva-600">Telefon</span>
+          <span className="text-mastilo-meko">Telefon</span>
           <input name="telefon" className={inputCls} />
         </label>
         <label className="block text-sm">
-          <span className="text-sljiva-600">Željeni datum</span>
+          <span className="text-mastilo-meko">Željeni datum</span>
           <input name="datum" type="date" className={inputCls} />
         </label>
         <label className="block text-sm">
-          <span className="text-sljiva-600">Broj osoba</span>
+          <span className="text-mastilo-meko">Broj osoba</span>
           <input name="broj_osoba" type="number" min={1} defaultValue={2} className={inputCls} />
         </label>
         <label className="block text-sm">
-          <span className="text-sljiva-600">Destilerija / regija</span>
+          <span className="text-mastilo-meko">Destilerija / regija</span>
           <input name="destilerija" list="destilerije-lista" placeholder="bilo koja / izaberite" className={inputCls} />
           <datalist id="destilerije-lista">
             {destilerije.map((d) => (
@@ -58,13 +58,13 @@ export function TuraForm({ destilerije }: { destilerije: string[] }) {
         </label>
       </div>
       <label className="block text-sm">
-        <span className="text-sljiva-600">Poruka</span>
+        <span className="text-mastilo-meko">Poruka</span>
         <textarea name="poruka" rows={3} className={inputCls} />
       </label>
       <button
         type="submit"
         disabled={pending}
-        className="rounded-full bg-bakar-600 px-6 py-3 font-semibold text-white transition hover:bg-bakar-700 disabled:opacity-60"
+        className="rounded-full bg-crvena px-6 py-3 font-semibold text-white transition hover:bg-[#a12932] disabled:opacity-60"
       >
         {pending ? "Slanje…" : "Rezerviši turu"}
       </button>

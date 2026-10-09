@@ -12,24 +12,24 @@ export const metadata: Metadata = {
 export default function NacionalnaIzlozbaPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-sljiva-900 text-white">
+      <section className="relative overflow-hidden bg-plava text-white">
         <Slika src={LOKALNE.podrumBurad} fallback={SLIKE.burad} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-br from-sljiva-900/90 to-bakar-900/80" />
+        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 to-plava/75" />
         <div className="container-page relative z-10 py-20">
-          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-bakar-200">
+          <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-bela">
             Etnografski muzej · Beograd · 2026.
           </p>
           <h1 className="max-w-3xl font-serif text-4xl font-bold leading-tight sm:text-5xl">
             Nacionalna izložba „Rakija Srbije“
           </h1>
-          <p className="mt-4 max-w-2xl text-lg text-sljiva-100/90">
+          <p className="mt-4 max-w-2xl text-lg text-lan">
             Bajina Bašta i Sokolski kraj
           </p>
         </div>
       </section>
 
       <section className="container-page py-16">
-        <div className="mx-auto max-w-3xl space-y-5 leading-relaxed text-sljiva-700">
+        <div className="mx-auto max-w-3xl space-y-5 leading-relaxed text-mastilo-meko">
           <p>
             Prva nacionalna izložba „Rakija Srbije“, u Etnografskom muzeju u
             Beogradu, posvećena je tradicionalnoj porodičnoj proizvodnji rakije u
@@ -53,16 +53,16 @@ export default function NacionalnaIzlozbaPage() {
             porodične proizvodnje rakije.
           </p>
 
-          <div className="rounded-2xl border border-bakar-200 bg-bakar-50 p-6 text-sljiva-800">
+          <div className="rounded-md border border-crvena bg-lan-svetli p-6 text-mastilo">
             Bajina Bašta je prvi korak u višegodišnjem predstavljanju rakijskih
             krajeva Srbije. Rakija je priča o zemlji, porodici, znanju, običajima
             i vremenu. <strong>To je priča o Srbiji.</strong>
           </div>
 
           <div className="flex flex-wrap gap-x-8 gap-y-2 pt-2">
-            <Link href="/bajina-basta" className="font-semibold text-bakar-700 hover:underline">O Bajinoj Bašti →</Link>
-            <Link href="/naucno-istrazivanje" className="font-semibold text-bakar-700 hover:underline">Naučno istraživanje →</Link>
-            <Link href="/proizvodjaci" className="font-semibold text-bakar-700 hover:underline">Proizvođači →</Link>
+            <Link href="/bajina-basta" className="font-semibold text-crvena hover:underline">O Bajinoj Bašti →</Link>
+            <Link href="/naucno-istrazivanje" className="font-semibold text-crvena hover:underline">Naučno istraživanje →</Link>
+            <Link href="/proizvodjaci" className="font-semibold text-crvena hover:underline">Proizvođači →</Link>
           </div>
         </div>
       </section>

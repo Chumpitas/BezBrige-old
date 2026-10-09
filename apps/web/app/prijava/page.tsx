@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { KATEGORIJE_INFO } from "@/lib/scoring";
 import { PrijavaForm } from "./PrijavaForm";
+import { EtnoHero } from "@/components/etno-hero";
+import { SLIKE } from "@/lib/slike";
 
 export const metadata: Metadata = {
   title: "Prijava za učešće",
@@ -12,35 +14,33 @@ const KAT_REDOSLED = ["veliki_majstori", "cuvari_kvaliteta", "mladi_majstori"] a
 
 export default function PrijavaPage() {
   return (
-    <div className="container-page py-16">
-      <h1 className="font-serif text-4xl font-bold text-sljiva-900">
-        Prijava za učešće
-      </h1>
-      <p className="mt-3 max-w-2xl text-sljiva-600">
-        Popunite podatke o destileriji — rezultat i kategorija se računaju
-        trenutno, po zvaničnim kriterijumima projekta. Konačnu kategorizaciju
-        potvrđuje komisija.
-      </p>
-
+    <>
+      <EtnoHero
+        slika={SLIKE.kazan}
+        natpis="prijava destilerije"
+        naslov="Prijava za učešće"
+        opis="Popunite podatke o destileriji — rezultat i kategorija se računaju trenutno, po zvaničnim kriterijumima projekta. Konačnu kategorizaciju potvrđuje komisija."
+      />
+      <div className="container-page py-16">
       {/* Pregled kategorija */}
-      <div className="mt-10 grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-3">
         {KAT_REDOSLED.map((k) => {
           const info = KATEGORIJE_INFO[k];
           return (
             <div
               key={k}
-              className="rounded-2xl border border-sljiva-200 bg-white p-5 shadow-sm"
+              className="rounded-md border border-mastilo/20 bg-lan-svetli p-5"
             >
-              <p className="text-xs font-semibold uppercase tracking-wide text-bakar-600">
+              <p className="text-xs font-semibold uppercase tracking-wide text-crvena">
                 {info.raspon}
               </p>
-              <h2 className="mt-1 font-serif text-lg font-bold text-sljiva-900">
+              <h2 className="mt-1 font-serif text-lg font-bold text-mastilo">
                 {info.naziv}
               </h2>
-              <ul className="mt-3 space-y-1 text-sm text-sljiva-600">
+              <ul className="mt-3 space-y-1 text-sm text-mastilo-meko">
                 {info.benefiti.map((b) => (
                   <li key={b} className="flex gap-2">
-                    <span className="text-bakar-500">•</span>
+                    <span className="text-crvena">•</span>
                     {b}
                   </li>
                 ))}
@@ -53,6 +53,7 @@ export default function PrijavaPage() {
       <div className="mt-12">
         <PrijavaForm />
       </div>
-    </div>
+      </div>
+    </>
   );
 }

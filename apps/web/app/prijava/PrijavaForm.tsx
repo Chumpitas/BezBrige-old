@@ -42,14 +42,14 @@ function Checkbox({
   onChange: (v: boolean) => void;
 }) {
   return (
-    <label className="flex cursor-pointer items-center gap-3 rounded-lg border border-sljiva-200 bg-white px-4 py-3 text-sm hover:border-bakar-400">
+    <label className="flex cursor-pointer items-center gap-3 rounded-lg border border-mastilo/20 bg-lan-svetli px-4 py-3 text-sm hover:border-plava">
       <input
         type="checkbox"
         checked={checked}
         onChange={(e) => onChange(e.target.checked)}
-        className="h-4 w-4 accent-bakar-600"
+        className="h-4 w-4 accent-crvena"
       />
-      <span className="text-sljiva-700">{label}</span>
+      <span className="text-mastilo-meko">{label}</span>
     </label>
   );
 }
@@ -67,22 +67,22 @@ function NumberField({
 }) {
   return (
     <label className="block text-sm">
-      <span className="text-sljiva-600">{label}</span>
+      <span className="text-mastilo-meko">{label}</span>
       <input
         type="number"
         min={min}
         value={value}
         onChange={(e) => onChange(Math.max(min, Number(e.target.value) || 0))}
-        className="mt-1 w-full rounded-lg border border-sljiva-200 px-3 py-2 outline-none focus:border-bakar-500"
+        className="mt-1 w-full rounded-lg border border-mastilo/20 px-3 py-2 outline-none focus:border-plava"
       />
     </label>
   );
 }
 
 const KAT_BOJA: Record<string, string> = {
-  veliki_majstori: "bg-bakar-600",
-  cuvari_kvaliteta: "bg-sljiva-600",
-  mladi_majstori: "bg-sljiva-400",
+  veliki_majstori: "bg-crvena",
+  cuvari_kvaliteta: "bg-crvena",
+  mladi_majstori: "bg-plava",
 };
 
 export function PrijavaForm() {
@@ -135,7 +135,7 @@ export function PrijavaForm() {
                 href={`/api/sertifikat?naziv=${encodeURIComponent(naziv)}&bodovi=${rezultat.bodovi}&kategorija=${rezultat.kategorija}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-block rounded-full bg-bakar-600 px-5 py-2 font-semibold text-white hover:bg-bakar-700"
+                className="mt-3 inline-block rounded-full bg-crvena px-5 py-2 font-semibold text-white hover:bg-[#a12932]"
               >
                 Preuzmi sertifikat →
               </a>
@@ -145,52 +145,52 @@ export function PrijavaForm() {
 
         {/* Kontakt */}
         <fieldset className="space-y-4">
-          <legend className="font-serif text-xl font-bold text-sljiva-900">
+          <legend className="font-serif text-xl font-bold text-mastilo">
             Podaci o destileriji
           </legend>
           <div className="grid gap-4 sm:grid-cols-2">
             <label className="block text-sm">
-              <span className="text-sljiva-600">Naziv destilerije *</span>
+              <span className="text-mastilo-meko">Naziv destilerije *</span>
               <input
                 value={naziv}
                 onChange={(e) => setNaziv(e.target.value)}
                 required
-                className="mt-1 w-full rounded-lg border border-sljiva-200 px-3 py-2 outline-none focus:border-bakar-500"
+                className="mt-1 w-full rounded-lg border border-mastilo/20 px-3 py-2 outline-none focus:border-plava"
               />
             </label>
             <label className="block text-sm">
-              <span className="text-sljiva-600">Kontakt osoba *</span>
+              <span className="text-mastilo-meko">Kontakt osoba *</span>
               <input
                 value={ime}
                 onChange={(e) => setIme(e.target.value)}
                 required
-                className="mt-1 w-full rounded-lg border border-sljiva-200 px-3 py-2 outline-none focus:border-bakar-500"
+                className="mt-1 w-full rounded-lg border border-mastilo/20 px-3 py-2 outline-none focus:border-plava"
               />
             </label>
             <label className="block text-sm">
-              <span className="text-sljiva-600">Email *</span>
+              <span className="text-mastilo-meko">Email *</span>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="mt-1 w-full rounded-lg border border-sljiva-200 px-3 py-2 outline-none focus:border-bakar-500"
+                className="mt-1 w-full rounded-lg border border-mastilo/20 px-3 py-2 outline-none focus:border-plava"
               />
             </label>
             <label className="block text-sm">
-              <span className="text-sljiva-600">Telefon</span>
+              <span className="text-mastilo-meko">Telefon</span>
               <input
                 value={telefon}
                 onChange={(e) => setTelefon(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-sljiva-200 px-3 py-2 outline-none focus:border-bakar-500"
+                className="mt-1 w-full rounded-lg border border-mastilo/20 px-3 py-2 outline-none focus:border-plava"
               />
             </label>
             <label className="block text-sm sm:col-span-2">
-              <span className="text-sljiva-600">Grad / mesto</span>
+              <span className="text-mastilo-meko">Grad / mesto</span>
               <input
                 value={grad}
                 onChange={(e) => setGrad(e.target.value)}
-                className="mt-1 w-full rounded-lg border border-sljiva-200 px-3 py-2 outline-none focus:border-bakar-500"
+                className="mt-1 w-full rounded-lg border border-mastilo/20 px-3 py-2 outline-none focus:border-plava"
               />
             </label>
           </div>
@@ -198,8 +198,8 @@ export function PrijavaForm() {
 
         {/* 1. Tradicija */}
         <fieldset className="space-y-4">
-          <legend className="font-serif text-xl font-bold text-sljiva-900">
-            1. Tradicija <span className="text-sm font-normal text-sljiva-400">(max 20)</span>
+          <legend className="font-serif text-xl font-bold text-mastilo">
+            1. Tradicija <span className="text-sm font-normal text-mastilo-meko">(max 20)</span>
           </legend>
           <NumberField
             label="Godina tradicije / postojanja"
@@ -215,8 +215,8 @@ export function PrijavaForm() {
 
         {/* 2. Proizvodnja */}
         <fieldset className="space-y-3">
-          <legend className="font-serif text-xl font-bold text-sljiva-900">
-            2. Proizvodnja <span className="text-sm font-normal text-sljiva-400">(max 15)</span>
+          <legend className="font-serif text-xl font-bold text-mastilo">
+            2. Proizvodnja <span className="text-sm font-normal text-mastilo-meko">(max 15)</span>
           </legend>
           <div className="grid gap-3 sm:grid-cols-3">
             {(
@@ -230,8 +230,8 @@ export function PrijavaForm() {
                 key={val}
                 className={`cursor-pointer rounded-lg border px-4 py-3 text-sm ${
                   u.velicina === val
-                    ? "border-bakar-500 bg-bakar-50 font-semibold text-bakar-700"
-                    : "border-sljiva-200 bg-white text-sljiva-700"
+                    ? "border-crvena bg-lan-svetli font-semibold text-crvena"
+                    : "border-mastilo/20 bg-lan-svetli text-mastilo-meko"
                 }`}
               >
                 <input
@@ -249,10 +249,10 @@ export function PrijavaForm() {
 
         {/* 3. Nagrade */}
         <fieldset className="space-y-4">
-          <legend className="font-serif text-xl font-bold text-sljiva-900">
-            3. Nagrade <span className="text-sm font-normal text-sljiva-400">(max 25)</span>
+          <legend className="font-serif text-xl font-bold text-mastilo">
+            3. Nagrade <span className="text-sm font-normal text-mastilo-meko">(max 25)</span>
           </legend>
-          <p className="text-sm text-sljiva-500">
+          <p className="text-sm text-mastilo-meko">
             Međunarodne: zlato 3 / srebro 2 / bronza 1. Domaće: zlato 1.5 / srebro 1 / bronza 0.5.
           </p>
           <div className="grid gap-3 sm:grid-cols-3">
@@ -267,8 +267,8 @@ export function PrijavaForm() {
 
         {/* 4. Brend i tržište */}
         <fieldset className="space-y-3">
-          <legend className="font-serif text-xl font-bold text-sljiva-900">
-            4. Brend i tržište <span className="text-sm font-normal text-sljiva-400">(max 15)</span>
+          <legend className="font-serif text-xl font-bold text-mastilo">
+            4. Brend i tržište <span className="text-sm font-normal text-mastilo-meko">(max 15)</span>
           </legend>
           <Checkbox label="Izvoz preko 50% proizvodnje (+5)" checked={u.izvozPreko50} onChange={(v) => set("izvozPreko50", v)} />
           <Checkbox label="Prisustvo u HoReCa kanalu (+5)" checked={u.horeca} onChange={(v) => set("horeca", v)} />
@@ -277,8 +277,8 @@ export function PrijavaForm() {
 
         {/* 5. Organizacija */}
         <fieldset className="space-y-4">
-          <legend className="font-serif text-xl font-bold text-sljiva-900">
-            5. Organizacija <span className="text-sm font-normal text-sljiva-400">(max 10)</span>
+          <legend className="font-serif text-xl font-bold text-mastilo">
+            5. Organizacija <span className="text-sm font-normal text-mastilo-meko">(max 10)</span>
           </legend>
           <NumberField label="Broj zaposlenih" value={u.brojZaposlenih} onChange={(v) => set("brojZaposlenih", v)} />
           <Checkbox label="Profesionalni menadžment" checked={u.profMenadzment} onChange={(v) => set("profMenadzment", v)} />
@@ -288,11 +288,11 @@ export function PrijavaForm() {
 
         {/* 6. Vrednost / priča */}
         <fieldset className="space-y-3">
-          <legend className="font-serif text-xl font-bold text-sljiva-900">
+          <legend className="font-serif text-xl font-bold text-mastilo">
             6. Vrednost brenda / autentičnost / priča{" "}
-            <span className="text-sm font-normal text-sljiva-400">(max 15)</span>
+            <span className="text-sm font-normal text-mastilo-meko">(max 15)</span>
           </legend>
-          <p className="text-sm text-sljiva-500">
+          <p className="text-sm text-mastilo-meko">
             Samoprocena — konačnu ocenu potvrđuje komisija.
           </p>
           <Checkbox label="Porodična priča" checked={u.porodicnaPrica} onChange={(v) => set("porodicnaPrica", v)} />
@@ -304,7 +304,7 @@ export function PrijavaForm() {
         <button
           type="submit"
           disabled={pending}
-          className="w-full rounded-full bg-bakar-600 px-6 py-3 font-semibold text-white shadow-sm transition hover:bg-bakar-700 disabled:opacity-60 sm:w-auto"
+          className="w-full rounded-full bg-crvena px-6 py-3 font-semibold text-white transition hover:bg-[#a12932] disabled:opacity-60 sm:w-auto"
         >
           {pending ? "Slanje..." : "Pošalji prijavu"}
         </button>
@@ -312,13 +312,13 @@ export function PrijavaForm() {
 
       {/* Živi rezultat */}
       <aside className="lg:sticky lg:top-24 lg:self-start">
-        <div className="rounded-2xl border border-sljiva-200 bg-white p-6 shadow-sm">
-          <p className="text-sm font-medium uppercase tracking-wide text-sljiva-400">
+        <div className="rounded-md border border-mastilo/20 bg-lan-svetli p-6">
+          <p className="text-sm font-medium uppercase tracking-wide text-mastilo-meko">
             Trenutni rezultat
           </p>
-          <p className="mt-1 font-serif text-5xl font-bold text-sljiva-900">
+          <p className="mt-1 font-serif text-5xl font-bold text-mastilo">
             {bodovi.ukupno}
-            <span className="text-2xl text-sljiva-400">/100</span>
+            <span className="text-2xl text-mastilo-meko">/100</span>
           </p>
           <div className={`mt-4 rounded-lg px-4 py-3 text-white ${KAT_BOJA[kat]}`}>
             <p className="text-xs uppercase tracking-wide opacity-80">Kategorija</p>
@@ -336,15 +336,15 @@ export function PrijavaForm() {
               ["Vrednost / priča", bodovi.vrednost, 15],
             ].map(([lab, val, max]) => (
               <div key={lab as string}>
-                <div className="flex justify-between text-sljiva-600">
+                <div className="flex justify-between text-mastilo-meko">
                   <span>{lab}</span>
-                  <span className="font-medium text-sljiva-800">
+                  <span className="font-medium text-mastilo">
                     {val} / {max}
                   </span>
                 </div>
-                <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-sljiva-100">
+                <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-lan-svetli">
                   <div
-                    className="h-full bg-bakar-500"
+                    className="h-full bg-crvena"
                     style={{ width: `${(Number(val) / Number(max)) * 100}%` }}
                   />
                 </div>
@@ -352,14 +352,14 @@ export function PrijavaForm() {
             ))}
           </dl>
 
-          <div className="mt-6 border-t border-sljiva-100 pt-4">
-            <p className="text-xs font-semibold uppercase tracking-wide text-sljiva-400">
+          <div className="mt-6 border-t border-mastilo/20 pt-4">
+            <p className="text-xs font-semibold uppercase tracking-wide text-mastilo-meko">
               Benefiti kategorije
             </p>
-            <ul className="mt-2 space-y-1 text-sm text-sljiva-600">
+            <ul className="mt-2 space-y-1 text-sm text-mastilo-meko">
               {katInfo.benefiti.map((b) => (
                 <li key={b} className="flex gap-2">
-                  <span className="text-bakar-500">•</span>
+                  <span className="text-crvena">•</span>
                   {b}
                 </li>
               ))}

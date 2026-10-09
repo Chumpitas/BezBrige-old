@@ -70,7 +70,7 @@ export default async function ProizvodjacPage({
       />
       <Link
         href="/proizvodjaci"
-        className="text-sm font-medium text-bakar-700 hover:underline"
+        className="text-sm font-medium text-crvena hover:underline"
       >
         ← Svi proizvođači
       </Link>
@@ -79,41 +79,41 @@ export default async function ProizvodjacPage({
         src={p.foto_url ?? lokalnaFotoProizvodjaca(p.slug) ?? fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
         fallback={fotoZaProizvodjaca(p.slug ?? p.naziv, p.foto_url)}
         alt={p.naziv}
-        className="mt-6 h-64 w-full rounded-2xl border border-sljiva-200 object-cover sm:h-80"
+        className="mt-6 h-64 w-full rounded-md border border-mastilo/20 object-cover sm:h-80"
       />
 
       {/* Header */}
-      <header className="mt-6 border-b border-sljiva-200 pb-8">
+      <header className="mt-6 border-b border-mastilo/20 pb-8">
         <div className="flex items-center gap-4">
           {p.logo_url && (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={p.logo_url}
               alt=""
-              className="h-16 w-16 rounded-xl border border-sljiva-200 object-contain"
+              className="h-16 w-16 rounded-xl border border-mastilo/20 object-contain"
             />
           )}
-          <h1 className="font-serif text-4xl font-bold text-sljiva-900">{p.naziv}</h1>
+          <h1 className="font-serif text-4xl font-bold text-mastilo">{p.naziv}</h1>
         </div>
-        {lokacija && <p className="mt-3 text-sljiva-600">{lokacija}</p>}
+        {lokacija && <p className="mt-3 text-mastilo-meko">{lokacija}</p>}
         <div className="mt-4 flex flex-wrap gap-2">
           {p.porodica && (
-            <span className="rounded-full bg-sljiva-100 px-3 py-1 text-xs font-semibold text-sljiva-700">
+            <span className="rounded-full bg-lan-svetli px-3 py-1 text-xs font-semibold text-mastilo-meko">
               Porodica {p.porodica}
             </span>
           )}
           {p.godina_osnivanja && (
-            <span className="rounded-full bg-bakar-100 px-3 py-1 text-xs font-semibold text-bakar-700">
+            <span className="rounded-full bg-lan-tamni px-3 py-1 text-xs font-semibold text-crvena">
               Tradicija od {p.godina_osnivanja}.
             </span>
           )}
           {p.generacija && (
-            <span className="rounded-full bg-sljiva-100 px-3 py-1 text-xs font-semibold text-sljiva-700">
+            <span className="rounded-full bg-lan-svetli px-3 py-1 text-xs font-semibold text-mastilo-meko">
               {p.generacija}. generacija
             </span>
           )}
           {p.velicina && (
-            <span className="rounded-full bg-sljiva-100 px-3 py-1 text-xs font-semibold text-sljiva-700">
+            <span className="rounded-full bg-lan-svetli px-3 py-1 text-xs font-semibold text-mastilo-meko">
               {VELICINA_LABEL[p.velicina]}
             </span>
           )}
@@ -125,8 +125,8 @@ export default async function ProizvodjacPage({
           {/* Priča */}
           {p.prica && (
             <section>
-              <h2 className="font-serif text-2xl font-bold text-sljiva-900">Priča</h2>
-              <p className="mt-3 whitespace-pre-line leading-relaxed text-sljiva-700">
+              <h2 className="font-serif text-2xl font-bold text-mastilo">Priča</h2>
+              <p className="mt-3 whitespace-pre-line leading-relaxed text-mastilo-meko">
                 {p.prica}
               </p>
             </section>
@@ -135,19 +135,19 @@ export default async function ProizvodjacPage({
           {/* Proizvodi */}
           {p.proizvodi.length > 0 && (
             <section>
-              <h2 className="font-serif text-2xl font-bold text-sljiva-900">Rakije</h2>
+              <h2 className="font-serif text-2xl font-bold text-mastilo">Rakije</h2>
               <div className="mt-4 grid gap-4 sm:grid-cols-2">
                 {p.proizvodi.map((r) => (
                   <div
                     key={r.id}
-                    className="rounded-2xl border border-sljiva-200 bg-white p-5 shadow-sm"
+                    className="rounded-md border border-mastilo/20 bg-lan-svetli p-5"
                   >
-                    <h3 className="font-semibold text-sljiva-900">{r.naziv}</h3>
-                    <p className="mt-1 text-xs font-medium uppercase tracking-wide text-bakar-600">
+                    <h3 className="font-semibold text-mastilo">{r.naziv}</h3>
+                    <p className="mt-1 text-xs font-medium uppercase tracking-wide text-crvena">
                       {[r.vrsta, r.sorta].filter(Boolean).join(" · ")}
                     </p>
                     {r.opis && (
-                      <p className="mt-2 text-sm text-sljiva-600">{r.opis}</p>
+                      <p className="mt-2 text-sm text-mastilo-meko">{r.opis}</p>
                     )}
                   </div>
                 ))}
@@ -158,17 +158,17 @@ export default async function ProizvodjacPage({
           {/* Nagrade */}
           {p.nagrade.length > 0 && (
             <section>
-              <h2 className="font-serif text-2xl font-bold text-sljiva-900">Nagrade</h2>
+              <h2 className="font-serif text-2xl font-bold text-mastilo">Nagrade</h2>
               <ul className="mt-4 space-y-2">
                 {p.nagrade.map((n) => (
                   <li
                     key={n.id}
-                    className="flex items-center gap-3 rounded-xl border border-sljiva-200 bg-white px-4 py-3 text-sm"
+                    className="flex items-center gap-3 rounded-xl border border-mastilo/20 bg-lan-svetli px-4 py-3 text-sm"
                   >
                     <span className="text-lg">
                       {n.nivo === "zlato" ? "🥇" : n.nivo === "srebro" ? "🥈" : "🥉"}
                     </span>
-                    <span className="text-sljiva-800">
+                    <span className="text-mastilo">
                       {n.naziv}
                       {n.godina ? ` (${n.godina})` : ""}
                       {n.medjunarodna ? " · međunarodna" : ""}
@@ -183,26 +183,26 @@ export default async function ProizvodjacPage({
         {/* Bočna kolona */}
         <aside className="space-y-6 lg:sticky lg:top-24 lg:self-start">
           {(p.sajt || p.grad) && (
-            <div className="rounded-2xl border border-sljiva-200 bg-white p-6 shadow-sm">
-              <h3 className="text-sm font-semibold uppercase tracking-wide text-sljiva-400">
+            <div className="rounded-md border border-mastilo/20 bg-lan-svetli p-6">
+              <h3 className="text-sm font-semibold uppercase tracking-wide text-mastilo-meko">
                 Informacije
               </h3>
               <dl className="mt-3 space-y-2 text-sm">
                 {lokacija && (
                   <div>
-                    <dt className="text-sljiva-500">Lokacija</dt>
-                    <dd className="font-medium text-sljiva-800">{lokacija}</dd>
+                    <dt className="text-mastilo-meko">Lokacija</dt>
+                    <dd className="font-medium text-mastilo">{lokacija}</dd>
                   </div>
                 )}
                 {p.sajt && (
                   <div>
-                    <dt className="text-sljiva-500">Sajt</dt>
+                    <dt className="text-mastilo-meko">Sajt</dt>
                     <dd>
                       <a
                         href={p.sajt}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="font-medium text-bakar-700 hover:underline"
+                        className="font-medium text-crvena hover:underline"
                       >
                         {p.sajt.replace(/^https?:\/\//, "")}
                       </a>

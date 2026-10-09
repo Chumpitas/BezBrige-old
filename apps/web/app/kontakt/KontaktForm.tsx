@@ -10,7 +10,7 @@ export function KontaktForm() {
   );
 
   const inputCls =
-    "mt-1 w-full rounded-lg border border-sljiva-200 px-3 py-2 outline-none focus:border-bakar-500";
+    "mt-1 w-full rounded-lg border border-mastilo/20 px-3 py-2 outline-none focus:border-plava";
 
   return (
     <form action={action} className="space-y-4">
@@ -35,21 +35,21 @@ export function KontaktForm() {
         aria-hidden="true"
       />
       <label className="block text-sm">
-        <span className="text-sljiva-600">Ime i prezime *</span>
+        <span className="text-mastilo-meko">Ime i prezime *</span>
         <input name="ime" required className={inputCls} />
       </label>
       <label className="block text-sm">
-        <span className="text-sljiva-600">Email *</span>
+        <span className="text-mastilo-meko">Email *</span>
         <input name="email" type="email" required className={inputCls} />
       </label>
       <label className="block text-sm">
-        <span className="text-sljiva-600">Poruka *</span>
+        <span className="text-mastilo-meko">Poruka *</span>
         <textarea name="poruka" rows={5} required className={inputCls} />
       </label>
       <button
         type="submit"
         disabled={pending}
-        className="rounded-full bg-bakar-600 px-6 py-3 font-semibold text-white transition hover:bg-bakar-700 disabled:opacity-60"
+        className="rounded-full bg-crvena px-6 py-3 font-semibold text-white transition hover:bg-[#a12932] disabled:opacity-60"
       >
         {pending ? "Slanje…" : "Pošalji poruku"}
       </button>

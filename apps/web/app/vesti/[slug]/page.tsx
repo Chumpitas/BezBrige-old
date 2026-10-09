@@ -58,22 +58,22 @@ export default async function VestPage({
           url: `${SITE_URL}/vesti/${v.slug}`,
         }}
       />
-      <Link href="/vesti" className="text-sm font-medium text-bakar-700 hover:underline">
+      <Link href="/vesti" className="text-sm font-medium text-crvena hover:underline">
         ← Sve vesti
       </Link>
       {v.objavljeno_at && (
-        <p className="mt-6 text-sm font-medium uppercase tracking-wide text-bakar-600">
+        <p className="mt-6 text-sm font-medium uppercase tracking-wide text-crvena">
           {datum(v.objavljeno_at)}
         </p>
       )}
-      <h1 className="mt-2 font-serif text-4xl font-bold text-sljiva-900">
+      <h1 className="mt-2 font-serif text-4xl font-bold text-mastilo">
         {v.naslov}
       </h1>
       {v.sazetak && (
-        <p className="mt-4 text-lg text-sljiva-600">{v.sazetak}</p>
+        <p className="mt-4 text-lg text-mastilo-meko">{v.sazetak}</p>
       )}
       {v.sadrzaj && (
-        <div className="mt-8 whitespace-pre-line leading-relaxed text-sljiva-700">
+        <div className="mt-8 whitespace-pre-line leading-relaxed text-mastilo-meko">
           {v.sadrzaj}
         </div>
       )}

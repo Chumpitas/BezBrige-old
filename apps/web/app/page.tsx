@@ -92,23 +92,22 @@ export default async function HomePage() {
           <div className="relative min-h-[480px] border-2 border-mastilo bg-lan-tamni [grid-column:span_2]" style={{ outline: "2px dashed #B8303A", outlineOffset: "-10px" }}>
             <Slika src={LOKALNE.stariKazan2} fallback={SLIKE.kazan} alt="Domaćin uz kazan" className="h-full w-full object-cover" />
           </div>
-          <div className="grid grid-rows-2 gap-4">
-            <div className="relative min-h-[160px] border-2 border-mastilo bg-lan-tamni">
+          <div className="grid grid-cols-2 grid-rows-1 gap-4 sm:grid-cols-1 sm:grid-rows-2">
+            <div className="relative min-h-[180px] border-2 border-mastilo bg-lan-tamni">
               <Slika src={LOKALNE.podrumBurad} fallback={SLIKE.burad} alt="Burad u podrumu" className="h-full w-full object-cover" />
             </div>
-            <div className="flex flex-col justify-center gap-1.5 border-2 border-mastilo bg-plava p-[22px] text-lan">
-              <span className="font-serif text-[40px] font-extrabold leading-none">15 događaja</span>
-              <span>Forum uz izložbu: predavanja, degustacije, radionice pečenja.</span>
+            <div className="flex flex-col justify-center gap-1.5 border-2 border-mastilo bg-plava p-5 text-lan sm:p-[22px]">
+              <span className="font-serif text-[clamp(28px,8vw,40px)] font-extrabold leading-none">15 događaja</span>
+              <span className="text-[15px] sm:text-base">Forum uz izložbu: predavanja, degustacije, radionice pečenja.</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* c) TRAKA */}
+      {/* c) TRAKA — vez (lanac rombova) */}
       <div aria-hidden="true">
         <div className="h-1.5 bg-crvena" />
-        <div className="h-1 bg-bela" />
-        <div className="zupci-na-lanu" />
+        <div className="vez-traka" />
       </div>
 
       {/* d) O PROJEKTU */}

@@ -26,19 +26,19 @@ const REGIONI = [
 export default function RegioniPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-sljiva-900 text-white">
+      <section className="relative overflow-hidden bg-plava text-white">
         <Slika src={LOKALNE.naslovna} fallback={SLIKE.pejzaz} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-br from-sljiva-900/90 to-bakar-900/80" />
+        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 to-plava/75" />
         <div className="container-page relative z-10 py-20">
           <h1 className="font-serif text-4xl font-bold sm:text-5xl">Rakijski krajevi Srbije</h1>
-          <p className="mt-4 max-w-2xl text-lg text-sljiva-100/90">
+          <p className="mt-4 max-w-2xl text-lg text-lan">
             Deset regiona — mnoštvo tradicija — jedna priča o Srbiji.
           </p>
         </div>
       </section>
 
       <section className="container-page py-16">
-        <div className="mx-auto max-w-3xl space-y-4 leading-relaxed text-sljiva-700">
+        <div className="mx-auto max-w-3xl space-y-4 leading-relaxed text-mastilo-meko">
           <p>
             Rakija se proizvodi širom Srbije, ali svaki kraj ima svoje voćne
             vrste, prirodne uslove, znanja, običaje i porodične priče — od
@@ -55,27 +55,27 @@ export default function RegioniPage() {
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {REGIONI.map((r, i) => (
-            <div key={r.br} className="overflow-hidden rounded-2xl border border-sljiva-200 bg-white shadow-sm">
+            <div key={r.br} className="overflow-hidden rounded-md border border-mastilo/20 bg-lan-svetli">
               <div className="relative h-40">
                 <Slika src={REGION_SLIKE[i % REGION_SLIKE.length]} fallback={SLIKE.pejzaz} alt={r.naziv} className="h-full w-full object-cover" />
                 {r.fokus && (
-                  <span className="absolute left-3 top-3 rounded-full bg-bakar-600 px-3 py-1 text-xs font-semibold text-white">
+                  <span className="absolute left-3 top-3 rounded-full bg-crvena px-3 py-1 text-xs font-semibold text-white">
                     Fokus projekta
                   </span>
                 )}
               </div>
               <div className="p-6">
-                <h2 className="font-serif text-xl font-bold text-sljiva-900">
-                  <span className="text-bakar-600">{r.br}.</span> {r.naziv}
+                <h2 className="font-serif text-xl font-bold text-mastilo">
+                  <span className="text-crvena">{r.br}.</span> {r.naziv}
                 </h2>
-                <p className="mt-2 text-sm text-sljiva-600">{r.opis}</p>
+                <p className="mt-2 text-sm text-mastilo-meko">{r.opis}</p>
               </div>
             </div>
           ))}
         </div>
 
         <p className="mt-10 text-center">
-          <Link href="/proizvodjaci" className="font-semibold text-bakar-700 hover:underline">
+          <Link href="/proizvodjaci" className="font-semibold text-crvena hover:underline">
             Svi proizvođači →
           </Link>
         </p>

@@ -5,7 +5,7 @@ import { posaljiPredlog, type PredlogRezultat } from "./actions";
 import { Uploader } from "@/components/uploader";
 
 const inputCls =
-  "mt-1 w-full rounded-lg border border-sljiva-200 px-3 py-2 outline-none focus:border-bakar-500";
+  "mt-1 w-full rounded-lg border border-mastilo/20 px-3 py-2 outline-none focus:border-plava";
 
 export function PredlogForm() {
   const [tip, setTip] = useState<"foto" | "eksponat">("foto");
@@ -42,8 +42,8 @@ export function PredlogForm() {
             key={val}
             className={`cursor-pointer rounded-xl border p-4 text-sm ${
               tip === val
-                ? "border-bakar-500 bg-bakar-50"
-                : "border-sljiva-200 bg-white"
+                ? "border-crvena bg-lan-svetli"
+                : "border-mastilo/20 bg-lan-svetli"
             }`}
           >
             <input
@@ -53,33 +53,33 @@ export function PredlogForm() {
               checked={tip === val}
               onChange={() => setTip(val)}
             />
-            <span className="font-semibold text-sljiva-900">{naslov}</span>
-            <p className="mt-1 text-sljiva-600">{opis}</p>
+            <span className="font-semibold text-mastilo">{naslov}</span>
+            <p className="mt-1 text-mastilo-meko">{opis}</p>
           </label>
         ))}
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2">
         <label className="block text-sm">
-          <span className="text-sljiva-600">Ime i prezime *</span>
+          <span className="text-mastilo-meko">Ime i prezime *</span>
           <input name="ime" required className={inputCls} />
         </label>
         <label className="block text-sm">
-          <span className="text-sljiva-600">Mesto / kraj porekla</span>
+          <span className="text-mastilo-meko">Mesto / kraj porekla</span>
           <input name="mesto" placeholder="npr. Bajina Bašta, Užice…" className={inputCls} />
         </label>
         <label className="block text-sm">
-          <span className="text-sljiva-600">Email</span>
+          <span className="text-mastilo-meko">Email</span>
           <input name="email" type="email" className={inputCls} />
         </label>
         <label className="block text-sm">
-          <span className="text-sljiva-600">Telefon</span>
+          <span className="text-mastilo-meko">Telefon</span>
           <input name="telefon" className={inputCls} />
         </label>
       </div>
 
       <label className="block text-sm">
-        <span className="text-sljiva-600">
+        <span className="text-mastilo-meko">
           {tip === "eksponat" ? "Opis predmeta (šta je, koliko star, koji kraj, tip kazana…) *" : "Opis fotografije (ko je na slici, gde, kada…) *"}
         </span>
         <textarea name="opis" rows={4} required className={inputCls} />
@@ -95,7 +95,7 @@ export function PredlogForm() {
       <button
         type="submit"
         disabled={pending}
-        className="rounded-full bg-bakar-600 px-6 py-3 font-semibold text-white transition hover:bg-bakar-700 disabled:opacity-60"
+        className="rounded-full bg-crvena px-6 py-3 font-semibold text-white transition hover:bg-[#a12932] disabled:opacity-60"
       >
         {pending ? "Slanje…" : "Pošalji predlog"}
       </button>

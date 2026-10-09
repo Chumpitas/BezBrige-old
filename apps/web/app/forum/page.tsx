@@ -79,15 +79,15 @@ const CELINE: { oznaka: string; naslov: string; opis?: string; dogadjaji: Dogadj
 export default function ForumPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-sljiva-900 text-white">
+      <section className="relative overflow-hidden bg-plava text-white">
         <Slika src={LOKALNE.staraSokolovaCasa} fallback={SLIKE.case} alt="" className="absolute inset-0 h-full w-full object-cover opacity-35" />
-        <div className="absolute inset-0 bg-gradient-to-br from-sljiva-900/90 to-bakar-900/80" />
+        <div className="absolute inset-0 bg-gradient-to-br from-plava/90 to-plava/75" />
         <div className="container-page relative z-10 py-20">
           <h1 className="font-serif text-4xl font-bold sm:text-5xl">Forum „Rakija Srbije“</h1>
-          <p className="mt-4 max-w-2xl text-lg text-sljiva-100/90">
+          <p className="mt-4 max-w-2xl text-lg text-lan">
             Znanje • Tradicija • Kvalitet • Identitet • Svet
           </p>
-          <p className="mt-3 max-w-2xl text-sljiva-100/80">
+          <p className="mt-3 max-w-2xl text-lan">
             Centralni stručni i razvojni program projekta — 15 događaja tokom 12
             meseci, koji okupljaju institucije, nauku, proizvođače, privredu,
             turizam i međunarodne stručnjake.
@@ -97,54 +97,54 @@ export default function ForumPage() {
 
       {/* Programske oblasti */}
       <section className="container-page py-16">
-        <h2 className="font-serif text-2xl font-bold text-sljiva-900">Pet programskih oblasti</h2>
+        <h2 className="font-serif text-2xl font-bold text-mastilo">Pet programskih oblasti</h2>
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {OBLASTI.map((o) => (
-            <div key={o.n} className="rounded-2xl border border-sljiva-200 bg-white p-5 shadow-sm">
-              <h3 className="font-semibold text-bakar-700">{o.n}</h3>
-              <p className="mt-1 text-sm text-sljiva-600">{o.o}</p>
+            <div key={o.n} className="rounded-md border border-mastilo/20 bg-lan-svetli p-5">
+              <h3 className="font-semibold text-crvena">{o.n}</h3>
+              <p className="mt-1 text-sm text-mastilo-meko">{o.o}</p>
             </div>
           ))}
         </div>
 
         {/* Program — 15 događaja */}
-        <h2 className="mt-14 font-serif text-2xl font-bold text-sljiva-900">Program — 15 događaja</h2>
+        <h2 className="mt-14 font-serif text-2xl font-bold text-mastilo">Program — 15 događaja</h2>
         <div className="mt-8 space-y-12">
           {CELINE.map((c) => (
             <section key={c.oznaka}>
               <div className="flex items-baseline gap-3">
-                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-sljiva-900 font-serif text-sm font-bold text-bakar-200">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-plava font-serif text-sm font-bold text-bela">
                   {c.oznaka}
                 </span>
                 <div>
-                  <h3 className="font-serif text-xl font-bold text-sljiva-900">{c.naslov}</h3>
-                  {c.opis && <p className="text-sm text-sljiva-500">{c.opis}</p>}
+                  <h3 className="font-serif text-xl font-bold text-mastilo">{c.naslov}</h3>
+                  {c.opis && <p className="text-sm text-mastilo-meko">{c.opis}</p>}
                 </div>
               </div>
               <div className="mt-5 space-y-4">
                 {c.dogadjaji.map((d) => (
                   <div
                     key={d.br}
-                    className={`rounded-2xl border bg-white p-6 shadow-sm ${d.kickoff ? "border-bakar-300 ring-1 ring-bakar-200" : "border-sljiva-200"}`}
+                    className={`rounded-md border bg-lan-svetli p-6 ${d.kickoff ? "border-crvena ring-1 ring-crvena/30" : "border-mastilo/20"}`}
                   >
                     <div className="flex items-start gap-4">
-                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-bakar-100 font-serif text-lg font-bold text-bakar-700">
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-lan-tamni font-serif text-lg font-bold text-crvena">
                         {d.br}
                       </span>
                       <div>
                         <div className="flex flex-wrap items-center gap-2">
-                          <h4 className="font-semibold text-sljiva-900">{d.naslov}</h4>
+                          <h4 className="font-semibold text-mastilo">{d.naslov}</h4>
                           {d.kickoff && (
-                            <span className="rounded-full bg-bakar-600 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white">
+                            <span className="rounded-full bg-crvena px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-white">
                               Prvi događaj · PKS
                             </span>
                           )}
                         </div>
-                        {d.podnaslov && <p className="text-sm font-medium text-bakar-600">{d.podnaslov}</p>}
-                        <p className="mt-2 text-sm text-sljiva-600">{d.opis}</p>
+                        {d.podnaslov && <p className="text-sm font-medium text-crvena">{d.podnaslov}</p>}
+                        <p className="mt-2 text-sm text-mastilo-meko">{d.opis}</p>
                         {d.ucesnici && (
-                          <p className="mt-2 text-xs text-sljiva-500">
-                            <span className="font-semibold text-sljiva-600">Učesnici:</span> {d.ucesnici}
+                          <p className="mt-2 text-xs text-mastilo-meko">
+                            <span className="font-semibold text-mastilo-meko">Učesnici:</span> {d.ucesnici}
                           </p>
                         )}
                       </div>
@@ -156,13 +156,13 @@ export default function ForumPage() {
           ))}
         </div>
 
-        <p className="mt-10 text-sm text-sljiva-500">
+        <p className="mt-10 text-sm text-mastilo-meko">
           Napomena: termini pojedinačnih događaja biće objavljeni naknadno. Za sada
           je potvrđen prvi događaj — Nacionalna konferencija u Privrednoj komori Srbije.
         </p>
 
         <div className="mt-6">
-          <Link href="/prijava" className="rounded-full bg-bakar-600 px-6 py-3 font-semibold text-white hover:bg-bakar-700">
+          <Link href="/prijava" className="rounded-full bg-crvena px-6 py-3 font-semibold text-white hover:bg-[#a12932]">
             Prijavite svoju destileriju
           </Link>
         </div>

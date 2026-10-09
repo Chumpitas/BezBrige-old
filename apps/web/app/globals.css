@@ -70,3 +70,43 @@ textarea:focus-visible {
       14px repeat-x,
     #faf3e6;
 }
+
+/* ============ ORNAMENT: „vez" (lanac rombova — pirotski ćilim) ============ */
+/* Niz dijamanata, gornja i donja polovina spojene u romb; etno motiv veza. */
+.vez {
+  height: 20px;
+  background:
+    conic-gradient(from 135deg at 50% 0, var(--d, #c6363c) 90deg, transparent 0) 0 0 /
+      20px 10px repeat-x,
+    conic-gradient(from -45deg at 50% 100%, var(--d, #c6363c) 90deg, transparent 0) 0
+      10px / 20px 10px repeat-x;
+  background-color: var(--vbg, transparent);
+}
+.vez-crvena {
+  --d: #c6363c;
+}
+.vez-plava {
+  --d: #0c4076;
+}
+/* naizmenični rombovi crvena/plava na lanenoj traci */
+.vez-traka {
+  height: 20px;
+  background:
+    conic-gradient(from 135deg at 50% 0, #c6363c 90deg, transparent 0) 0 0 / 40px 10px
+      repeat-x,
+    conic-gradient(from -45deg at 50% 100%, #c6363c 90deg, transparent 0) 0 10px / 40px
+      10px repeat-x,
+    conic-gradient(from 135deg at 50% 0, #0c4076 90deg, transparent 0) 20px 0 / 40px
+      10px repeat-x,
+    conic-gradient(from -45deg at 50% 100%, #0c4076 90deg, transparent 0) 20px 10px /
+      40px 10px repeat-x,
+    #faf3e6;
+}
+/* Mali romb-marker (◆) za natpise iznad naslova */
+.romb-marker {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
+  background: currentColor;
+}
