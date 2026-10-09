@@ -43,8 +43,8 @@ export default function OProjektuPage() {
           <p>
             Nacionalni projekat{" "}
             <strong>
-              „Tradicionalna proizvodnja rakije kao deo kulturnog identiteta
-              Srbije“
+              „Rakija Srbije – Tradicionalna porodična proizvodnja rakije u
+              Srbiji kao deo kulturnog identiteta Srbije“
             </strong>{" "}
             posvećen je istraživanju, očuvanju, razvoju i promociji kulture
             rakije kao važnog dela nacionalnog nasleđa.
@@ -57,11 +57,13 @@ export default function OProjektuPage() {
           </p>
           <p>
             Projekat povezuje kulturu, nauku, obrazovanje, poljoprivredu,
-            proizvođače, privredu, turizam i savremene komunikacije. Cilj mu je
-            da se kulturna vrednost tradicionalne proizvodnje rakije istraži i
-            predstavi, a da se istovremeno doprinese razvoju kvaliteta, znanja,
-            turističkih potencijala i međunarodne prepoznatljivosti srpske
-            rakije.
+            proizvođače, privredu, turizam i savremene komunikacije.
+          </p>
+          <p>
+            Njegov cilj je da se kulturna vrednost tradicionalne proizvodnje
+            rakije istraži i predstavi, a da se istovremeno doprinese razvoju
+            kvaliteta, znanja, turističkih potencijala i međunarodne
+            prepoznatljivosti srpske rakije.
           </p>
           <p>
             Program obuhvata nacionalne izložbe, celogodišnji Forum „Rakija
@@ -72,14 +74,17 @@ export default function OProjektuPage() {
           <p>
             Prva nacionalna izložba, posvećena Bajinoj Bašti i Sokolskom kraju,
             planirana je u Etnografskom muzeju u Beogradu 2026. godine. U narednim
-            godinama projekat će predstavljati i druge rakijske krajeve Srbije.
+            godinama projekat će predstavljati i druge rakijske krajeve Srbije:
+            Šumadiju i Pomoravlje, Zapadnu Srbiju, Vojvodinu, Beograd,
+            Mačvansko-kolubarski region, Moravičko-raški region. Rasinski okrug,
+            Južnu Srbiju, Istočnu Srbiju, Kosovo i Metohiju.
           </p>
 
           <div className="rounded-md border border-crvena bg-lan-svetli p-6">
             <p className="font-serif text-lg font-semibold text-mastilo">Naša vizija</p>
             <p className="mt-2 text-mastilo">
-              Da srpska rakija, čuvajući svoje kulturno i porodično nasleđe,
-              postane jedan od prepoznatljivih simbola Srbije u svetu.
+              Naša vizija je da srpska rakija, čuvajući svoje kulturno i porodično
+              nasleđe, postane jedan od prepoznatljivih simbola Srbije u svetu.
             </p>
           </div>
         </div>

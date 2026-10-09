@@ -100,12 +100,15 @@ export default async function HomePage() {
             <h2 className="font-serif text-[clamp(30px,4vw,46px)] font-extrabold leading-[1.05]">
               15 događaja tokom godine
             </h2>
+            <p className="font-serif text-[19px] italic text-bela">
+              Nacionalna konferencija, tematski forumi, međunarodni dijalozi,
+              regionalni programi i naučnoistraživački skupovi.
+            </p>
             <p className="text-[18px] text-lan">
-              Forum „Rakija Srbije“ je centralni stručni, razvojni i komunikacioni
-              program nacionalnog projekta „Rakija Srbije“. Tokom dvanaest meseci
-              planirano je 15 programskih događaja koji će okupiti predstavnike
-              institucija, naučne i akademske zajednice, proizvođače, privredu,
-              turistički sektor i međunarodne stručnjake.
+              Kultura i identitet, antropologija i etnologija, proizvodnja i
+              kvalitet, turizam, privreda i međunarodno tržište — Forum povezuje
+              tradiciju sa savremenim znanjima, kulturno nasleđe sa privrednim
+              razvojem, a domaće proizvođače sa međunarodnim tržištem.
             </p>
             <div className="pt-1">
               <Link href="/forum" className="inline-block rounded bg-crvena px-[22px] py-3 font-bold text-krem hover:bg-[#a12932]">
