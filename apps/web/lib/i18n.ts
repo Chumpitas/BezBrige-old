@@ -14,6 +14,11 @@ export const DICT: Dict = {
   // Navigacija
   nav_o_projektu: { sr: "O projektu", en: "About" },
   nav_bajina: { sr: "Bajina Bašta", en: "Bajina Bašta" },
+  nav_izlozba: { sr: "Izložba", en: "Exhibition" },
+  nav_nauka: { sr: "Nauka", en: "Research" },
+  nav_forum: { sr: "Forum", en: "Forum" },
+  nav_regioni: { sr: "Regioni", en: "Regions" },
+  nav_velika_noc: { sr: "Velika noć", en: "Grand Night" },
   nav_istrazivanje: { sr: "Naučno istraživanje", en: "Research" },
   nav_program: { sr: "Program", en: "Programme" },
   nav_summit: { sr: "Summit", en: "Summit" },

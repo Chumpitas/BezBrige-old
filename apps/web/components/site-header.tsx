@@ -7,14 +7,31 @@ export async function SiteHeader() {
   const lang = await getLang();
   const t = tFactory(lang);
 
+  // Desktop (xl+) — kraći nazivi da sve stane u jedan red
   const NAV = [
     { href: "/o-projektu", label: t("nav_o_projektu") },
-    { href: "/bajina-basta", label: t("nav_bajina") },
-    { href: "/program", label: t("nav_program") },
-    { href: "/summit", label: t("nav_summit") },
+    { href: "/nacionalna-izlozba", label: t("nav_izlozba") },
+    { href: "/forum", label: t("nav_forum") },
+    { href: "/regioni", label: t("nav_regioni") },
     { href: "/proizvodjaci", label: t("nav_proizvodjaci") },
     { href: "/ture", label: t("nav_ture") },
     { href: "/galerija", label: t("nav_galerija") },
+    { href: "/vesti", label: t("nav_vesti") },
+    { href: "/prijava", label: t("nav_prijava") },
+  ];
+
+  // Mobilni meni — kompletan spisak (puni nazivi)
+  const NAV_MOBILE = [
+    { href: "/o-projektu", label: t("nav_o_projektu") },
+    { href: "/nacionalna-izlozba", label: "Nacionalna izložba" },
+    { href: "/bajina-basta", label: t("nav_bajina") },
+    { href: "/naucno-istrazivanje", label: t("nav_istrazivanje") },
+    { href: "/forum", label: "Forum „Rakija Srbije“" },
+    { href: "/regioni", label: "Rakijski krajevi Srbije" },
+    { href: "/proizvodjaci", label: t("nav_proizvodjaci") },
+    { href: "/ture", label: t("nav_ture") },
+    { href: "/galerija", label: t("nav_galerija") },
+    { href: "/velika-noc-rakije", label: "Velika noć rakije" },
     { href: "/vesti", label: t("nav_vesti") },
     { href: "/partneri", label: t("nav_partneri") },
     { href: "/posalji", label: t("nav_doprinesi") },
@@ -53,7 +70,7 @@ export async function SiteHeader() {
           >
             {t("cta_prijavi")}
           </Link>
-          <MobileMenu items={NAV} />
+          <MobileMenu items={NAV_MOBILE} />
         </div>
       </div>
     </header>

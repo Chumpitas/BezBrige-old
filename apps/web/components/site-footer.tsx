@@ -19,15 +19,17 @@ export async function SiteFooter() {
           </p>
           <ul className="mt-3 space-y-2 text-sm">
             <li><Link href="/o-projektu" className="hover:text-bakar-300">{t("nav_o_projektu")}</Link></li>
+            <li><Link href="/nacionalna-izlozba" className="hover:text-bakar-300">Nacionalna izložba</Link></li>
             <li><Link href="/bajina-basta" className="hover:text-bakar-300">{t("nav_bajina")}</Link></li>
             <li><Link href="/naucno-istrazivanje" className="hover:text-bakar-300">{t("nav_istrazivanje")}</Link></li>
-            <li><Link href="/program" className="hover:text-bakar-300">{t("nav_program")}</Link></li>
-            <li><Link href="/summit" className="hover:text-bakar-300">{t("nav_summit")}</Link></li>
+            <li><Link href="/forum" className="hover:text-bakar-300">Forum „Rakija Srbije“</Link></li>
+            <li><Link href="/regioni" className="hover:text-bakar-300">Rakijski krajevi Srbije</Link></li>
             <li><Link href="/proizvodjaci" className="hover:text-bakar-300">{t("nav_proizvodjaci")}</Link></li>
             <li><Link href="/ture" className="hover:text-bakar-300">{t("nav_ture")}</Link></li>
             <li><Link href="/galerija" className="hover:text-bakar-300">{t("nav_galerija")}</Link></li>
             <li><Link href="/velika-noc-rakije" className="hover:text-bakar-300">Velika noć rakije</Link></li>
             <li><Link href="/vesti" className="hover:text-bakar-300">{t("nav_vesti")}</Link></li>
+            <li><Link href="/partneri" className="hover:text-bakar-300">{t("nav_partneri")}</Link></li>
             <li><Link href="/posalji" className="hover:text-bakar-300">{t("nav_doprinesi")}</Link></li>
             <li><Link href="/kontakt" className="hover:text-bakar-300">{t("nav_kontakt")}</Link></li>
             <li><Link href="/prijava" className="hover:text-bakar-300">{t("nav_prijava")}</Link></li>
