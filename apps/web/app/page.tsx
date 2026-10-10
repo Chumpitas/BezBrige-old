@@ -120,10 +120,10 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* c) TRAKA — vez (lanac rombova) */}
+      {/* c) TRAKA — vez (lanac rombova); podloga kao sekcija ispod (lan-svetli) */}
       <div aria-hidden="true">
         <div className="h-1.5 bg-crvena" />
-        <div className="vez-traka" />
+        <div className="vez-traka" style={{ ["--vez-bg" as string]: "#faf3e6" }} />
       </div>
 
       {/* d) O PROJEKTU */}
