@@ -15,6 +15,7 @@ export async function SiteHeader() {
     { href: "/o-projektu", label: t("nav_o_projektu") },
     { href: "/nacionalna-izlozba", label: t("nav_izlozba") },
     { href: "/forum", label: t("nav_forum") },
+    { href: "/velika-noc-rakije", label: t("nav_velika_noc") },
     { href: "/regioni", label: t("nav_regioni") },
     { href: "/proizvodjaci", label: t("nav_proizvodjaci") },
     { href: "/vesti", label: t("nav_vesti") },
